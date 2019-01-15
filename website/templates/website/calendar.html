@@ -1,0 +1,114 @@
+{% extends 'website/base.html' %}
+{% block container %}
+<div class="header text-center">
+    <h3 class="title">FullCalendar.io</h3>
+    <small class="category">Handcrafted by our friends from
+        <a target="_blank" href="https://fullcalendar.io/">FullCalendar.io</a>. Please checkout their
+        <a href="https://fullcalendar.io/docs/" target="_blank">full documentation.</a>
+    </small>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-10 ml-auto mr-auto">
+        <div class="card card-calendar">
+            <div class="card-body ">
+                <div id="fullCalendar"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ block.super }}
+    <script>
+        function initFullCalendar() {
+            $calendar = $('#fullCalendar');
+
+            today = new Date();
+            y = today.getFullYear();
+            m = today.getMonth();
+            d = today.getDate();
+
+            $calendar.fullCalendar({
+                monthNames: [
+                    'Janeiro', 'Fevereiro', 'Março', 'April', 'May', 'June', 'July',
+                    'August', 'September', 'Outubro', 'November', 'December'
+                ], // MATHEU... olha aqui para traduzir: https://fullcalendar.io/docs/monthNames
+                header: {
+                    left: 'title',
+                    center: 'month,agendaWeek,agendaDay',
+                    right: 'prev,next,today'
+                },
+                defaultDate: today,
+                selectable: true,
+                selectHelper: true,
+                // titleFormat: {
+                //     month: 'MMMM YYYY', // September 2015
+                //     week: "MMMM D YYYY", // September 2015
+                //     day: 'D MMM, YYYY'  // Tuesday, Sep 8, 2015
+                // },
+                views: {
+                    // week:{ titleFormat: "DD MMMM YYYY" },
+                    month: {
+                        titleFormat: 'MMMM YYYY'
+                    }, // September 2015
+                    week: {
+                        titleFormat: "MMMM D YYYY"
+                    }, // September 2015
+                    day: {
+                        titleFormat: 'D MMM, YYYY'
+                    } // Tuesday, Sep 8, 2015
+                },
+                select: function (start, end) {
+
+                    // on select we show the Sweet Alert modal with an input
+                    swal({
+                        title: 'Create an Event',
+                        html: '<br><input class="form-control" placeholder="Event Title" id="input-field">',
+                        showCancelButton: true,
+                        closeOnConfirm: true
+                    }, function () {
+
+                        var eventData;
+                        event_title = $('#input-field').val();
+
+                        if (event_title) {
+                            eventData = {
+                                title: event_title,
+                                start: start,
+                                end: end
+                            };
+                            $calendar.fullCalendar('renderEvent', eventData, true); // stick? = true
+                        }
+
+                        $calendar.fullCalendar('unselect');
+
+                    });
+                },
+                editable: true,
+                eventLimit: true, // allow "more" link when too many events
+
+
+                // color classes: [ event-blue | event-azure | event-green | event-orange | event-red ]
+                eventSources: [
+                    {
+                        url: '{% url 'website:get-data' %}',
+                        type: 'GET',
+                        data: {
+                            custom_param1: 'something',
+                            custom_param2: 'somethingelse'
+                        },
+                        error: function () {
+                            alert('there was an error while fetching events!');
+                        }
+                    }
+                ]
+            });
+        };
+        $().ready(function() {
+            initFullCalendar();
+        });
+
+    </script>
+{% endblock %}
