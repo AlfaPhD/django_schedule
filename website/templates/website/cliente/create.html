@@ -1,0 +1,29 @@
+{% extends 'website/base.html' %}
+{% block container %}
+<form method="POST" action="create">
+        {% csrf_token %}
+    <h3 align="center"> Cadastrar Cliente</h3>
+    <div class="form-group">
+    <label>Nome </label>
+    <input type="text" name="nome"  placeholder="Nome" class="form-control" required />
+    </br>
+    <label>Apelido </label>
+    <input type="text" name="apelido" placeholder="Apelido" class="form-control" required/>
+    </br>
+    <label>Senha </label>
+    <input type="password" name="senha" placeholder="Senha" class="form-control"required />
+    </br>
+    <label>E-mail </label>
+    <input type="email" name="email" placeholder="E-mail" class="form-control"required />
+    </br>
+    <label>Celular </label>
+    <input type="text" name="celular" placeholder="Celular" class="form-control"required />
+        </br>
+
+    <button class="btn btn-success" href="cliente"> <span class="glyphicon glyphicon-add"></span>Cadastrar Cliente</button>
+     <a class="btn btn-default" href="../cliente">Voltar</a>
+</div>
+</form>
+
+
+{% endblock %}

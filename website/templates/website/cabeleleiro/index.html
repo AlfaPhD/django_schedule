@@ -1,0 +1,43 @@
+{% extends 'website/base.html' %}
+{% block container %}
+<a class="btn btn-success" href="create"> <span class="glyphicon glyphicon-add"></span>Novo Cabeleleiro</a>
+<br/>
+<br/>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-center">#</th>
+                <th>Nome </th>
+                <th>Senha </th>
+                <th>E-mail</th>
+                <th>Celular</th>
+                <th>Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+              {% for cabeleleiro in cabeleleiros %}
+            <tr>
+                <td>{{ cabeleleiro.id }}</td>
+                <td>{{ cabeleleiro.NOME }}</td>
+                <td>{{ cabeleleiro.SENHA }}</td>
+                <td>{{ cabeleleiro.EMAIL }}</td>
+                <td>{{ cabeleleiro.CELULAR }}</td>
+                <td class="td-actions" >
+                    <a  type="button" rel="tooltip" title="Detalhes" class="btn btn-info btn-link btn-sm">
+                        <i class="fa fa-user"></i>
+                    </a>
+                    <a href="edit/{{ cabeleleiro.id }}" type="button" rel="tooltip" title="Editar" class="btn btn-success btn-link btn-sm">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    <a href="deletar/{{ cabeleleiro.id }}" type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-link btn-sm">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'website/base.html' %}
+{% block container %}
+<form method="POST" action="update/{{ servicos.id }}">
+        {% csrf_token %}
+    <h3 align="center"> Alterar Serviço</h3>
+
+    <div class="form-group">
+    <label>Nome </label>
+    <input type="text" name="nome"  value="{{ servicos.NOME }}" placeholder="Nome" class="form-control" required />
+    </br>
+    <label>Valor </label>
+    <input type="text" name="valor"  value="{{ servicos.VALOR }}" placeholder="valor" class="form-control" required/>
+    </br>
+    <button class="btn btn-success" href="servico"> <span class="glyphicon glyphicon-add"></span>Alterar Serviço</button>
+        <a class="btn btn-default" href="../servico">Voltar</a>
+</div>
+</form>
+{% endblock %}

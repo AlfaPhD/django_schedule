@@ -1,0 +1,59 @@
+{% extends 'website/base.html' %}
+{% block container %}
+
+<div class="header text-center">
+    <h3 class="title">FullCalendar.io</h3>
+    <small class="category">Handcrafted by our friends from
+        <a target="_blank" href="https://fullcalendar.io/">FullCalendar.io</a>. Please checkout their
+        <a href="https://fullcalendar.io/docs/" target="_blank">full documentation.</a>
+    </small>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-10 ml-auto mr-auto">
+        <div class="card card-calendar">
+            <div class="card-body ">
+                <div id='calendar'></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ block.super }}
+<link href='../static/website/assets/js/teste/fullcalendar.min.css' rel='stylesheet' />
+<link href='../static/website/assets/js/teste/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+<script src='../static/website/assets/js/teste/moment.min.js'></script>
+<script src='../static/website/assets/js/teste/jquery.min.js'></script>
+<script src='../static/website/assets/js/teste/fullcalendar.min.js'></script>
+<script src='../static/website/assets/js/teste/locale/pt-br.js'></script>
+    <script>
+         $(document).ready(function() {
+
+        $('#calendar').fullCalendar({
+          header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
+          },
+          defaultDate: Date(),
+          navLinks: true, // can click day/week names to navigate views
+          editable: true,
+          eventLimit: true, // allow "more" link when too many events
+          events: [
+                {% for i in events %}
+                {
+                    title: "{{ i.SERVICOS.NOME }} " + "{{ i.CLIENTES.NOME }}",
+                    start: '{{ i.DATA|date:"Y-m-d" }}',
+                    end: '{{ i.DATA|date:"Y-m-d" }}',
+
+                },
+                {% endfor %}
+              ]
+
+    });
+
+  });
+    </script>
+{% endblock %}

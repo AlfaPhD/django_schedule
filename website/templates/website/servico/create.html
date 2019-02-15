@@ -1,0 +1,20 @@
+{% extends 'website/base.html' %}
+{% block container %}
+<form method="POST" action="create">
+        {% csrf_token %}
+    <h3 align="center"> Cadastrar Serviço</h3>
+    <div class="form-group">
+    <label>Nome </label>
+    <input type="text" name="nome"  placeholder="Nome" class="form-control" required />
+    </br>
+    <label>Valor </label>
+    <input type="text" name="valor" placeholder="valor" class="form-control" required/>
+    </br>
+
+    <button class="btn btn-success" href="servico"> <span class="glyphicon glyphicon-add"></span>Cadastrar Serviço</button>
+     <a class="btn btn-default" href="../servico">Voltar</a>
+</div>
+</form>
+
+
+{% endblock %}
