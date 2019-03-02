@@ -32,9 +32,9 @@ class ESTOQUE(models.Model):
     ID_PRODUTO = models.ManyToManyField("PRODUTO")
 
 class AGENDAMENTO(models.Model):
-    DATA = models.DateField("DATA")
-    HORA_INICIO = models.TimeField("HORA_INICIO")
-    HORA_FIM = models.TimeField("HORA_FIM")
+    STATUS = models.CharField("STATUS", max_length=30)
+    DATA_INICIO = models.DateTimeField("DATA_INICIO")
+    DATA_FIM = models.DateTimeField("DATA_FIM")
     CLIENTES = models.ForeignKey(
         CLIENTE,
         on_delete=models.CASCADE

@@ -137,9 +137,8 @@ def createAgendamento(request):
         servico = SERVICO.objects.get(id=int( request.POST['servico']))
         cliente = CLIENTE.objects.get(id=int(request.POST['cliente']))
         cabeleleiro = CABELELEIRO.objects.get(id=int(request.POST['cabeleleiro']))
-        agendamento.DATA = request.POST['data']
-        agendamento.HORA_INICIO = request.POST['hora']
-        agendamento.HORA_FIM = request.POST['hora']
+        agendamento.DATA_INICIO = request.POST['data_inicio']
+        agendamento.DATA_FIM = request.POST['data_fim']
         agendamento.CLIENTES =  cliente
         agendamento.CABELELEIROS = cabeleleiro
         agendamento.SERVICOS = servico
@@ -196,8 +195,8 @@ def testAgendamento(request):
         for i in all_events:
             event_sub_arr = {}
             event_sub_arr['title'] = i.event_name
-            start_date = datetime.datetime.strptime(str(i.DATA.date()), "%Y-%m-%d").strftime("%Y-%m-%d")
-            end_date = datetime.datetime.strptime(str(i.DATA.date()), "%Y-%m-%d").strftime("%Y-%m-%d")
+            start_date = datetime.datetime.strptime(str(i.DATA.date()), "%Y-%m-%d %H:%M:%S'").strftime("%Y-%m-%d %H:%M:%S'")
+            end_date = datetime.datetime.strptime(str(i.DATA.date()), "%Y-%m-%d %H:%M:%S'").strftime("%Y-%m-%d %H:%M:%S'")
             event_sub_arr['start'] = start_date
             event_sub_arr['end'] = end_date
             event_arr.append(event_sub_arr)

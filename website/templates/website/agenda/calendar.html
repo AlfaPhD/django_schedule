@@ -44,9 +44,9 @@
           events: [
                 {% for i in events %}
                 {
-                    title: "{{ i.SERVICOS.NOME }} " + "{{ i.CLIENTES.NOME }}",
-                    start: '{{ i.DATA|date:"Y-m-d" }}',
-                    end: '{{ i.DATA|date:"Y-m-d" }}',
+                    title: "{{ i.CLIENTES.NOME }}" + " " + "{{ i.SERVICOS.NOME }} " ,
+                    start: '{{ i.DATA_INICIO|date:"Y-m-d"}}',
+                    end: '{{ i.DATA_FIM|date:"Y-m-d" }}',
 
                 },
                 {% endfor %}
