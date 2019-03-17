@@ -2,9 +2,9 @@ from django.db import models
 
 # Create your models here.
 class CABELELEIRO(models.Model):
-    EMAIL = models.CharField("EMAIL", max_length=100)
+    EMAIL = models.EmailField("EMAIL", max_length=100)
     NOME = models.CharField("NOME", max_length=30)
-    SENHA = models.EmailField("SENHA", max_length=200)
+    SENHA = models.CharField("SENHA", max_length=200)
     CELULAR = models.CharField("CELULAR", max_length=30)
 
 class CLIENTE(models.Model):

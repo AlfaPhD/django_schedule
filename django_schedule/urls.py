@@ -19,7 +19,8 @@ from . import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('website.urls', namespace='website'))
+    path('', include('website.urls', namespace='website')),
+    path('', include('myapi.urls'))
 ]
 
 if settings.DEBUG:

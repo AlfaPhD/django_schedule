@@ -72,21 +72,21 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='estoque',
             name='ID_PRODUTO',
-            field=models.ManyToManyField(to='website.PRODUTO'),
+            field=models.ManyToManyField(to='myapi.PRODUTO'),
         ),
         migrations.AddField(
             model_name='agendamento',
             name='CABELELEIROS',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='website.CABELELEIRO'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='myapi.CABELELEIRO'),
         ),
         migrations.AddField(
             model_name='agendamento',
             name='CLIENTES',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='website.CLIENTE'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='myapi.CLIENTE'),
         ),
         migrations.AddField(
             model_name='agendamento',
             name='SERVICOS',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='website.SERVICO'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='myapi.SERVICO'),
         ),
     ]
