@@ -17,27 +17,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/manage.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="14" column="28" selection-start-line="14" selection-end-line="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/django_schedule/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="22" column="27" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="27" />
-              <folding>
-                <element signature="e#639#671#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myapi/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
@@ -52,11 +31,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/django_schedule/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="133" column="25" selection-start-line="133" selection-start-column="25" selection-end-line="133" selection-end-column="25" />
+            <state relative-caret-position="181">
+              <caret line="142" column="57" lean-forward="true" selection-start-line="142" selection-start-column="57" selection-end-line="142" selection-end-column="57" />
               <folding>
                 <element signature="e#316#325#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/website/static/website/assets/js/plugins/bootstrap-datetimepicker.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="173">
+              <caret line="506" column="60" selection-start-line="506" selection-start-column="60" selection-end-line="506" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -82,11 +70,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="8" selection-start-line="8" selection-end-line="8" selection-end-column="8" />
+            <state relative-caret-position="255">
+              <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Procfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -95,7 +92,7 @@
         <entry file="file://$PROJECT_DIR$/runtime.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="15">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -185,11 +182,12 @@
         <option value="$PROJECT_DIR$/django_schedule/wsgi.py" />
         <option value="$PROJECT_DIR$/runtime.txt" />
         <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/django_schedule/settings.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="369" />
     <option name="y" value="27" />
     <option name="width" value="974" />
@@ -215,6 +213,32 @@
               <item name="django_schedule" type="b2602c69:ProjectViewProjectNode" />
               <item name="django_schedule" type="462c0819:PsiDirectoryNode" />
               <item name="django_schedule" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="django_schedule" type="b2602c69:ProjectViewProjectNode" />
+              <item name="django_schedule" type="462c0819:PsiDirectoryNode" />
+              <item name="website" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="django_schedule" type="b2602c69:ProjectViewProjectNode" />
+              <item name="django_schedule" type="462c0819:PsiDirectoryNode" />
+              <item name="website" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="django_schedule" type="b2602c69:ProjectViewProjectNode" />
+              <item name="django_schedule" type="462c0819:PsiDirectoryNode" />
+              <item name="website" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="website" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="django_schedule" type="b2602c69:ProjectViewProjectNode" />
+              <item name="django_schedule" type="462c0819:PsiDirectoryNode" />
+              <item name="website" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="website" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -290,7 +314,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1548848680945</updated>
-      <workItem from="1554828519520" duration="8084000" />
+      <workItem from="1554828519520" duration="10261000" />
     </task>
     <task id="LOCAL-00001" summary="[UP] Subindo HEROKU">
       <created>1554830081216</created>
@@ -348,15 +372,28 @@
       <option name="project" value="LOCAL" />
       <updated>1554835834274</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="[UP] Procfile">
+      <created>1554837397388</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1554837397388</updated>
+    </task>
+    <task id="LOCAL-00010" summary="[UP] Procfile correção">
+      <created>1554837916788</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1554837916788</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8084000" />
+    <option name="totallyTimeSpent" value="10261000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24022347" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -364,13 +401,13 @@
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.32736155" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32899022" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49960095" weight="0.39739415" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.32899022" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32899022" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.30441898" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50039905" side_tool="true" weight="0.3990228" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.3289689" />
@@ -391,17 +428,11 @@
     <MESSAGE value="[UP] Subindo runtime" />
     <MESSAGE value="[UP] Subindo wsgi e settings .py HEROKU" />
     <MESSAGE value="[UP] Subindo HEROKU 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="[UP] Subindo HEROKU 2" />
+    <MESSAGE value="[UP] Procfile" />
+    <MESSAGE value="[UP] Procfile correção" />
+    <option name="LAST_COMMIT_MESSAGE" value="[UP] Procfile correção" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/website/apps.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/templates/website/includes/navbar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-969" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/templates/website/includes/stylesheets.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -671,24 +702,38 @@
     <entry file="file://$PROJECT_DIR$/runtime.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Procfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/django_schedule/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="133" column="25" selection-start-line="133" selection-start-column="25" selection-end-line="133" selection-end-column="25" />
+        <state relative-caret-position="181">
+          <caret line="142" column="57" lean-forward="true" selection-start-line="142" selection-start-column="57" selection-end-line="142" selection-end-column="57" />
           <folding>
             <element signature="e#316#325#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
+    <entry file="file://$PROJECT_DIR$/website/static/website/assets/js/plugins/bootstrap-datetimepicker.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="8" selection-start-line="8" selection-end-line="8" selection-end-column="8" />
+        <state relative-caret-position="173">
+          <caret line="506" column="60" selection-start-line="506" selection-start-column="60" selection-end-line="506" selection-end-column="60" />
         </state>
       </provider>
     </entry>
