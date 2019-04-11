@@ -4,7 +4,11 @@
     <facet type="django" name="Django">
       <configuration>
         <option name="rootFolder" value="$MODULE_DIR$" />
+<<<<<<< HEAD
         <option name="settingsModule" value="" />
+=======
+        <option name="settingsModule" value="django_schedule/settings.py" />
+>>>>>>> c351a3f4be6297f0f81c7741dc61ef8ee7a767eb
         <option name="manageScript" value="manage.py" />
         <option name="environment" value="&lt;map/&gt;" />
         <option name="doNotUseTestRunner" value="false" />
@@ -16,7 +20,11 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
+<<<<<<< HEAD
     <orderEntry type="jdk" jdkName="Python 3.6 (django_schedule)" jdkType="Python SDK" />
+=======
+    <orderEntry type="jdk" jdkName="Python 3.6 (venv)" jdkType="Python SDK" />
+>>>>>>> c351a3f4be6297f0f81c7741dc61ef8ee7a767eb
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">
