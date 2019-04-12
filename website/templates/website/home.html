@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>Barbearia Lucas</title>
+        <link rel='stylesheet' type='text/css' href='{% static 'website/home/css/style.css' %}'>
+        <link href="https://fonts.googleapis.com/css?family=Flamenco" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" id="favicon" href='{% static 'website/home/images/icon.png' %}' type='image/s-icon'>
+	</head>
+	<body>
+        <header>
+            <nav>
+                <div class='row clearfix'>
+                    <img src="{% static 'website/home/images/logo.png' %}" class='logo'>
+
+                    <ul class='main-nav animated slideInDown' id='check'>
+                        <li><a href="{% url 'website:index' %}">Index</a></li>
+                        <li><a href="{% url 'website:login' %}">Sign Up</a></li>
+                    </ul>
+                    <a href='#' class='icon' onClick="slideshow()"> <i class='fa fa-bars'></i></a>
+                </div>
+            </nav>
+            {% block content %}
+            <div class="main-content-header">
+                <h1>Bem-Vindo à <span class='colorchange'>Barbearia Lucas</span>.<br>BARBA, CABELO & BEM-ESTAR.</h1>
+                <a href="#" class="btn btn-full">Cabeleireiros</a>
+                <a href="#" class="btn btn-full">Localização</a>                
+            </div>
+            {% endblock %}
+        </header>  
+        
+        <script type="text/javascript">
+
+            function slideshow(){
+                var x = document.getElementById("check");
+                if(x.style.display === "none"){
+                    x.style.display="block";
+                }else {
+                    x.style.display="none";
+                }
+            }
+        </script>
+
+	</body>
+</html>

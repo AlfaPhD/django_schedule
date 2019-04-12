@@ -3,7 +3,6 @@
 <form method="POST" action="update/{{ clientes.id }}">
         {% csrf_token %}
     <h3 align="center"> Alterar Cliente</h3>
-
     <div class="form-group">
     <label>Nome </label>
     <input type="text" name="nome"  value="{{ clientes.NOME }}" placeholder="Nome" class="form-control" required />

@@ -150,3 +150,6 @@ MEDIA_ROOT = os.path.join(PROJECT_DIR, 'public', 'media')
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+LOGIN_REDIRECT_URL = '/dashboard'
+LOGIN_URL = '/login'

@@ -1,0 +1,213 @@
+@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    font-size: 22px;
+    overflow-x: hidden;
+    color: white;
+    font-family: 'Flamenco', cursive;
+}
+
+header{
+    background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('../images/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.clearfix:after{
+    content: ".";
+    visibility: hidden;
+    display: block;
+    height: 0px;
+    clear: both;
+}
+
+.row{
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.logo{
+    height: 130px;
+    width: auto;
+    float: left;
+    margin-top: 20px;
+}
+
+.main-nav{
+    float: right;
+    margin-top: 60px;
+}
+
+.main-nav li{
+    display: inline-block;
+    list-style: none;
+    margin-left: 40px;
+}
+
+.main-nav li a{
+    padding: 5px 0px;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    font-weight: 100;
+}
+
+.main-nav li a:hover{
+    border-bottom: 2px solid rgb(247, 122, 38);
+}
+
+.main-content-header{
+    width: 1180px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+h1{
+    color: #fff;
+    font-size: 200%;
+    word-spacing: 5px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: lighter;
+}
+
+.btn{
+    display: inline-block;
+    padding: 10px 30px;
+    font-weight: lighter;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 200px;
+    transition: background-color 0.2s, border 0.2s, color 0.2;
+}
+
+.btn-full{
+    background-color: transparent;
+    color: rgb(247, 122, 38);
+    border: 1px solid;
+    margin-right: 20px;
+}
+
+.btn-full:hover{
+    background-color:rgb(247, 122, 38);
+    color: black;
+}
+
+.colorchange{
+    animation: colorchangelucas 1s infinite;
+}
+
+@keyframes colorchangelucas{
+    0%{color:rgb(247, 122, 38)}
+    25%{color: white }
+    50%{color: rgb(247, 122, 38)}
+    100%{color: white}
+} 
+
+.icon{display:none}
+
+.login-box{
+    width: 280px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.login-box h1{
+    float: left;
+    font-size: 40px;
+    border-bottom: 3px solid rgb(247, 122, 38);
+    margin-bottom: 50px;
+    padding: 13px 0;
+}
+
+.textbox{
+    width: 100%;
+    overflow: hidden;
+    font-size:20px;
+    padding: 8px 0;
+    margin: 8px 0;
+    border-bottom: 1px solid rgb(247, 122, 38);
+}
+
+.textbox i {
+    width: 26px;
+    float:left;
+    text-align: center;
+}
+
+.textbox input{
+    border: none;
+    outline:none;
+    background: none;
+    color: white;
+    font-size:18px;
+    width: 80%;
+    float: left;
+    margin: 0 10px;
+}
+
+.button {
+    width: 100%;
+    background: none;
+    border: 1px solid  rgb(247, 122, 38);
+    color: white;
+    padding: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 12px 0;
+
+
+}
+
+
+/* RESPONSIVO */
+
+@media only screen and (max-width: 1180px){
+    .main-content-header{
+        width: 100%;
+        padding: 0 2%;
+    }
+}
+
+@media only screen and (max-width: 990px){
+    h1{font-size:180%;}
+
+    .main-nav{display: none}
+
+    .icon{
+        display:inline-block;
+        color: #fff;
+        float: right;
+        margin-top:30px;
+        margin-right: 20px;
+    }
+
+    .main-nav{float:left;}
+
+    .main-nav li{
+        display: relative;
+        margin-top: 10px;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    .btn-full{margin-bottom:20px;}
+
+    h1{font-size: 160%;}
+}
+
+

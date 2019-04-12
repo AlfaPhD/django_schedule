@@ -7,14 +7,17 @@ from django.views.generic import TemplateView
 from website.models import CLIENTE, CABELELEIRO, SERVICO, AGENDAMENTO
 from decimal import Decimal
 from datetime import date, datetime
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 ## CLIENTES
+@login_required
 def indexCliente(request):
     clientes = CLIENTE.objects.all()
     context = {'clientes' : clientes}
     return render(request, 'website/cliente/index.html',context)
 
+@login_required
 def createCliente(request):
     cliente = CLIENTE()
     if request.method == 'POST':
@@ -206,8 +209,11 @@ def testAgendamento(request):
     return render(request, 'website/agenda/calendar.html',context)
 
 
-class DashboardView(TemplateView):
+class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'website/calendar.html'
+
+class HomeView(TemplateView):
+    template_name = 'website/home.html'
 
 
 def get_data(request):

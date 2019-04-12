@@ -1,10 +1,14 @@
 from django.urls import path
 from . import views
+from django.contrib.auth.urls import views as auth_views
+
 
 app_name = 'website'
 
 urlpatterns = [
-    path('', views.DashboardView.as_view(), name='dashboard'),
+    path('', views.HomeView.as_view(), name='index'),
+    path('login', auth_views.LoginView.as_view(), name='login'),
+    path('dashboard', views.DashboardView.as_view(), name='dashboard'),
     #Cliente
     path('cliente/', views.indexCliente, name='indexCliente'),
     path('cliente/create', views.createCliente, name='createCliente'),
