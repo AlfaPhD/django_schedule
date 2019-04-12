@@ -3,7 +3,8 @@
 {% block content %}
     <div class="login-box">
         <h1>Login</h1>
-        {{ form.password.errors }}
+
+
         <form method="post" action="{% url 'website:login' %}">
             {% csrf_token %}
             <div class="textbox">
@@ -19,6 +20,7 @@
             <input class='button' type='submit' name='' value='Sign In'>
 
         </form>
+        {{ form.non_field_errors }}
     </div>
 {% endblock %}
 

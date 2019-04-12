@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b110e4b-5db0-4130-87e6-4ac78dc6de99" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/website/static/website/home/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/website/home/images/background.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/website/home/images/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/static/website/home/images/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/templates/registration/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/templates/website/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_schedule/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_schedule/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/website/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/website/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/website/cliente/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/website/cliente/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/website/includes/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/website/includes/footer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/website/includes/sidebar/logo.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/website/includes/sidebar/logo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/registration/login.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,19 +25,19 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/website/templates/registration/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="21" selection-start-column="21" selection-end-column="21" />
+            <state relative-caret-position="255">
+              <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/templates/website/includes/navbar.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
+            <state relative-caret-position="135">
               <caret line="9" column="42" lean-forward="true" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="52" />
             </state>
           </provider>
@@ -211,7 +198,6 @@
         <option value="$PROJECT_DIR$/website/templates/website/base.html" />
         <option value="$PROJECT_DIR$/website/templates/website/index.html" />
         <option value="$PROJECT_DIR$/website/urls.py" />
-        <option value="$PROJECT_DIR$/website/templates/registration/login.html" />
         <option value="$PROJECT_DIR$/django_schedule/settings.py" />
         <option value="$PROJECT_DIR$/website/views.py" />
         <option value="$PROJECT_DIR$/website/templates/website/home.html" />
@@ -219,6 +205,7 @@
         <option value="$PROJECT_DIR$/website/templates/website/includes/sidebar/logo.html" />
         <option value="$PROJECT_DIR$/website/templates/website/cliente/edit.html" />
         <option value="$PROJECT_DIR$/website/templates/website/includes/navbar.html" />
+        <option value="$PROJECT_DIR$/website/templates/registration/login.html" />
       </list>
     </option>
   </component>
@@ -377,7 +364,7 @@
       <updated>1548848680945</updated>
       <workItem from="1554828519520" duration="11826000" />
       <workItem from="1554987053794" duration="7263000" />
-      <workItem from="1555072837366" duration="11915000" />
+      <workItem from="1555072837366" duration="14864000" />
     </task>
     <task id="LOCAL-00001" summary="[UP] Subindo HEROKU">
       <created>1554830081216</created>
@@ -481,7 +468,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31004000" />
+    <option name="totallyTimeSpent" value="33953000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -494,9 +481,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2482043" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2482043" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -507,7 +493,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32899022" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32736155" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3029316" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3029316" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50039905" side_tool="true" weight="0.3990228" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32736155" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
@@ -858,13 +844,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/templates/registration/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" selection-start-column="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/templates/website/home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -929,8 +908,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/website/templates/website/includes/navbar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
+        <state relative-caret-position="135">
           <caret line="9" column="42" lean-forward="true" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/templates/registration/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
         </state>
       </provider>
     </entry>
