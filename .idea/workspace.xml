@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7b110e4b-5db0-4130-87e6-4ac78dc6de99" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/static/website/assets/css/light-bootstrap-dashboard.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/website/includes/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/website/includes/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/website/includes/sidebar/nav.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/website/includes/sidebar/nav.html" afterDir="false" />
-    </list>
+    <list default="true" id="7b110e4b-5db0-4130-87e6-4ac78dc6de99" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,11 +79,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/templates/website/includes/fixed_plugin.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="167">
               <caret line="49" column="48" lean-forward="true" selection-start-line="49" selection-start-column="48" selection-end-line="49" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/website/static/website/assets/css/light-bootstrap-dashboard.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="11505" column="1" lean-forward="true" selection-start-line="11505" selection-start-column="1" selection-end-line="11505" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -300,18 +304,18 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/website/static/website/assets/css" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="C:\Users\Hugo\Documents\Faculdade\django_schedule\website\static\website\assets\locale" />
+      <recent name="C:\Users\Hugo\Documents\Faculdade\django_schedule\website\static\website\assets" />
+      <recent name="C:\Users\Hugo\Documents\Faculdade\django_schedule\website\templates\website\agenda" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/django_schedule" />
       <recent name="C:\Users\Hugo\Documents\Faculdade\django_schedule\website\static\website\assets\js\teste" />
       <recent name="C:\Users\Hugo\Documents\Faculdade\django_schedule\website\static\website\assets\js\teste\locale" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="C:\Users\Hugo\Documents\Faculdade\django_schedule\website\static\website\assets\locale" />
-      <recent name="C:\Users\Hugo\Documents\Faculdade\django_schedule\website\static\website\assets" />
-      <recent name="C:\Users\Hugo\Documents\Faculdade\django_schedule\website\templates\website\agenda" />
-      <recent name="C:\Users\Hugo\Documents\Faculdade\django_schedule\website\templates\website\Agenda" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -326,32 +330,6 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="Start" type="Python.DjangoServer" factoryName="Django server">
-      <module name="django_schedule" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="DJANGO_SETTINGS_MODULE" value="django_schedule.settings" />
-      </envs>
-      <option name="SDK_HOME" value="$PROJECT_DIR$/../venv/bin/python3" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
-      <option name="host" value="" />
-      <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="" />
-      <option name="runTestServer" value="false" />
-      <option name="runNoReload" value="false" />
-      <option name="useCustomRunCommand" value="false" />
-      <option name="customRunCommand" value="" />
-      <method v="2" />
-    </configuration>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -364,7 +342,7 @@
       <updated>1548848680945</updated>
       <workItem from="1554828519520" duration="11826000" />
       <workItem from="1554987053794" duration="7263000" />
-      <workItem from="1555072837366" duration="6929000" />
+      <workItem from="1555072837366" duration="7252000" />
     </task>
     <task id="LOCAL-00001" summary="[UP] Subindo HEROKU">
       <created>1554830081216</created>
@@ -468,7 +446,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26018000" />
+    <option name="totallyTimeSpent" value="26341000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -877,17 +855,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/static/website/assets/css/light-bootstrap-dashboard.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="11501" column="30" lean-forward="true" selection-start-line="11501" selection-start-column="30" selection-end-line="11501" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/templates/website/includes/fixed_plugin.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="167">
           <caret line="49" column="48" lean-forward="true" selection-start-line="49" selection-start-column="48" selection-end-line="49" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/static/website/assets/css/light-bootstrap-dashboard.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11505" column="1" lean-forward="true" selection-start-line="11505" selection-start-column="1" selection-end-line="11505" selection-end-column="1" />
         </state>
       </provider>
     </entry>
