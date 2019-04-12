@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b110e4b-5db0-4130-87e6-4ac78dc6de99" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/website/templates/website/includes/sidebar/logo.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/website/includes/sidebar/logo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/templates/website/includes/fixed_plugin.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/website/includes/fixed_plugin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/templates/website/includes/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/website/includes/navbar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/templates/website/includes/sidebar/nav.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/website/includes/sidebar/nav.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,8 +32,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/templates/website/includes/navbar.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="21" column="92" selection-start-line="21" selection-start-column="92" selection-end-line="21" selection-end-column="92" />
+            <state relative-caret-position="135">
+              <caret line="9" column="52" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -73,11 +74,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/templates/website/includes/sidebar/nav.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1426">
-              <caret line="135" column="11" lean-forward="true" selection-start-line="99" selection-start-column="6" selection-end-line="135" selection-end-column="11" />
+            <state relative-caret-position="120">
+              <caret line="8" column="45" lean-forward="true" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/website/templates/website/includes/fixed_plugin.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="122">
+              <caret line="43" column="58" lean-forward="true" selection-start-line="43" selection-start-column="58" selection-end-line="43" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/website/static/website/assets/css/light-bootstrap-dashboard.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="103">
+              <caret line="1477" column="29" selection-start-line="1477" selection-start-column="23" selection-end-line="1477" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -87,27 +106,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
               <caret line="8" column="59" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website/apps.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="19" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/django_schedule/wsgi.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
-              <folding>
-                <element signature="e#231#240#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -124,8 +122,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>r']</find>
-      <find>event</find>
       <find>EMAIL</find>
       <find>Agendamento</find>
       <find>BASE_DIR</find>
@@ -153,7 +149,9 @@
       <find>Calendar</find>
       <find>FullCalendar</find>
       <find>Handcrafted</find>
+      <find>SIDEBAR STYLE</find>
       <find>sear</find>
+      <find>badge filter</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -204,10 +202,11 @@
         <option value="$PROJECT_DIR$/website/templates/website/includes/meta.html" />
         <option value="$PROJECT_DIR$/website/templates/website/agenda/calendar.html" />
         <option value="$PROJECT_DIR$/website/templates/website/base.html" />
-        <option value="$PROJECT_DIR$/website/templates/website/includes/navbar.html" />
         <option value="$PROJECT_DIR$/website/templates/website/calendar.html" />
         <option value="$PROJECT_DIR$/website/templates/website/includes/sidebar/logo.html" />
         <option value="$PROJECT_DIR$/website/templates/website/includes/sidebar/nav.html" />
+        <option value="$PROJECT_DIR$/website/templates/website/includes/navbar.html" />
+        <option value="$PROJECT_DIR$/website/templates/website/includes/fixed_plugin.html" />
       </list>
     </option>
   </component>
@@ -342,7 +341,7 @@
       <updated>1548848680945</updated>
       <workItem from="1554828519520" duration="11826000" />
       <workItem from="1554987053794" duration="7263000" />
-      <workItem from="1555072837366" duration="6138000" />
+      <workItem from="1555072837366" duration="6640000" />
     </task>
     <task id="LOCAL-00001" summary="[UP] Subindo HEROKU">
       <created>1554830081216</created>
@@ -446,7 +445,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25227000" />
+    <option name="totallyTimeSpent" value="25729000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -461,7 +460,7 @@
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2482043" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2482043" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -472,7 +471,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32899022" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32736155" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3029316" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3029316" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50039905" side_tool="true" weight="0.3990228" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32736155" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
@@ -565,7 +564,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="[UP] statics2" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/website/migrations/0007_auto_20190208_2004.py" />
     <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/django/db/backends/sqlite3/base.py" />
     <entry file="file://$PROJECT_DIR$/website/migrations/0005_auto_20190208_2001.py" />
     <entry file="file://$PROJECT_DIR$/website/migrations/0004_auto_20190208_2001.py" />
@@ -608,13 +606,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="19" selection-start-line="1" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/templates/website/includes/fixed_plugin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="91" column="78" selection-start-line="91" selection-start-column="78" selection-end-line="91" selection-end-column="78" />
         </state>
       </provider>
     </entry>
@@ -829,13 +820,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/templates/website/includes/navbar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="21" column="92" selection-start-line="21" selection-start-column="92" selection-end-line="21" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/templates/website/calendar.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -857,10 +841,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/website/templates/website/includes/navbar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="52" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/website/templates/website/includes/sidebar/nav.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1426">
-          <caret line="135" column="11" lean-forward="true" selection-start-line="99" selection-start-column="6" selection-end-line="135" selection-end-column="11" />
+        <state relative-caret-position="120">
+          <caret line="8" column="45" lean-forward="true" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/templates/website/includes/fixed_plugin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="43" column="58" lean-forward="true" selection-start-line="43" selection-start-column="58" selection-end-line="43" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/static/website/assets/css/light-bootstrap-dashboard.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="1477" column="29" selection-start-line="1477" selection-start-column="23" selection-end-line="1477" selection-end-column="29" />
         </state>
       </provider>
     </entry>
