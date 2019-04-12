@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7b110e4b-5db0-4130-87e6-4ac78dc6de99" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_schedule/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_schedule/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/django_schedule/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="24" column="14" lean-forward="true" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="64" />
+            <state relative-caret-position="226">
+              <caret line="141" column="57" lean-forward="true" selection-start-line="141" selection-start-column="57" selection-end-line="141" selection-end-column="57" />
               <folding>
                 <element signature="e#316#325#0" expanded="true" />
               </folding>
@@ -288,7 +287,7 @@
       <updated>1548848680945</updated>
       <workItem from="1554828519520" duration="11826000" />
       <workItem from="1554987053794" duration="7263000" />
-      <workItem from="1555072837366" duration="1885000" />
+      <workItem from="1555072837366" duration="2138000" />
     </task>
     <task id="LOCAL-00001" summary="[UP] Subindo HEROKU">
       <created>1554830081216</created>
@@ -392,7 +391,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20974000" />
+    <option name="totallyTimeSpent" value="21227000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -781,8 +780,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/django_schedule/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="24" column="14" lean-forward="true" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="64" />
+        <state relative-caret-position="226">
+          <caret line="141" column="57" lean-forward="true" selection-start-line="141" selection-start-column="57" selection-end-line="141" selection-end-column="57" />
           <folding>
             <element signature="e#316#325#0" expanded="true" />
           </folding>
