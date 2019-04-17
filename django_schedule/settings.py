@@ -42,11 +42,13 @@ INSTALLED_APPS = [
     'website',
     'myapi',
     'rest_framework',
-
-    'oauth2_provider'
+    'django_filters',
+    'oauth2_provider',
+    'bootstrap_modal_forms',
+    'bootstrap4'
 ]
 REST_FRAMEWORK = {
-    #'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
 }
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

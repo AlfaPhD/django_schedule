@@ -3,12 +3,14 @@ from django.shortcuts import render, redirect, render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect, HttpResponse
 from django.http import JsonResponse
-from django.views.generic import TemplateView
-from website.models import CLIENTE, CABELELEIRO, SERVICO, AGENDAMENTO
+from django.views.generic import TemplateView, CreateView, UpdateView, ListView, DeleteView
+from website.models import CLIENTE, CABELELEIRO, SERVICO, AGENDAMENTO, PRODUTO
 from decimal import Decimal
 from datetime import date, datetime
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
+from django.contrib import messages
 
 ## CLIENTES
 @login_required
@@ -90,6 +92,31 @@ def deleteCabeleleiro(request, id):
     cabeleleiro = CABELELEIRO.objects.get(id=id)
     cabeleleiro.delete()
     return redirect('/cabeleleiro')
+
+
+## Produtos
+
+def editProduto(request, id):
+    produto = PRODUTO.objects.get(id=id)
+    context = {'produtos': produto}
+    return render(request, 'website/produto/edit.html', context)
+
+def updateProduto(request, id):
+    produto = PRODUTO.objects.get(id=id)
+
+    produto.NOME = request.POST['nome']
+    valor = request.POST['valor']
+    produto.VALOR_UNITARIO = Decimal(valor.replace(',', '.'))
+    produto.QUANTIDADE = request.POST['quant']
+    produto.save()
+    messages.info(request, 'Alterações salvas com sucesso');
+    return redirect('/produto')
+
+def deleteProduto(request, pk):
+    produto = PRODUTO.objects.get(id=pk)
+    produto.delete()
+    messages.info(request, 'Produto excluído');
+    return HttpResponseRedirect(reverse_lazy('website:indexProduto'))
 
 ## Servicos
 
@@ -212,8 +239,22 @@ def testAgendamento(request):
 class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'website/calendar.html'
 
+class RegisterView(TemplateView):
+    template_name = 'registration/register.html'
+
 class HomeView(TemplateView):
     template_name = 'website/home.html'
+
+class ProdutoCreateView(CreateView):
+    model = PRODUTO
+    template_name = 'website/produto/create.html'
+    fields = ['NOME', 'QUANTIDADE', 'VALIDADE_PRODUTO', 'VALOR_UNITARIO', 'ESPECIFICACAO']
+    success_url = reverse_lazy('website:indexProduto')
+
+class ProdutoListView(ListView):
+    model = PRODUTO
+    template_name = 'website/produto/index.html'
+
 
 
 def get_data(request):

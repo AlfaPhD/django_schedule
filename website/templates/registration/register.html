@@ -1,0 +1,25 @@
+{% extends 'website/home.html' %}
+
+{% block content %}
+    <div class="login-box">
+        <h1>Cadastrar</h1>
+
+
+        <form method="post" action="{% url 'website:cadastrar' %}">
+            {% csrf_token %}
+            <div class="textbox">
+                <i class="fas fa-user"></i>
+{#                <input type='text' placeholder="Username" name='username' value='' class='glyphicon glyphicon-user'>#}
+                {{ form.username }}
+            </div>
+            <div class="textbox">
+                <i class="fas fa-lock"></i>
+{#                <input type='password' placeholder="Password" name='password' value=''>#}
+                {{ form.password }}
+            </div>
+            <input class='button' type='submit' name='' value='Sign In'>
+
+        </form>
+        {{ form.non_field_errors }}
+    </div>
+{% endblock %}

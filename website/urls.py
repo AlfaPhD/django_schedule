@@ -9,6 +9,7 @@ urlpatterns = [
     path('', views.HomeView.as_view(), name='index'),
     path('login', auth_views.LoginView.as_view(), name='login'),
     path('dashboard', views.DashboardView.as_view(), name='dashboard'),
+    path('cadastrar', views.RegisterView.as_view(), name='cadastrar'),
     #Cliente
     path('cliente/', views.indexCliente, name='indexCliente'),
     path('cliente/create', views.createCliente, name='createCliente'),
@@ -22,6 +23,13 @@ urlpatterns = [
     path('cabeleleiro/edit/<int:id>', views.editCabeleleiro, name='editCabeleleiro'),
     path('cabeleleiro/edit/update/<int:id>', views.updateCabeleleiro, name='updateCabeleleiro'),
     path('cabeleleiro/deletar/<int:id>', views.deleteCabeleleiro, name='deleteCabeleleiro'),
+
+    # Produto
+    path('produto/', views.ProdutoListView.as_view(), name='indexProduto'),
+    path('produto/create', views.ProdutoCreateView.as_view(), name='createProduto'),
+    path('produto/edit/<int:id>', views.editProduto, name='editProduto'),
+    path('produto/edit/update/<int:id>', views.updateProduto, name='updateProduto'),
+    path('produto/deletar/<int:pk>', views.deleteProduto, name='deleteProduto'),
 
     # Servico
     path('servico/', views.indexServico, name='indexServico'),
