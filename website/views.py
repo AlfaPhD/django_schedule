@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, render_to_response
 from django.template import RequestContext, context
 from django.http import HttpResponseRedirect, HttpResponse
 from django.http import JsonResponse
-from django.views.generic import TemplateView, CreateView, UpdateView, ListView, DeleteView
+from django.views.generic import TemplateView, CreateView, UpdateView, ListView, DeleteView, FormView
 from .models import CLIENTE, CABELELEIRO, SERVICO, AGENDAMENTO, PRODUTO
 from decimal import Decimal
 from datetime import date, datetime
@@ -11,6 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
 
 ## CLIENTES
 @login_required
@@ -235,6 +236,10 @@ def testAgendamento(request):
     context = {"events":all_events}
     return render(request, 'website/agenda/calendar.html',context)
 
+
+class CreateUserForm(FormView):
+    form_class = UserCreationForm
+    template_name = "registration/register.html"
 
 class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'website/calendar.html'

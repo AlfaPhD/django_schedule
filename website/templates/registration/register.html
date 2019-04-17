@@ -7,16 +7,7 @@
 
         <form method="post" action="{% url 'website:cadastrar' %}">
             {% csrf_token %}
-            <div class="textbox">
-                <i class="fas fa-user"></i>
-{#                <input type='text' placeholder="Username" name='username' value='' class='glyphicon glyphicon-user'>#}
-                {{ form.username }}
-            </div>
-            <div class="textbox">
-                <i class="fas fa-lock"></i>
-{#                <input type='password' placeholder="Password" name='password' value=''>#}
-                {{ form.password }}
-            </div>
+            {{ form }}
             <input class='button' type='submit' name='' value='Sign In'>
 
         </form>
