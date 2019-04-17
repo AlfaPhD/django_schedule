@@ -1,0 +1,21 @@
+{% extends 'website/base.html' %}
+{% block container %}
+<form method="POST" action="update/{{ produtos.id }}">
+        {% csrf_token %}
+    <h3 align="center"> Alterar Produto</h3>
+
+    <div class="form-group">
+    <label>Nome </label>
+    <input type="text" name="nome"  value="{{ produtos.NOME }}" placeholder="Nome" class="form-control" required />
+    </br>
+    <label>Valor Unitário</label>
+    <input type="text" name="valor"  value="{{ produtos.VALOR_UNITARIO }}" placeholder="Valor Unitário" class="form-control" required/>
+    </br>
+    <label>Quantidade</label>
+    <input type="text" name="quant"  value="{{ produtos.QUANTIDADE }}" placeholder="Quantidade" class="form-control" required/>
+    </br>
+    <button class="btn btn-success" href="produto"> <span class="glyphicon glyphicon-add"></span>Alterar Produto</button>
+        <button class="btn btn-default" href="../produto">Voltar</button>
+</div>
+</form>
+{% endblock %}

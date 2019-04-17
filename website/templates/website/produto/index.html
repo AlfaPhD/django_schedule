@@ -1,0 +1,89 @@
+{% extends 'website/base.html' %}
+{% block container %}
+    <a class="btn btn-success" href="create"> <span class="glyphicon glyphicon-add"></span>Novo Produto</a>
+    <br/>
+    <br/>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="text-center">#</th>
+                <th>Nome </th>
+                <th>Valor</th>
+                <th>Quantidade</th>
+                <th>Especificação</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for produto in object_list %}
+                <tr>
+                    <td>{{ produto.id }}</td>
+                    <td>{{ produto.NOME }}</td>
+                    <td>{{ produto.VALOR_UNITARIO }}</td>
+                    <td>{{ produto.QUANTIDADE }}</td>
+                    <td>{{ produto.ESPECIFICACAO }}</td>
+                    <td class="td-actions" >
+                        <a  type="button" rel="tooltip" title="Detalhes" class="btn btn-info btn-link btn-sm">
+                            <i class="fa fa-user"></i>
+                        </a>
+                        <a href="edit/{{ produto.id }}" type="submit" rel="tooltip" title="Editar" class="btn btn-success btn-link btn-sm">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <button type="button"
+                                rel="tooltip"
+                                class="btn btn-danger btn-sm"
+                                data-toggle="modal"
+                                data-target="#deleteModal"
+                                data-pk="{{ produto.pk }}"
+                                data-name="{{ produto.NOME }}">
+                             <i class="fa fa-times"></i>
+                        </button>
+
+{#                        <a href="deletar/{{ produto.id }}" type="submit" rel="tooltip" title="Remover" class="btn btn-danger btn-link btn-sm">#}
+{#                            <i class="fa fa-times"></i>#}
+{#                        </a>#}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{#    div para excluir#}
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" id="formDelete">{% csrf_token %}
+                        <p>Deseja excluir o produto?</p>
+{#                        <input type="submit" value="Confirm">#}
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button onclick="$('#formDelete').submit()" type="button" class="btn btn-danger">Excluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ block.super }}
+    <script>
+        $('#deleteModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var pk = button.data('pk');
+            var name = button.data('name');
+
+            var modal = $(this);
+            $('#deleteModalLabel').html(name);
+            $('#formDelete').attr("action", "/produto/deletar/" + pk);
+        })
+    </script>
+{% endblock %}
