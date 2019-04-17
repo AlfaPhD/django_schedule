@@ -240,12 +240,10 @@ def testAgendamento(request):
 class CreateUserForm(FormView):
     form_class = UserCreationForm
     template_name = "registration/register.html"
+    success_url = reverse_lazy('website:login')
 
 class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'website/calendar.html'
-
-class RegisterView(TemplateView):
-    template_name = 'registration/register.html'
 
 class HomeView(TemplateView):
     template_name = 'website/home.html'

@@ -1,16 +1,31 @@
 {% extends 'website/home.html' %}
-
+{% load bootstrap4 %}
 {% block content %}
     <div class="login-box">
         <h1>Cadastrar</h1>
 
-
+        {{ form.non_field_errors }}
         <form method="post" action="{% url 'website:cadastrar' %}">
             {% csrf_token %}
-            {{ form }}
+            <div class="textbox">
+                <i class="fas fa-user"></i>
+{#                <input type='text' placeholder="Username" name='username' value='' class='glyphicon glyphicon-user'>#}
+                {{ form.username }}
+            </div>
+            <div class="textbox">
+                <i class="fas fa-lock"></i>
+{#                <input type='password' placeholder="Password" name='password' value=''>#}
+                {{ form.password1 }}
+            </div>
+            <div class="textbox">
+                <i class="fas fa-lock"></i>
+{#                <input type='password' placeholder="Password" name='password' value=''>#}
+                {{ form.password2 }}
+            </div>
             <input class='button' type='submit' name='' value='Sign In'>
 
         </form>
-        {{ form.non_field_errors }}
+
+
     </div>
 {% endblock %}

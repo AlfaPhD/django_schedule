@@ -155,3 +155,5 @@ django_heroku.settings(locals())
 
 LOGIN_REDIRECT_URL = '/dashboard'
 LOGIN_URL = '/login'
+
+
