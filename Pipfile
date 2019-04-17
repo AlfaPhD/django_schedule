@@ -13,6 +13,12 @@ pipenv = "*"
 tapioca-github = "*"
 
 [dev-packages]
+pytest = "*"
+django = "*"
+dj-database-url = "*"
+whitenoise = "*"
+gunicorn = "*"
+twine = "*"
 
 [requires]
 python_version = "3.6.4"
