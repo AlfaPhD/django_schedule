@@ -9,6 +9,7 @@ ipdb = "*"
 requests = "*"
 misaka = "*"
 codecov = "*"
+pipenv = "*"
 tapioca-github = "*"
 
 [dev-packages]
