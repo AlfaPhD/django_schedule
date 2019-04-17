@@ -10,6 +10,7 @@ requests = "*"
 misaka = "*"
 codecov = "*"
 pipenv = "*"
+django = "*"
 tapioca-github = "*"
 
 [dev-packages]
@@ -21,4 +22,4 @@ gunicorn = "*"
 twine = "*"
 
 [requires]
-python_version = "3.6.4"
+python_version = "3.6.8"
