@@ -1,10 +1,10 @@
 from django.core.serializers import json
 from django.shortcuts import render, redirect, render_to_response
-from django.template import RequestContext
+from django.template import RequestContext, context
 from django.http import HttpResponseRedirect, HttpResponse
 from django.http import JsonResponse
 from django.views.generic import TemplateView, CreateView, UpdateView, ListView, DeleteView
-from website.models import CLIENTE, CABELELEIRO, SERVICO, AGENDAMENTO, PRODUTO
+from .models import CLIENTE, CABELELEIRO, SERVICO, AGENDAMENTO, PRODUTO
 from decimal import Decimal
 from datetime import date, datetime
 from django.contrib.auth.mixins import LoginRequiredMixin

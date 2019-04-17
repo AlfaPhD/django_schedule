@@ -21,3 +21,5 @@ Pillow==3.3.0
 Markdown==2.6.6
 bleach==1.4.3
 whitenoise==3.2
+django-bootstrap4
+django-bootstrap-modal-forms
