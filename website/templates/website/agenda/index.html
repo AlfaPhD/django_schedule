@@ -20,10 +20,10 @@
               {% for agenda in agendamentos %}
             <tr>
                 <td>{{ agenda.id }}</td>
-                <td>{{ agenda.DATA_INICIO }}</td>
-                <td>{{ agenda.CABELELEIROS.NOME }}</td>
-                <td>{{ agenda.CLIENTES.NOME }}</td>
-                <td>{{ agenda.SERVICOS.NOME }}</td>
+                <td>{{ agenda.data_inicio }}</td>
+                <td>{{ agenda.cabeleleiro.nome}}</td>
+                <td>{{ agenda.clientes.nome }}</td>
+                <td>{{ agenda.servicos.nome }}</td>
                 <td class="td-actions" >
                     <a  type="button" rel="tooltip" title="Detalhes" class="btn btn-info btn-link btn-sm">
                         <i class="fa fa-user"></i>

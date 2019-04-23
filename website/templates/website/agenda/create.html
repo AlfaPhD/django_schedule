@@ -12,7 +12,7 @@
      <label>Clientes </label>
     <select name="cliente" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Cliente">
         {% for cliente in clientes %}
-        <option value="{{ cliente.id }}">{{ cliente.NOME }}</option>
+        <option value="{{ cliente.id }}">{{ cliente.nome }}</option>
         {% endfor %}
     </select>
     </br>
@@ -20,7 +20,7 @@
     <label>Serviços </label>
     <select name="servico" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Serviço">
         {% for servico in servicos %}
-        <option value="{{ servico.id }}">{{ servico.NOME }}</option>
+        <option value="{{ servico.id }}">{{ servico.nome}}</option>
         {% endfor %}
     </select>
         </br>
@@ -28,7 +28,7 @@
     <label>Cabeleleiro </label>
     <select name="cabeleleiro" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Cabeleleiro">
         {% for cabeleleiro in cabeleleiros %}
-        <option value="{{ cabeleleiro.id }}">{{ cabeleleiro.NOME }}</option>
+        <option value="{{ cabeleleiro.id }}">{{ cabeleleiro.nome}}</option>
         {% endfor %}
     </select>
            </br>

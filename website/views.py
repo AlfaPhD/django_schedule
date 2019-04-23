@@ -4,7 +4,7 @@ from django.template import RequestContext, context
 from django.http import HttpResponseRedirect, HttpResponse
 from django.http import JsonResponse
 from django.views.generic import TemplateView, CreateView, UpdateView, ListView, DeleteView, FormView
-from .models import CLIENTE, CABELELEIRO, SERVICO, AGENDAMENTO, PRODUTO
+from .models import cliente, cabeleleiro, servico, agendamento, produto
 from decimal import Decimal
 from datetime import date, datetime
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -13,215 +13,213 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 
-## CLIENTES
+## clientes
 @login_required
 def indexCliente(request):
-    clientes = CLIENTE.objects.all()
+    clientes = cliente.objects.all()
     context = {'clientes' : clientes}
     return render(request, 'website/cliente/index.html',context)
 
 @login_required
 def createCliente(request):
-    cliente = CLIENTE()
+    clientes = cliente()
     if request.method == 'POST':
-        cliente.APELIDO = request.POST['apelido']
-        cliente.SENHA = request.POST['senha']
-        cliente.NOME = request.POST['nome']
-        cliente.EMAIL = request.POST['email']
-        cliente.CELULAR =  request.POST['celular']
-        cliente.save()
+        clientes.apelido= request.POST['apelido']
+        clientes.senha = request.POST['senha']
+        clientes.nome = request.POST['nome']
+        clientes.email = request.POST['email']
+        clientes.celular =  request.POST['celular']
+        clientes.save()
         return HttpResponseRedirect('/cliente')
     else:
         return render(request, 'website/cliente/create.html')
 
 def editCliente(request, id):
-    cliente = CLIENTE.objects.get(id=id)
-    context = {'clientes': cliente}
+    clientes = cliente.objects.get(id=id)
+    context = {'clientes': clientes}
     return render(request, 'website/cliente/edit.html', context)
 
 def updateCliente(request, id):
-    cliente = CLIENTE.objects.get(id=id)
+    clientes = cliente.objects.get(id=id)
 
-    cliente.NOME = request.POST['nome']
-    cliente.EMAIL = request.POST['email']
-    cliente.CELULAR = request.POST['celular']
-    cliente.SENHA = request.POST['senha']
-    cliente.APELIDO = request.POST['apelido']
-    cliente.save()
+    clientes.nome = request.POST['nome']
+    clientes.email = request.POST['email']
+    clientes.celular = request.POST['celular']
+    clientes.senha = request.POST['senha']
+    clientes.apelido = request.POST['apelido']
+    clientes.save()
     return redirect('/cliente')
 
 def deleteCliente(request, id):
-    cliente = CLIENTE.objects.get(id=id)
-    cliente.delete()
+    clientes = cliente.objects.get(id=id)
+    clientes.delete()
     return redirect('/cliente')
 
-## CABELELEIROS
+## cabeleleiros
 
 def indexCabeleleiro(request):
-    cabeleleiros = CABELELEIRO.objects.all()
+    cabeleleiros = cabeleleiro.objects.all()
     context = {'cabeleleiros' : cabeleleiros}
     return render(request, 'website/cabeleleiro/index.html',context)
 
 def createCabeleleiro(request):
-    cabeleleiro = CABELELEIRO()
+    cabeleleiros = cabeleleiro()
     if request.method == 'POST':
-        cabeleleiro.SENHA = request.POST['senha']
-        cabeleleiro.NOME = request.POST['nome']
-        cabeleleiro.EMAIL = request.POST['email']
-        cabeleleiro.CELULAR =  request.POST['celular']
-        cabeleleiro.save()
+        cabeleleiros.senha = request.POST['senha']
+        cabeleleiros.nome = request.POST['nome']
+        cabeleleiros.email = request.POST['email']
+        cabeleleiros.celular =  request.POST['celular']
+        cabeleleiros.save()
         return HttpResponseRedirect('/cabeleleiro')
     else:
         return render(request, 'website/cabeleleiro/create.html')
 
 def editCabeleleiro(request, id):
-    cabeleleiro = CABELELEIRO.objects.get(id=id)
-    context = {'cabeleleiros': cabeleleiro}
+    cabeleleiros = cabeleleiro.objects.get(id=id)
+    context = {'cabeleleiros': cabeleleiros}
     return render(request, 'website/cabeleleiro/edit.html', context)
 
 def updateCabeleleiro(request, id):
-    cabeleleiro = CABELELEIRO.objects.get(id=id)
+    cabeleleiros = cabeleleiro.objects.get(id=id)
 
-    cabeleleiro.NOME = request.POST['nome']
-    cabeleleiro.EMAIL = request.POST['email']
-    cabeleleiro.CELULAR = request.POST['celular']
-    cabeleleiro.SENHA = request.POST['senha']
-    cabeleleiro.save()
+    cabeleleiros.nome = request.POST['nome']
+    cabeleleiros.email = request.POST['email']
+    cabeleleiros.celular = request.POST['celular']
+    cabeleleiros.senha = request.POST['senha']
+    cabeleleiros.save()
     return redirect('/cabeleleiro')
 
 def deleteCabeleleiro(request, id):
-    cabeleleiro = CABELELEIRO.objects.get(id=id)
-    cabeleleiro.delete()
+    cabeleleiross = cabeleleiro.objects.get(id=id)
+    cabeleleiross.delete()
     return redirect('/cabeleleiro')
 
 
 ## Produtos
 
 def editProduto(request, id):
-    produto = PRODUTO.objects.get(id=id)
-    context = {'produtos': produto}
+    produtos = produto.objects.get(id=id)
+    context = {'produtos': produtos}
     return render(request, 'website/produto/edit.html', context)
 
 def updateProduto(request, id):
-    produto = PRODUTO.objects.get(id=id)
+    produtos = produto.objects.get(id=id)
 
-    produto.NOME = request.POST['nome']
+    produtos.nome = request.POST['nome']
     valor = request.POST['valor']
-    produto.VALOR_UNITARIO = Decimal(valor.replace(',', '.'))
-    produto.QUANTIDADE = request.POST['quant']
-    produto.save()
+    produtos.valor_unitario= Decimal(valor.replace(',', '.'))
+    produtos.quantidade = request.POST['quant']
+    produtos.save()
     messages.info(request, 'Alterações salvas com sucesso');
     return redirect('/produto')
 
 def deleteProduto(request, pk):
-    produto = PRODUTO.objects.get(id=pk)
-    produto.delete()
+    produtos = produto.objects.get(id=pk)
+    produtos.delete()
     messages.info(request, 'Produto excluído');
     return HttpResponseRedirect(reverse_lazy('website:indexProduto'))
 
 ## Servicos
 
 def indexServico(request):
-    servicos = SERVICO.objects.all()
+    servicos = servico.objects.all()
     context = {'servicos' : servicos}
     return render(request, 'website/servico/index.html',context)
 
 def createServico(request):
-    servico = SERVICO()
+    servicos = servico()
     if request.method == 'POST':
-        servico.NOME = request.POST['nome']
+        servicos.nome= request.POST['nome']
         valor = request.POST['valor']
-        servico.VALOR = Decimal(valor.replace(',',''))
-        servico.save()
+        servicos.valor = Decimal(valor.replace(',',''))
+        servicos.save()
         return HttpResponseRedirect('/servico')
     else:
         return render(request, 'website/servico/create.html')
 
 def editServico(request, id):
-    servico = SERVICO.objects.get(id=id)
-    context = {'servicos': servico}
+    servicos = servico.objects.get(id=id)
+    context = {'servicos': servicos}
     return render(request, 'website/servico/edit.html', context)
 
 def updateServico(request, id):
-    servico = SERVICO.objects.get(id=id)
+    servicos = servico.objects.get(id=id)
 
-    servico.NOME = request.POST['nome']
+    servicos.nome = request.POST['nome']
     valor = request.POST['valor']
-    servico.VALOR = Decimal(valor.replace(',', '.'))
-    servico.save()
+    servicos.valor = Decimal(valor.replace(',', '.'))
+    servicos.save()
     return redirect('/servico')
 
 def deleteServico(request, id):
-    servico = SERVICO.objects.get(id=id)
-    servico.delete()
+    servicos = servico.objects.get(id=id)
+    servicos.delete()
     return redirect('/servico')
 
-#AGENDAMENTO
+#agendamento
 def indexAgendamento(request):
-    agendamentos = AGENDAMENTO.objects.all()
+    agendamentos = agendamento.objects.all()
     context = {'agendamentos' : agendamentos}
     return render(request, 'website/agenda/index.html',context)
 
 def createAgendamento(request):
-    agendamento = AGENDAMENTO()
+    agendamentos = agendamento()
     if request.method == 'POST':
-        servico = SERVICO.objects.get(id=int( request.POST['servico']))
-        cliente = CLIENTE.objects.get(id=int(request.POST['cliente']))
-        cabeleleiro = CABELELEIRO.objects.get(id=int(request.POST['cabeleleiro']))
-        agendamento.DATA_INICIO = request.POST['data_inicio']
-        agendamento.DATA_FIM = request.POST['data_fim']
-        agendamento.CLIENTES =  cliente
-        agendamento.CABELELEIROS = cabeleleiro
-        agendamento.SERVICOS = servico
-        agendamento.save()
+        servicos = servico.objects.get(id=int(request.POST['servico']))
+        clientes = cliente.objects.get(id=int(request.POST['cliente']))
+        cabeleleiros = cabeleleiro.objects.get(id=int(request.POST['cabeleleiro']))
+        agendamentos.data_inicio= request.POST['data_inicio']
+        agendamentos.data_fim = request.POST['data_fim']
+        agendamentos.clientes =  clientes
+        agendamentos.cabeleleiros = cabeleleiros
+        agendamentos.servicos = servicos
+        agendamentos.save()
         return HttpResponseRedirect('/agenda')
     else:
-        clientes = CLIENTE.objects.all()
-        servicos = SERVICO.objects.all()
-        cabeleleiros = CABELELEIRO.objects.all()
+        clientes = cliente.objects.all()
+        servicos = servico.objects.all()
+        cabeleleiros = cabeleleiro.objects.all()
 
         context = {'clientes' : clientes,'servicos' : servicos,'cabeleleiros' : cabeleleiros}
         return render(request, 'website/agenda/create.html',context)
 
 def editAgendamento(request, id):
-    agendamentos = AGENDAMENTO.objects.get(id=id)
-    clientes = CLIENTE.objects.all()
-    servicos = SERVICO.objects.all()
-    cabeleleiros = CABELELEIRO.objects.all()
-    agendamentos.DATA = agendamentos.DATA
+    agendamentos = agendamento.objects.get(id=id)
+    clientes = cliente.objects.all()
+    servicos = servico.objects.all()
+    cabeleleiros = cabeleleiro.objects.all()
+    agendamentos.data_inicio = agendamentos.data_inicio
     context = {'agendamentos': agendamentos, 'clientes' : clientes,'servicos' : servicos,'cabeleleiros' : cabeleleiros}
     return render(request, 'website/agenda/edit.html', context)
 
 def updateAgendamento(request, id):
-    agendamento = AGENDAMENTO.objects.get(id=id)
-    servico = SERVICO.objects.get(id=int(request.POST['servico']))
-    cliente = CLIENTE.objects.get(id=int(request.POST['cliente']))
-    cabeleleiro = CABELELEIRO.objects.get(id=int(request.POST['cabeleleiro']))
-    agendamento.DATA = request.POST['data']
-    agendamento.HORA_INICIO = request.POST['hora']
-    agendamento.HORA_FIM = request.POST['hora']
-    agendamento.CLIENTES = cliente
-    agendamento.CABELELEIROS = cabeleleiro
-    agendamento.SERVICOS = servico
-    agendamento.save()
+    agendamentos = agendamento.objects.get(id=id)
+    servicos = servico.objects.get(id=int(request.POST['servico']))
+    clientes = cliente.objects.get(id=int(request.POST['cliente']))
+    cabeleleiros = cabeleleiro.objects.get(id=int(request.POST['cabeleleiro']))
+    agendamentos.data_inicio= request.POST['data']
+    agendamentos.clientes = clientes
+    agendamentos.cabeleleiros = cabeleleiros
+    agendamentos.servicos = servicos
+    agendamentos.save()
 
     return redirect('/agenda')
 
 def deleteAgendamento(request, id):
-    agendamento = AGENDAMENTO.objects.get(id=id)
-    agendamento.delete()
+    agendamentos = agendamento.objects.get(id=id)
+    agendamentos.delete()
     return redirect('/agenda')
 
 def testAgendamento(request):
-    all_events = AGENDAMENTO.objects.all()
+    all_events = agendamento.objects.all()
     #get_event_types = Events.objects.only('event_type')
 
     if request.GET:
         event_arr = []
         if request.GET.get('event_type') == "all":
-            all_events = AGENDAMENTO.objects.all()
+            all_events = agendamento.objects.all()
      #   else:
-     #       all_events = AGENDAMENTO.objects.filter(event_type__icontains=request.GET.get('event_type'))
+     #       all_events = agendamento.objects.filter(event_type__icontains=request.GET.get('event_type'))
 
         for i in all_events:
             event_sub_arr = {}
@@ -249,13 +247,13 @@ class HomeView(TemplateView):
     template_name = 'website/home.html'
 
 class ProdutoCreateView(CreateView):
-    model = PRODUTO
+    model = produto
     template_name = 'website/produto/create.html'
-    fields = ['NOME', 'QUANTIDADE', 'VALIDADE_PRODUTO', 'VALOR_UNITARIO', 'ESPECIFICACAO']
+    fields = ['nome', 'quantidade', 'validade_produto', 'valor_unitario', 'especificacao']
     success_url = reverse_lazy('website:indexProduto')
 
 class ProdutoListView(ListView):
-    model = PRODUTO
+    model = produto
     template_name = 'website/produto/index.html'
 
 

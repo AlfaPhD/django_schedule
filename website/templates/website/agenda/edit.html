@@ -5,17 +5,17 @@
     <h3 align="center"> Alterar Agendamento</h3>
     <div class="form-group">
     <label>Data </label>
-    <input type="text" name="data" value= "{{ agendamentos.DATA }}" placeholder="data" class="form-control" required />
+    <input type="text" name="data" value= "{{ agendamentos.data }}" placeholder="data" class="form-control" required />
     </br>
     <label>Hora </label>
     <input type="time" name="hora" value="{{ agendamentos.HORA_INICIO }}" placeholder="hora" class="form-control" required/></br>
      <label>Clientes </label>
     <select name="cliente" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Cliente">
         {% for cliente in clientes %}
-            {% if cliente.id == agendamentos.CLIENTES.id %}
-                <option value="{{ agendamentos.CLIENTES.id }}" selected>{{ agendamentos.CLIENTES.NOME }}</option>
+            {% if cliente.id == agendamentos.clientes.id %}
+                <option value="{{ agendamentos.clientes.id }}" selected>{{ agendamentos.clientes.nome }}</option>
             {% else %}
-                <option value="{{ cliente.id }}">{{ cliente.NOME }}</option>
+                <option value="{{ cliente.id }}">{{ cliente.nome}}</option>
             {% endif%}
         {% endfor %}
     </select>
@@ -24,10 +24,10 @@
     <label>Serviços </label>
     <select name="servico" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Serviço">
         {% for servico in servicos %}
-            {% if servico.id == agendamentos.SERVICOS.id %}
-                <option value="{{ agendamentos.SERVICOS.id }}" selected>{{ agendamentos.SERVICOS.NOME }}</option>
+            {% if servico.id == agendamentos.servicos.id %}
+                <option value="{{ agendamentos.servicos.id }}" selected>{{ agendamentos.servicos.nome }}</option>
             {% else %}
-                <option value="{{ servico.id }}">{{ servico.NOME }}</option>
+                <option value="{{ servico.id }}">{{ servico.nome }}</option>
             {% endif%}
         {% endfor %}
     </select>
@@ -36,10 +36,10 @@
     <label>Cabeleleiro </label>
     <select name="cabeleleiro" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Cabeleleiro">
         {% for cabeleleiro in cabeleleiros %}
-            {% if cabeleleiro.id == agendamentos.CABELELEIROS.id %}
-                <option value="{{ agendamentos.CABELELEIROS.id }}" selected>{{ agendamentos.CABELELEIROS.NOME }}</option>
+            {% if cabeleleiro.id == agendamentos.cabeleleiros.id %}
+                <option value="{{ agendamentos.cabeleleiros.id }}" selected>{{ agendamentos.cabeleleiros.nome }}</option>
             {% else %}
-                <option value="{{ cabeleleiro.id }}">{{ cabeleleiro.NOME }}</option>
+                <option value="{{ cabeleleiro.id }}">{{ cabeleleiro.nome }}</option>
             {% endif%}
         {% endfor %}
     </select>

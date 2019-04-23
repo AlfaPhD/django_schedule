@@ -1,50 +1,50 @@
 from django.db import models
 
 # Create your models here.
-class CABELELEIRO(models.Model):
-    EMAIL = models.EmailField("EMAIL", max_length=100)
-    NOME = models.CharField("NOME", max_length=30)
-    SENHA = models.CharField("SENHA", max_length=200)
-    CELULAR = models.CharField("CELULAR", max_length=30)
+class cabeleleiro(models.Model):
+    email = models.EmailField("email", max_length=100)
+    nome = models.CharField("nome", max_length=30)
+    senha = models.CharField("senha", max_length=200)
+    celular = models.CharField("celular", max_length=30)
 
-class CLIENTE(models.Model):
-    APELIDO = models.CharField("APELIDO", max_length=100)
-    SENHA = models.CharField("SENHA", max_length=30)
-    NOME = models.CharField("NOME", max_length=100)
-    EMAIL = models.EmailField("EMAIL", max_length=200)
-    CELULAR = models.CharField("CELULAR", max_length=30)
+class cliente(models.Model):
+    apelido = models.CharField("apelido", max_length=100)
+    senha = models.CharField("senha", max_length=30)
+    nome = models.CharField("nome", max_length=100)
+    email = models.EmailField("email", max_length=200)
+    celular = models.CharField("celular", max_length=30)
 
 
-class SERVICO(models.Model):
-    NOME = models.CharField("NOME", max_length=30)
-    VALOR = models.DecimalField("VALOR", max_digits=5 ,decimal_places=2)
+class servico(models.Model):
+    nome = models.CharField("nome", max_length=30)
+    valor = models.DecimalField("valor", max_digits=5, decimal_places=2)
 
-class PRODUTO(models.Model):
-    NOME = models.CharField("NOME", max_length=100)
-    QUANTIDADE = models.IntegerField("QUANTIDADE")
-    VALIDADE_PRODUTO = models.DateField("VALIDADE_PRODUTO")
-    VALOR_UNITARIO = models.DecimalField("VALOR_UNITARIO", max_digits=5 ,decimal_places=2)
-    ESPECIFICACAO = models.CharField("ESPECIFICACAO", max_length=400)
+class produto(models.Model):
+    nome = models.CharField("nome", max_length=100)
+    quantidade = models.IntegerField("quantidade")
+    validade_produto = models.DateField("validade_produto")
+    valor_unitario = models.DecimalField("valor_unitario", max_digits=5, decimal_places=2)
+    especificacao = models.CharField("especificacao", max_length=400)
 
-class ESTOQUE(models.Model):
-    QUANTIDADE = models.IntegerField("QUANTIDADE")
-    DATA_SAIDA = models.DateField("DATA_SAIDA")
-    ID_PRODUTO = models.ManyToManyField("PRODUTO")
+class estoque(models.Model):
+    quantidade = models.IntegerField("quantidade")
+    data_saida = models.DateField("data_saida")
+    id_produto = models.ManyToManyField("produto")
 
-class AGENDAMENTO(models.Model):
-    STATUS = models.CharField("STATUS", max_length=30)
-    DATA_INICIO = models.DateTimeField("DATA_INICIO")
-    DATA_FIM = models.DateTimeField("DATA_FIM")
-    CLIENTES = models.ForeignKey(
-        CLIENTE,
+class agendamento(models.Model):
+    status = models.CharField("status", max_length=30)
+    data_inicio = models.DateTimeField("data_inicio")
+    data_fim = models.DateTimeField("data_fim")
+    clientes = models.ForeignKey(
+        cliente,
         on_delete=models.CASCADE
     )
-    CABELELEIROS = models.ForeignKey(
-        CABELELEIRO,
+    cabeleleiros = models.ForeignKey(
+        cabeleleiro,
         on_delete=models.CASCADE
     )
-    SERVICOS = models.ForeignKey(
-        SERVICO,
+    servicos = models.ForeignKey(
+        servico,
         on_delete=models.CASCADE
     )
 

@@ -18,10 +18,10 @@
             {% for produto in object_list %}
                 <tr>
                     <td>{{ produto.id }}</td>
-                    <td>{{ produto.NOME }}</td>
-                    <td>{{ produto.VALOR_UNITARIO }}</td>
-                    <td>{{ produto.QUANTIDADE }}</td>
-                    <td>{{ produto.ESPECIFICACAO }}</td>
+                    <td>{{ produto.nome }}</td>
+                    <td>{{ produto.valor}}</td>
+                    <td>{{ produto.quantidade }}</td>
+                    <td>{{ produto.especificacao }}</td>
                     <td class="td-actions" >
                         <a  type="button" rel="tooltip" title="Detalhes" class="btn btn-info btn-link btn-sm">
                             <i class="fa fa-user"></i>
@@ -35,7 +35,7 @@
                                 data-toggle="modal"
                                 data-target="#deleteModal"
                                 data-pk="{{ produto.pk }}"
-                                data-name="{{ produto.NOME }}">
+                                data-name="{{ produto.nome }}">
                              <i class="fa fa-times"></i>
                         </button>
 
