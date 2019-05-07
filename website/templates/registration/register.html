@@ -3,29 +3,38 @@
 {% block content %}
     <div class="login-box">
         <h1>Cadastrar</h1>
-
-        {{ form.non_field_errors }}
+         {{ form.non_field_errors }}
         <form method="post" action="{% url 'website:cadastrar' %}">
             {% csrf_token %}
             <div class="textbox">
                 <i class="fas fa-user"></i>
-{#                <input type='text' placeholder="Username" name='username' value='' class='glyphicon glyphicon-user'>#}
-                {{ form.username }}
+                <input type='text' placeholder="Username" name='username' value='' class='glyphicon glyphicon-user'>
+{#                {{ form.username }}#}
+            </div>
+            <div class="textbox">
+                <i class="fas fa-envelope"></i>
+                <input type='text' placeholder="Email" name='email' value='' class='glyphicon glyphicon-user'>
+{#                {{ form.email }}#}
+            </div>
+            <div class="textbox">
+                <i class="fas fa-phone"></i>
+                <input type='text' placeholder="Celular" name='phone' value='' class='glyphicon glyphicon-user'>
+{#                {{ form.email }}#}
             </div>
             <div class="textbox">
                 <i class="fas fa-lock"></i>
-{#                <input type='password' placeholder="Password" name='password' value=''>#}
-                {{ form.password1 }}
+                <input type='password' placeholder="Password" name='password' value=''>
+{#                {{ form.password1 }}#}
             </div>
             <div class="textbox">
                 <i class="fas fa-lock"></i>
-{#                <input type='password' placeholder="Password" name='password' value=''>#}
-                {{ form.password2 }}
+                <input type='password' placeholder="Confirm Password" name='password2' value=''>
+{#                {{ form.password2 }}#}
             </div>
-            <input class='button' type='submit' name='' value='Sign In'>
+            <input class='button btn' type='submit' name='' value='Enviar'>
 
         </form>
-
+        {{ form.non_field_errors }}
 
     </div>
 {% endblock %}

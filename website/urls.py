@@ -9,7 +9,7 @@ urlpatterns = [
     path('', views.HomeView.as_view(), name='index'),
     path('login', auth_views.LoginView.as_view(), name='login'),
     path('dashboard', views.DashboardView.as_view(), name='dashboard'),
-    path('cadastrar', views.CreateUserForm.as_view(), name='cadastrar'),
+    path('cadastrar', views.register_page, name='cadastrar'),
     #Cliente
     path('cliente/', views.indexCliente, name='indexCliente'),
     path('cliente/create', views.createCliente, name='createCliente'),

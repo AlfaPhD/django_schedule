@@ -24,3 +24,4 @@ bleach==1.4.3
 whitenoise==3.2
 django-bootstrap4
 django-bootstrap-modal-forms
+django-phone-field

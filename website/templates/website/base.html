@@ -20,7 +20,7 @@
     <body>
     {% block body %}
     <div class="wrapper">
-        <div class="sidebar" data-color="orange" data-image="{% static 'website/assets/img/sidebar-5.jpg' %}">
+        <div class="sidebar" data-color="blue" data-image="{% static 'website/assets/img/sidebar-6.jpg' %}">
             <!--
                 Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
@@ -45,7 +45,7 @@
             {% include 'website/includes/footer.html' %}
         </div>
     </div>
-    {% include 'website/includes/fixed_plugin.html' %}
+    {% comment %}{% include 'website/includes/fixed_plugin.html' %}{% endcomment %}
     {% endblock body %}
     </body>
 <!-- CORE JS FILES -->
