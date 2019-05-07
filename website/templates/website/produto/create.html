@@ -1,16 +1,14 @@
 {% extends 'website/base.html' %}
 {% load bootstrap4 %}
 {% block container %}
-<form method="POST" action="create">
+    <form method="POST" action="create">
         {% csrf_token %}
-    <h3 align="center"> Cadastrar Produto</h3>
-    {% bootstrap_form form %}
-    <div class="form-group">
+        <h3 align="center"> Cadastrar Produto</h3>
+        {% bootstrap_form form %}
+        <div class="form-group">
 
-    <button class="btn btn-success" type="submit" href="produto"> <span class="glyphicon glyphicon-add"></span>Cadastrar Produto</button>
-     <button class="btn btn-default" href="../produto">Voltar</button>
-</div>
-</form>
-
-
+            <button class="btn btn-success" type="submit" href="produto"> <span class="glyphicon glyphicon-add"></span>Cadastrar Produto</button>
+            <button class="btn btn-default" href="../produto">Voltar</button>
+        </div>
+    </form>
 {% endblock %}
