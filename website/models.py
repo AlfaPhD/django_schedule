@@ -33,8 +33,9 @@ class estoque(models.Model):
 
 class agendamento(models.Model):
     status = models.CharField("status", max_length=30)
-    data_inicio = models.DateTimeField("data_inicio")
-    data_fim = models.DateTimeField("data_fim")
+    data = models.DateField("data")
+    hora_inicio = models.DateField("hora_inicio")
+    hora_fim = models.DateTimeField("hora_fim")
     clientes = models.ForeignKey(
         cliente,
         on_delete=models.CASCADE
