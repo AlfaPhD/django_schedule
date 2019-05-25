@@ -46,10 +46,9 @@ class agendamento(models.Model):
 		related_name='cabeleleiros',
         on_delete=models.CASCADE
     )
-    servicos = models.ForeignKey(
+    servicos = models.ManyToManyField(
         servico,
-		related_name='servicos',
-        on_delete=models.CASCADE
+        related_name='servicos'
     )
 
 

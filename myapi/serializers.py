@@ -26,7 +26,7 @@ class AgendamentoSerializerPost(serializers.ModelSerializer):
         fields = ('__all__')
 
 class AgendamentoSerializerList(serializers.ModelSerializer):
-    servicos = ServicoSerializer()
+    servicos = ServicoSerializer(many=True)
     cabeleleiros = CabeleleiroSerializer()
     clientes = ClienteSerializer()
     class Meta:
