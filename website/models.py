@@ -38,14 +38,17 @@ class agendamento(models.Model):
     hora_fim = models.TimeField("hora_fim")
     clientes = models.ForeignKey(
         cliente,
+		 related_name='clientes',
         on_delete=models.CASCADE
     )
     cabeleleiros = models.ForeignKey(
         cabeleleiro,
+		related_name='cabeleleiro',
         on_delete=models.CASCADE
     )
     servicos = models.ForeignKey(
         servico,
+		related_name='servicos',
         on_delete=models.CASCADE
     )
 
