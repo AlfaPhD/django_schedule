@@ -27,7 +27,7 @@ class AgendamentoSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = agendamento
-		fields = ('id', 'status', 'data', 'hora_inicio', 'hora_fim', 'cliente_nome', 'cabeleleiro_nome','servico_nome')
+		fields = "__all__"
 
 
 class ProdutoSerializer(serializers.ModelSerializer):
