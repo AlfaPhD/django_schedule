@@ -79,7 +79,7 @@ class AgendamentoPost(generics.ListCreateAPIView):
 
 class AgendamentoDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = agendamento.objects.all()
-    serializer_class = AgendamentoSerializerList
+    serializer_class = AgendamentoSerializerPost
     #authentication_classes = [OAuth2Authentication, SessionAuthentication]
     #permission_classes = [IsAdminUser]
     filter_backends = (filters.DjangoFilterBackend,)
