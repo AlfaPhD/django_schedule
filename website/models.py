@@ -43,7 +43,7 @@ class agendamento(models.Model):
     )
     cabeleleiros = models.ForeignKey(
         cabeleleiro,
-		related_name='cabeleleiro',
+		related_name='cabeleleiros',
         on_delete=models.CASCADE
     )
     servicos = models.ForeignKey(
