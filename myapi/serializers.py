@@ -21,13 +21,13 @@ class ServicoSerializer(serializers.ModelSerializer):
 
 
 class AgendamentoSerializer(serializers.ModelSerializer):
-	cabeleleiro_nome = serializers.CharField(source='cabeleleiro.nome')
-	cliente_nome = serializers.CharField(source='cliente.nome')
-	servico_nome = serializers.CharField(source='servico.nome')
+	cabeleleiro_nome = serializers.ReadOnlyField(source='cabeleleiro.nome')
+	cliente_nome = serializers.ReadOnlyField(source='cliente.nome')
+	servico_nome = serializers.ReadOnlyField(source='servico.nome')
 
-    class Meta:
-        model = agendamento
-        fields = ('id', 'status', 'data', 'hora_inicio', 'hora_fim', 'cliente_nome', 'cabeleleiro_nome','servico_nome')
+	class Meta:
+		model = agendamento
+		fields = ('id', 'status', 'data', 'hora_inicio', 'hora_fim', 'cliente_nome', 'cabeleleiro_nome','servico_nome')
 
 
 class ProdutoSerializer(serializers.ModelSerializer):
