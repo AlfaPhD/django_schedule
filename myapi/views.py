@@ -1,6 +1,5 @@
 from website.models import  cabeleleiro,  cliente, servico, agendamento, produto, estoque
-from .serializers import CabeleleiroSerializer, ClienteSerializer, ServicoSerializer, AgendamentoSerializer, ProdutoSerializer, EstoqueSerializer
-
+from .serializers import *
 from rest_framework import generics
 from django_filters import rest_framework as filters
 from rest_framework.permissions import IsAdminUser, AllowAny
@@ -64,20 +63,28 @@ class ServicoDetail(generics.RetrieveUpdateDestroyAPIView):
 
 class AgendamentoList(generics.ListCreateAPIView):
     queryset = agendamento.objects.all()
-    serializer_class = AgendamentoSerializer
+    serializer_class = AgendamentoSerializerList
     #authentication_classes = [OAuth2Authentication, SessionAuthentication]
     #permission_classes = [IsAdminUser]
     filter_backends = (filters.DjangoFilterBackend,)
     filter_fields = '__all__'
 
+class AgendamentoPost(generics.ListCreateAPIView):
+    queryset = agendamento.objects.all()
+    serializer_class = AgendamentoSerializerPost
+    #authentication_classes = [OAuth2Authentication, SessionAuthentication]
+    #permission_classes = [IsAdminUser]
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = '__all__'
 
 class AgendamentoDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = agendamento.objects.all()
-    serializer_class = AgendamentoSerializer
+    serializer_class = AgendamentoSerializerList
     #authentication_classes = [OAuth2Authentication, SessionAuthentication]
     #permission_classes = [IsAdminUser]
     filter_backends = (filters.DjangoFilterBackend,)
     filter_fields = '__all__'
+
 
 
 class ProdutoList(generics.ListCreateAPIView):

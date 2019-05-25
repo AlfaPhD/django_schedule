@@ -20,15 +20,18 @@ class ServicoSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class AgendamentoSerializer(serializers.ModelSerializer):
-	cabeleleiros = serializers.StringRelatedField(many=True)
-	clientes = serializers.StringRelatedField(many=True)
-	servicos = serializers.StringRelatedField(many=True)
+class AgendamentoSerializerPost(serializers.ModelSerializer):
+    class Meta:
+        model = agendamento
+        fields = ('__all__')
 
-	class Meta:
-		model = agendamento
-		fields = "__all__"
-
+class AgendamentoSerializerList(serializers.ModelSerializer):
+    servicos = ServicoSerializer()
+    cabeleleiros = CabeleleiroSerializer()
+    clientes = ClienteSerializer()
+    class Meta:
+        model = agendamento
+        fields = ('__all__')
 
 class ProdutoSerializer(serializers.ModelSerializer):
     class Meta:
