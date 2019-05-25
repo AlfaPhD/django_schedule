@@ -21,9 +21,9 @@ class ServicoSerializer(serializers.ModelSerializer):
 
 
 class AgendamentoSerializer(serializers.ModelSerializer):
-	cabeleleiro_nome = serializers.StringRelatedField(many=True)
-	cliente_nome = serializers.StringRelatedField(many=True)
-	servico_nome = serializers.StringRelatedField(many=True)
+	cabeleleiros = serializers.StringRelatedField(many=True)
+	clientes = serializers.StringRelatedField(many=True)
+	servicos = serializers.StringRelatedField(many=True)
 
 	class Meta:
 		model = agendamento
