@@ -4,7 +4,7 @@ from django.template import RequestContext, context
 from django.http import HttpResponseRedirect, HttpResponse
 from django.http import JsonResponse
 from django.views.generic import TemplateView, CreateView, UpdateView, ListView, DeleteView, FormView
-from .models import cliente, cabeleleiro, servico, agendamento, produto
+from .models import cliente, cabeleireiro, servico, agendamento, produto
 from decimal import Decimal
 from datetime import date, datetime
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -79,44 +79,44 @@ def deleteCliente(request, id):
     clientes.delete()
     return redirect('/cliente')
 
-## cabeleleiros
+## cabeleireiros
 
-def indexCabeleleiro(request):
-    cabeleleiros = cabeleleiro.objects.all()
-    context = {'cabeleleiros' : cabeleleiros}
-    return render(request, 'website/cabeleleiro/index.html',context)
+def indexcabeleireiro(request):
+    cabeleireiros = cabeleireiro.objects.all()
+    context = {'cabeleireiros' : cabeleireiros}
+    return render(request, 'website/cabeleireiro/index.html',context)
 
-def createCabeleleiro(request):
-    cabeleleiros = cabeleleiro()
+def createcabeleireiro(request):
+    cabeleireiros = cabeleireiro()
     if request.method == 'POST':
-        cabeleleiros.senha = request.POST['senha']
-        cabeleleiros.nome = request.POST['nome']
-        cabeleleiros.email = request.POST['email']
-        cabeleleiros.celular =  request.POST['celular']
-        cabeleleiros.save()
-        return HttpResponseRedirect('/cabeleleiro')
+        cabeleireiros.senha = request.POST['senha']
+        cabeleireiros.nome = request.POST['nome']
+        cabeleireiros.email = request.POST['email']
+        cabeleireiros.celular =  request.POST['celular']
+        cabeleireiros.save()
+        return HttpResponseRedirect('/cabeleireiro')
     else:
-        return render(request, 'website/cabeleleiro/create.html')
+        return render(request, 'website/cabeleireiro/create.html')
 
-def editCabeleleiro(request, id):
-    cabeleleiros = cabeleleiro.objects.get(id=id)
-    context = {'cabeleleiros': cabeleleiros}
-    return render(request, 'website/cabeleleiro/edit.html', context)
+def editcabeleireiro(request, id):
+    cabeleireiros = cabeleireiro.objects.get(id=id)
+    context = {'cabeleireiros': cabeleireiros}
+    return render(request, 'website/cabeleireiro/edit.html', context)
 
-def updateCabeleleiro(request, id):
-    cabeleleiros = cabeleleiro.objects.get(id=id)
+def updatecabeleireiro(request, id):
+    cabeleireiros = cabeleireiro.objects.get(id=id)
 
-    cabeleleiros.nome = request.POST['nome']
-    cabeleleiros.email = request.POST['email']
-    cabeleleiros.celular = request.POST['celular']
-    cabeleleiros.senha = request.POST['senha']
-    cabeleleiros.save()
-    return redirect('/cabeleleiro')
+    cabeleireiros.nome = request.POST['nome']
+    cabeleireiros.email = request.POST['email']
+    cabeleireiros.celular = request.POST['celular']
+    cabeleireiros.senha = request.POST['senha']
+    cabeleireiros.save()
+    return redirect('/cabeleireiro')
 
-def deleteCabeleleiro(request, id):
-    cabeleleiross = cabeleleiro.objects.get(id=id)
-    cabeleleiross.delete()
-    return redirect('/cabeleleiro')
+def deletecabeleireiro(request, id):
+    cabeleireiross = cabeleireiro.objects.get(id=id)
+    cabeleireiross.delete()
+    return redirect('/cabeleireiro')
 
 
 ## Produtos
@@ -191,39 +191,39 @@ def createAgendamento(request):
     if request.method == 'POST':
         servicos = servico.objects.get(id=int(request.POST['servico']))
         clientes = cliente.objects.get(id=int(request.POST['cliente']))
-        cabeleleiros = cabeleleiro.objects.get(id=int(request.POST['cabeleleiro']))
+        cabeleireiros = cabeleireiro.objects.get(id=int(request.POST['cabeleireiro']))
         agendamentos.data_inicio= request.POST['data_inicio']
         agendamentos.data_fim = request.POST['data_fim']
         agendamentos.clientes =  clientes
-        agendamentos.cabeleleiros = cabeleleiros
+        agendamentos.cabeleireiros = cabeleireiros
         agendamentos.servicos = servicos
         agendamentos.save()
         return HttpResponseRedirect('/agenda')
     else:
         clientes = cliente.objects.all()
         servicos = servico.objects.all()
-        cabeleleiros = cabeleleiro.objects.all()
+        cabeleireiros = cabeleireiro.objects.all()
 
-        context = {'clientes' : clientes,'servicos' : servicos,'cabeleleiros' : cabeleleiros}
+        context = {'clientes' : clientes,'servicos' : servicos,'cabeleireiros' : cabeleireiros}
         return render(request, 'website/agenda/create.html',context)
 
 def editAgendamento(request, id):
     agendamentos = agendamento.objects.get(id=id)
     clientes = cliente.objects.all()
     servicos = servico.objects.all()
-    cabeleleiros = cabeleleiro.objects.all()
+    cabeleireiros = cabeleireiro.objects.all()
     agendamentos.data_inicio = agendamentos.data_inicio
-    context = {'agendamentos': agendamentos, 'clientes' : clientes,'servicos' : servicos,'cabeleleiros' : cabeleleiros}
+    context = {'agendamentos': agendamentos, 'clientes' : clientes,'servicos' : servicos,'cabeleireiros' : cabeleireiros}
     return render(request, 'website/agenda/edit.html', context)
 
 def updateAgendamento(request, id):
     agendamentos = agendamento.objects.get(id=id)
     servicos = servico.objects.get(id=int(request.POST['servico']))
     clientes = cliente.objects.get(id=int(request.POST['cliente']))
-    cabeleleiros = cabeleleiro.objects.get(id=int(request.POST['cabeleleiro']))
+    cabeleireiros = cabeleireiro.objects.get(id=int(request.POST['cabeleireiro']))
     agendamentos.data_inicio= request.POST['data']
     agendamentos.clientes = clientes
-    agendamentos.cabeleleiros = cabeleleiros
+    agendamentos.cabeleireiros = cabeleireiros
     agendamentos.servicos = servicos
     agendamentos.save()
 

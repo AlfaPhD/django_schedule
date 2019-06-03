@@ -3,8 +3,8 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^apicabeleleiros/$', views.CabeleleiroList.as_view(), name='cabeleleiro-list'),
-    url(r'^apicabeleleiros/(?P<pk>[0-9]+)/$', views.CabeleleiroDetail.as_view(), name='cabeleleiro-detail'),
+    url(r'^apicabeleireiros/$', views.cabeleireiroList.as_view(), name='cabeleireiro-list'),
+    url(r'^apicabeleireiros/(?P<pk>[0-9]+)/$', views.cabeleireiroDetail.as_view(), name='cabeleireiro-detail'),
 
     url(r'^apicliente/$', views.ClienteList.as_view()),
     url(r'^apicliente/(?P<pk>[0-9]+)/$', views.ClienteDetail.as_view()),

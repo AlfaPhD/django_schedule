@@ -1,24 +1,24 @@
 {% extends 'website/base.html' %}
 {% block container %}
-<form method="POST" action="update/{{ cabeleleiros.id }}">
+<form method="POST" action="update/{{ cabeleireiros.id }}">
         {% csrf_token %}
-    <h3 align="center"> Alterar Cabeleleiro</h3>
+    <h3 align="center"> Alterar cabeleireiro</h3>
 
     <div class="form-group">
     <label>Nome </label>
-    <input type="text" name="nome"  value="{{ cabeleleiros.nome }}" placeholder="Nome" class="form-control" required />
+    <input type="text" name="nome"  value="{{ cabeleireiros.nome }}" placeholder="Nome" class="form-control" required />
     </br>
     <label>Senha </label>
-    <input type="password" name="senha"  value="{{ cabeleleiros.senha }}" placeholder="Senha" class="form-control"required />
+    <input type="password" name="senha"  value="{{ cabeleireiros.senha }}" placeholder="Senha" class="form-control"required />
     </br>
     <label>E-mail </label>
-    <input type="email" name="email"  value="{{ cabeleleiros.email }}" placeholder="E-mail" class="form-control"required />
+    <input type="email" name="email"  value="{{ cabeleireiros.email }}" placeholder="E-mail" class="form-control"required />
     </br>
     <label>Celular </label>
-    <input type="text" name="celular"  value="{{ cabeleleiros.celular }}" placeholder="Celular" class="form-control"required />
+    <input type="text" name="celular"  value="{{ cabeleireiros.celular }}" placeholder="Celular" class="form-control"required />
     </br>
-    <button class="btn btn-success" href="cabeleleiro"> <span class="glyphicon glyphicon-add"></span>Alterar Cabeleleiro</button>
-    <a class="btn btn-default" href="../cabeleleiro">Voltar</a>
+    <button class="btn btn-success" href="cabeleireiro"> <span class="glyphicon glyphicon-add"></span>Alterar cabeleireiro</button>
+    <a class="btn btn-default" href="../cabeleireiro">Voltar</a>
 </div>
 </form>
 {% endblock %}

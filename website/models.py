@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class cabeleleiro(models.Model):
+class cabeleireiro(models.Model):
     email = models.EmailField("email", max_length=100)
     nome = models.CharField("nome", max_length=30)
     senha = models.CharField("senha", max_length=200)
@@ -41,9 +41,9 @@ class agendamento(models.Model):
 		 related_name='clientes',
         on_delete=models.CASCADE
     )
-    cabeleleiros = models.ForeignKey(
-        cabeleleiro,
-		related_name='cabeleleiros',
+    cabeleireiros = models.ForeignKey(
+        cabeleireiro,
+		related_name='cabeleireiros',
         on_delete=models.CASCADE
     )
     servicos = models.ManyToManyField(

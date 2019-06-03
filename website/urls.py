@@ -17,12 +17,12 @@ urlpatterns = [
     path('cliente/edit/update/<int:id>', views.updateCliente, name='updateCliente'),
     path('cliente/deletar/<int:id>', views.deleteCliente, name='deleteCliente'),
 
-    #Cabeleleiro
-    path('cabeleleiro/', views.indexCabeleleiro, name='indexCabeleleiro'),
-    path('cabeleleiro/create', views.createCabeleleiro, name='createCabeleleiro'),
-    path('cabeleleiro/edit/<int:id>', views.editCabeleleiro, name='editCabeleleiro'),
-    path('cabeleleiro/edit/update/<int:id>', views.updateCabeleleiro, name='updateCabeleleiro'),
-    path('cabeleleiro/deletar/<int:id>', views.deleteCabeleleiro, name='deleteCabeleleiro'),
+    #cabeleireiro
+    path('cabeleireiro/', views.indexcabeleireiro, name='indexcabeleireiro'),
+    path('cabeleireiro/create', views.createcabeleireiro, name='createcabeleireiro'),
+    path('cabeleireiro/edit/<int:id>', views.editcabeleireiro, name='editcabeleireiro'),
+    path('cabeleireiro/edit/update/<int:id>', views.updatecabeleireiro, name='updatecabeleireiro'),
+    path('cabeleireiro/deletar/<int:id>', views.deletecabeleireiro, name='deletecabeleireiro'),
 
     # Produto
     path('produto/', views.ProdutoListView.as_view(), name='indexProduto'),

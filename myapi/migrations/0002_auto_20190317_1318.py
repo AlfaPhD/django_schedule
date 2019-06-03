@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RemoveField(
             model_name='agendamento',
-            name='CABELELEIROS',
+            name='cabeleireiroS',
         ),
         migrations.RemoveField(
             model_name='agendamento',
@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
             name='AGENDAMENTO',
         ),
         migrations.DeleteModel(
-            name='CABELELEIRO',
+            name='cabeleireiro',
         ),
         migrations.DeleteModel(
             name='CLIENTE',
