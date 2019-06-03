@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from website.models import cabeleleiro,  cliente, servico, agendamento, produto, estoque
+from website.models import cabeleireiro,  cliente, servico, agendamento, produto, estoque
 
-class CabeleleiroSerializer(serializers.ModelSerializer):
+class cabeleireiroSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = cabeleleiro
+        model = cabeleireiro
         fields = '__all__'
 
 class ClienteSerializer(serializers.ModelSerializer):
@@ -27,7 +27,7 @@ class AgendamentoSerializerPost(serializers.ModelSerializer):
 
 class AgendamentoSerializerList(serializers.ModelSerializer):
     servicos = ServicoSerializer(many=True)
-    cabeleleiros = CabeleleiroSerializer()
+    cabeleireiros = cabeleireiroSerializer()
     clientes = ClienteSerializer()
     class Meta:
         model = agendamento

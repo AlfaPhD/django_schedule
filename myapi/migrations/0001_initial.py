@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='CABELELEIRO',
+            name='cabeleireiro',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('EMAIL', models.CharField(max_length=100, verbose_name='EMAIL')),
@@ -76,8 +76,8 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='agendamento',
-            name='CABELELEIROS',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='myapi.CABELELEIRO'),
+            name='cabeleireiroS',
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='myapi.cabeleireiro'),
         ),
         migrations.AddField(
             model_name='agendamento',

@@ -33,13 +33,13 @@
     </select>
         </br>
 </br>
-    <label>Cabeleleiro </label>
-    <select name="cabeleleiro" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Cabeleleiro">
-        {% for cabeleleiro in cabeleleiros %}
-            {% if cabeleleiro.id == agendamentos.cabeleleiros.id %}
-                <option value="{{ agendamentos.cabeleleiros.id }}" selected>{{ agendamentos.cabeleleiros.nome }}</option>
+    <label>cabeleireiro </label>
+    <select name="cabeleireiro" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um cabeleireiro">
+        {% for cabeleireiro in cabeleireiros %}
+            {% if cabeleireiro.id == agendamentos.cabeleireiros.id %}
+                <option value="{{ agendamentos.cabeleireiros.id }}" selected>{{ agendamentos.cabeleireiros.nome }}</option>
             {% else %}
-                <option value="{{ cabeleleiro.id }}">{{ cabeleleiro.nome }}</option>
+                <option value="{{ cabeleireiro.id }}">{{ cabeleireiro.nome }}</option>
             {% endif%}
         {% endfor %}
     </select>
