@@ -29,7 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
+AUTH_PROFILE_MODULE = "website.cliente"
 # Application definition
 
 INSTALLED_APPS = [
@@ -66,7 +66,9 @@ ROOT_URLCONF = 'django_schedule.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'django_schedule', 'templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -90,7 +92,7 @@ WSGI_APPLICATION = 'django_schedule.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join( 'db_.sqlite3'),
+        'NAME': os.path.join( '_db_.sqlite3'),
     }
 }
 
@@ -155,5 +157,6 @@ django_heroku.settings(locals())
 
 LOGIN_REDIRECT_URL = '/dashboard'
 LOGIN_URL = '/login'
+LOGOUT_REDIRECT_URL = '/login'
 
 

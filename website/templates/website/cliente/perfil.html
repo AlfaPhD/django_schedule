@@ -1,0 +1,24 @@
+{% extends 'website/base.html' %}
+{% block container %}
+    <form method="POST" action="update/{{ clientes.id }}">
+        {% csrf_token %}
+        <h3 align="center">Perfil do Cliente</h3>
+        <div class="form-group">
+            <label>Nome </label>
+            <input type="text" name="nome"  value="{{ clientes.nome }}" placeholder="Nome" class="form-control" readonly />
+            </br>
+            <label>Apelido </label>
+            <input type="text" name="apelido"  value="{{ clientes.apelido }}" placeholder="Apelido" class="form-control" readonly/>
+            </br>
+            <label>Senha </label>
+            <input type="password" name="senha"  value="{{ clientes.senha }}" placeholder="Senha" class="form-control" readonly />
+            </br>
+            <label>E-mail </label>
+            <input type="email" name="email"  value="{{ clientes.email }}" placeholder="E-mail" class="form-control" readonly />
+            </br>
+            <label>Celular </label>
+            <input type="text" name="celular"  value="{{ clientes.celular }}" placeholder="Celular" class="form-control" readonly />
+            </br>
+        </div>
+    </form>
+{% endblock %}

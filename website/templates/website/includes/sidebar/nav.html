@@ -11,6 +11,7 @@
             <p>Agenda</p>
         </a>
     </li>
+    {% if user.cabeleireiro and user.cabeleireiro.ativo %}
     <li class="nav-item ">
         <a class="nav-link" href= "../cabeleireiro/">
             <i class="nc-icon nc-scissors"></i>
@@ -23,17 +24,17 @@
             <p>Clientes</p>
         </a>
     </li>
-
-    <li class="nav-item ">
-        <a class="nav-link" href= "../produto/">
-            <i class="nc-icon nc-cart-simple"></i>
-            <p>Produtos</p>
-        </a>
-    </li>
     <li class="nav-item ">
         <a class="nav-link" href= "">
             <i class="nc-icon nc-notes"></i>
             <p>Estoque</p>
+        </a>
+    </li>
+    {% endif %}
+    <li class="nav-item ">
+        <a class="nav-link" href= "../produto/">
+            <i class="nc-icon nc-cart-simple"></i>
+            <p>Produtos</p>
         </a>
     </li>
     <li class="nav-item ">

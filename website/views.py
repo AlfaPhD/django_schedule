@@ -13,27 +13,43 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from .forms import ContactForm, RegisterForm
-from django.contrib.auth import authenticate, login, get_user_model
+from django.contrib.auth import authenticate, login, get_user_model, logout
+from django.http import HttpResponseForbidden
+from django.contrib.auth import logout as auth_logout
 
 
+def logout_request(request):
+    logout(request)
+    messages.info(request, "Logged out successfully!")
+    return redirect("website:index")
 
 User = get_user_model()
+
 def register_page(request):
     form = RegisterForm(request.POST or None)
     context = {
                     "form": form
               }
-    if form.is_valid():
-        print(form.cleaned_data)
-        print(form.cleaned_data)
-        username = form.cleaned_data.get("username")
-        email = form.cleaned_data.get("email")
-        password = form.cleaned_data.get("password")
-        new_user = User.objects.create_user(username, email, password)
-        print(new_user)
-        return render(request, 'registration/login.html', context)
-    else:
-        return render(request, "registration/register.html", context)
+    if request.method == 'POST':
+        if form.is_valid():
+            print(form.cleaned_data)
+            print(">>>>>>>>>>>>>", form.cleaned_data)
+            username = form.cleaned_data.get("username")
+            email = form.cleaned_data.get("email")
+            #celular = form.cleaned_data.get("celular")
+            password = form.cleaned_data.get("password")
+            new_user = User.objects.create_user(username, email, password)
+            cli = cliente(
+                user=new_user,
+                apelido=username,
+                #celular=celular,
+                email=email
+            )
+            cli.save()
+            return render(request, 'registration/login.html', context)
+        else:
+            return render(request, "registration/register.html", context)
+    return render(request, "registration/register.html", context)
 
 
 
@@ -43,6 +59,13 @@ def indexCliente(request):
     clientes = cliente.objects.all()
     context = {'clientes' : clientes}
     return render(request, 'website/cliente/index.html',context)
+
+@login_required
+def PerfilCliente(request, id):
+    clientes = cliente.objects.get(id=id)
+    context = {'clientes': clientes}
+    return render(request, 'website/cliente/perfil.html', context)
+
 
 @login_required
 def createCliente(request):
@@ -58,6 +81,8 @@ def createCliente(request):
     else:
         return render(request, 'website/cliente/create.html')
 
+
+@login_required
 def editCliente(request, id):
     clientes = cliente.objects.get(id=id)
     context = {'clientes': clientes}
@@ -74,6 +99,8 @@ def updateCliente(request, id):
     clientes.save()
     return redirect('/cliente')
 
+
+@login_required
 def deleteCliente(request, id):
     clientes = cliente.objects.get(id=id)
     clientes.delete()
@@ -81,11 +108,20 @@ def deleteCliente(request, id):
 
 ## cabeleireiros
 
-def indexcabeleireiro(request):
-    cabeleireiros = cabeleireiro.objects.all()
-    context = {'cabeleireiros' : cabeleireiros}
-    return render(request, 'website/cabeleireiro/index.html',context)
 
+@login_required
+def indexcabeleireiro(request):
+    user = request.user
+    try:
+        user.cabeleireiro
+    except cabeleireiro.DoesNotExist:
+        return HttpResponseForbidden()
+    cabeleleiros = cabeleireiro.objects.all()
+    context = {'cabeleleiros': cabeleleiros}
+    return render(request, 'website/cabeleireiro/index.html', context)
+
+
+@login_required
 def createcabeleireiro(request):
     cabeleireiros = cabeleireiro()
     if request.method == 'POST':
@@ -98,11 +134,15 @@ def createcabeleireiro(request):
     else:
         return render(request, 'website/cabeleireiro/create.html')
 
+
+@login_required
 def editcabeleireiro(request, id):
     cabeleireiros = cabeleireiro.objects.get(id=id)
     context = {'cabeleireiros': cabeleireiros}
     return render(request, 'website/cabeleireiro/edit.html', context)
 
+
+@login_required
 def updatecabeleireiro(request, id):
     cabeleireiros = cabeleireiro.objects.get(id=id)
 
@@ -113,6 +153,8 @@ def updatecabeleireiro(request, id):
     cabeleireiros.save()
     return redirect('/cabeleireiro')
 
+
+@login_required
 def deletecabeleireiro(request, id):
     cabeleireiross = cabeleireiro.objects.get(id=id)
     cabeleireiross.delete()
@@ -121,11 +163,15 @@ def deletecabeleireiro(request, id):
 
 ## Produtos
 
+
+@login_required
 def editProduto(request, id):
     produtos = produto.objects.get(id=id)
     context = {'produtos': produtos}
     return render(request, 'website/produto/edit.html', context)
 
+
+@login_required
 def updateProduto(request, id):
     produtos = produto.objects.get(id=id)
 
@@ -137,6 +183,8 @@ def updateProduto(request, id):
     messages.info(request, 'Alterações salvas com sucesso');
     return redirect('/produto')
 
+
+@login_required
 def deleteProduto(request, pk):
     produtos = produto.objects.get(id=pk)
     produtos.delete()
@@ -145,11 +193,15 @@ def deleteProduto(request, pk):
 
 ## Servicos
 
+
+@login_required
 def indexServico(request):
     servicos = servico.objects.all()
     context = {'servicos' : servicos}
     return render(request, 'website/servico/index.html',context)
 
+
+@login_required
 def createServico(request):
     servicos = servico()
     if request.method == 'POST':
@@ -161,11 +213,15 @@ def createServico(request):
     else:
         return render(request, 'website/servico/create.html')
 
+
+@login_required
 def editServico(request, id):
     servicos = servico.objects.get(id=id)
     context = {'servicos': servicos}
     return render(request, 'website/servico/edit.html', context)
 
+
+@login_required
 def updateServico(request, id):
     servicos = servico.objects.get(id=id)
 
@@ -175,17 +231,23 @@ def updateServico(request, id):
     servicos.save()
     return redirect('/servico')
 
+
+@login_required
 def deleteServico(request, id):
     servicos = servico.objects.get(id=id)
     servicos.delete()
     return redirect('/servico')
 
 #agendamento
+
+@login_required
 def indexAgendamento(request):
     agendamentos = agendamento.objects.all()
     context = {'agendamentos' : agendamentos}
     return render(request, 'website/agenda/index.html',context)
 
+
+@login_required
 def createAgendamento(request):
     agendamentos = agendamento()
     if request.method == 'POST':
@@ -207,6 +269,8 @@ def createAgendamento(request):
         context = {'clientes' : clientes,'servicos' : servicos,'cabeleireiros' : cabeleireiros}
         return render(request, 'website/agenda/create.html',context)
 
+
+@login_required
 def editAgendamento(request, id):
     agendamentos = agendamento.objects.get(id=id)
     clientes = cliente.objects.all()
@@ -216,6 +280,8 @@ def editAgendamento(request, id):
     context = {'agendamentos': agendamentos, 'clientes' : clientes,'servicos' : servicos,'cabeleireiros' : cabeleireiros}
     return render(request, 'website/agenda/edit.html', context)
 
+
+@login_required
 def updateAgendamento(request, id):
     agendamentos = agendamento.objects.get(id=id)
     servicos = servico.objects.get(id=int(request.POST['servico']))
@@ -229,11 +295,15 @@ def updateAgendamento(request, id):
 
     return redirect('/agenda')
 
+
+@login_required
 def deleteAgendamento(request, id):
     agendamentos = agendamento.objects.get(id=id)
     agendamentos.delete()
     return redirect('/agenda')
 
+
+@login_required
 def testAgendamento(request):
     all_events = agendamento.objects.all()
     #get_event_types = Events.objects.only('event_type')
