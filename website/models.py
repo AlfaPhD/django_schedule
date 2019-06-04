@@ -37,6 +37,7 @@ class cliente(models.Model):
 class servico(models.Model):
     nome = models.CharField("nome", max_length=30)
     valor = models.DecimalField("valor", max_digits=5, decimal_places=2)
+	url = models.URLField("url", null=True,blank=True,max_length=500)
 
 
 class produto(models.Model):
