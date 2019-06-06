@@ -49,7 +49,7 @@
                 // },
                 views: {
                     // week:{ titleFormat: "DD MMMM YYYY" },
-                    month: {
+                    monthmonth: {
                         titleFormat: 'MMMM YYYY'
                     }, // September 2015
                     week: {
@@ -64,7 +64,26 @@
                     // on select we show the Sweet Alert modal with an input
                     swal({
                         title: 'Agendamento',
-                        html: '<br> <input type="datetime-local" name="data_inicio"  placeholder="data" class="form-control" required />',
+                        html: '<input type="datetime-local" name="data_inicio"  placeholder="data" class="form-control" required />' +
+                              '<br><select class="form-control" name="cabeleireiros" required>\n' +
+                            '<option value="" selected disabled>Selecione um Cabeleireiro</option>' +
+                            {% for cabele in cabeleireiros %}
+                            '        <option value="{{cabele.pk}}">{{cabele.nome}}</option>\n' +
+                            {% endfor %}
+                            '    </select>' +
+                            '<br><select class="form-control" name="produtos" required>\n' +
+                            '<option value="" selected disabled>Selecione um Produto</option>' +
+                            {% for prod in produtos %}
+                                '        <option value="{{prod.pk}}">{{prod.nome}}</option>\n' +
+                            {% endfor %}
+                            '    </select>' +
+                            '<br><select class="form-control" name="servicos" required>\n' +
+                            '<option value="" selected disabled>Selecione um Serviço</option>' +
+                            {% for serv in servicos %}
+                            '        <option value="{{serv.pk}}">{{serv.nome}}</option>\n' +
+                            {% endfor %}
+                            '    </select>',
+
                         showCancelButton: true,
                         closeOnConfirm: true
                     }, function () {

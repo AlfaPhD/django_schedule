@@ -336,6 +336,12 @@ class CreateUserForm(FormView):
 
 class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'website/calendar.html'
+    extra_context = {
+        'cabeleireiros': cabeleireiro.objects.all(),
+        'produtos': produto.objects.all(),
+        'servicos': servico.objects.all()
+    }
+
 
 class HomeView(TemplateView):
     template_name = 'website/home.html'
