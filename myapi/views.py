@@ -1,4 +1,5 @@
 from website.models import  cabeleireiro,  cliente, servico, agendamento, produto, estoque
+from django.contrib.auth.models import User
 from .serializers import *
 from rest_framework import generics
 from django_filters import rest_framework as filters
@@ -6,6 +7,22 @@ from rest_framework.permissions import IsAdminUser, AllowAny
 from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope, TokenHasScope, OAuth2Authentication
 from rest_framework.authentication import SessionAuthentication
 
+class UserList(generics.ListCreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    #authentication_classes = [OAuth2Authentication, SessionAuthentication]
+    #permission_classes = [IsAdminUser]
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = '__all__'
+
+class UserDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    #authentication_classes = [OAuth2Authentication, SessionAuthentication]
+    #permission_classes = [IsAdminUser]
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = '__all__'
+	
 # Create your views here.
 class cabeleireiroList(generics.ListCreateAPIView):
 

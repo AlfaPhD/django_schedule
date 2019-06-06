@@ -1,6 +1,12 @@
 from rest_framework import serializers
 from website.models import cabeleireiro,  cliente, servico, agendamento, produto, estoque
+from django.contrib.auth.models import User
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = 'id','email','username','password'
+		
 class cabeleireiroSerializer(serializers.ModelSerializer):
 
     class Meta:

@@ -3,6 +3,9 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
+    url(r'^apiuser/$', views.UserList.as_view(), name='user-list'),
+    url(r'^apiuser/(?P<pk>[0-9]+)/$', views.UserDetail.as_view(), name='user-detail'),
+	
     url(r'^apicabeleireiros/$', views.cabeleireiroList.as_view(), name='cabeleireiro-list'),
     url(r'^apicabeleireiros/(?P<pk>[0-9]+)/$', views.cabeleireiroDetail.as_view(), name='cabeleireiro-detail'),
 
