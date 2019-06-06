@@ -7,7 +7,9 @@ app_name = 'website'
 
 urlpatterns = [
     path('', views.HomeView.as_view(), name='index'),
+    path('home', views.HomeView.as_view(), name='home'),
     path('login', auth_views.LoginView.as_view(), name='login'),
+    path('logout', auth_views.LogoutView.as_view(), name='logout'),
     path('dashboard', views.DashboardView.as_view(), name='dashboard'),
     path('cadastrar', views.register_page, name='cadastrar'),
     #Cliente

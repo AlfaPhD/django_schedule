@@ -12,19 +12,19 @@
         <div class="collapse" id="collapseExample">
             <ul class="nav">
                 <li>
-                    <a class="profile-dropdown" href="cliente/perfil/{{ user.cliente.id }}">
+                    <a class="profile-dropdown" href="{%  url 'website:perfilCliente' user.cliente.id %}">
                         <span class="sidebar-mini">MP</span>
                         <span class="sidebar-normal">Meu Perfil</span>
                     </a>
                 </li>
                 <li>
-                    <a class="profile-dropdown" href="cliente/edit/{{ user.cliente.id }}">
+                    <a class="profile-dropdown" href="{%  url 'website:editCliente' user.cliente.id %}">
                         <span class="sidebar-mini">EP</span>
                         <span class="sidebar-normal">Editar Perfil</span>
                     </a>
                 </li>
                 <li>
-                    <a class="profile-dropdown" href="">
+                    <a class="profile-dropdown" href="{% url 'website:logout' %}">
                         <span class="sidebar-mini">S</span>
                         <span class="sidebar-normal">Sair</span>
                     </a>

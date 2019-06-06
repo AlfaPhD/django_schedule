@@ -31,54 +31,54 @@
             <a href="#openModalCab" class="btn btn-full">Cabeleireiros</a>
             <a href="#openModal" class="btn btn-full">Localização</a>
         </div>
+
+        </header>
+
+        <div id="openModal" class="modalDialog">
+            <div>
+                <a href="#close" title="Close" class="close">X</a>
+                <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-49.2319867014885%2C-16.723023196944318%2C-49.229932129383094%2C-16.721476791009522&amp;layer=mapnik&amp;marker=-16.722249995544356%2C-49.23095941543579" style="border: 1px solid black"></iframe><br/><small><center>Av. Itajuba 750, Santa Tereza - Carapicuiba </center><a href="https://www.openstreetmap.org/?mlat=-16.72225&amp;mlon=-49.23096#map=19/-16.72225/-49.23096"></a></small>
+
+            </div>
+        </div>
+
+        <div id="openModalCab" class="modalDialog">
+            <div>
+                <a href="#close" title="Close" class="close">X</a>
+                <table>
+                    <h1>Contato</h1>
+                    <tr>
+                        <td>
+                            <img src='{% static 'website/home/images/cabeleireiro1.jpg' %}' class='img'>
+                        </td>
+                        <td>
+                            <center><b>Lucas Pontes</b></center>
+                            </br>
+                            <center>
+                                <a href="https://www.facebook.com/lucas.d.santos.9655" class="fab fa-facebook fa-2x media"></a>
+                                <a href="https://www.instagram.com/barber_pontes/" class="fab fa-instagram fa-2x media"></a>
+                            </center>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <center><b>Mateus Pontes</b></center>
+                            </br>
+                            <center>
+                                <a href="https://www.facebook.com/mateus.pontes.14" class="fab fa-facebook fa-2x media"></a>
+                                <a href="https://www.instagram.com/barber_pontes/" class="fab fa-instagram fa-2x media"></a>
+                            </center>
+                        </td>
+                        <td>
+                            <img src='{% static 'website/home/images/cabeleireiro2.jpg' %}' class='img'>
+                        </td>
+                    </tr>
+                </table>
+
+
+            </div>
+        </div>
     {% endblock %}
-</header>
-
-<div id="openModal" class="modalDialog">
-    <div>
-        <a href="#close" title="Close" class="close">X</a>
-        <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-49.2319867014885%2C-16.723023196944318%2C-49.229932129383094%2C-16.721476791009522&amp;layer=mapnik&amp;marker=-16.722249995544356%2C-49.23095941543579" style="border: 1px solid black"></iframe><br/><small><center>Av. Itajuba 750, Santa Tereza - Carapicuiba </center><a href="https://www.openstreetmap.org/?mlat=-16.72225&amp;mlon=-49.23096#map=19/-16.72225/-49.23096"></a></small>
-
-    </div>
-</div>
-
-<div id="openModalCab" class="modalDialog">
-    <div>
-        <a href="#close" title="Close" class="close">X</a>
-        <table>
-            <h1>Contato</h1>
-            <tr>
-                <td>
-                    <img src='{% static 'website/home/images/cabeleireiro1.jpg' %}' class='img'>
-                </td>
-                <td>
-                    <center><b>Lucas Pontes</b></center>
-                    </br>
-                    <center>
-                        <a href="https://www.facebook.com/lucas.d.santos.9655" class="fab fa-facebook fa-2x media"></a>
-                        <a href="https://www.instagram.com/barber_pontes/" class="fab fa-instagram fa-2x media"></a>
-                    </center>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <center><b>Mateus Pontes</b></center>
-                    </br>
-                    <center>
-                        <a href="https://www.facebook.com/mateus.pontes.14" class="fab fa-facebook fa-2x media"></a>
-                        <a href="https://www.instagram.com/barber_pontes/" class="fab fa-instagram fa-2x media"></a>
-                    </center>
-                </td>
-                <td>
-                    <img src='{% static 'website/home/images/cabeleireiro2.jpg' %}' class='img'>
-                </td>
-            </tr>
-        </table>
-
-
-    </div>
-</div>
-
 
 
 <script type="text/javascript">

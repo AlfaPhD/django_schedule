@@ -3,33 +3,33 @@
 {% block content %}
     <div class="login-box">
         <h1>Cadastrar</h1>
-         {{ form.non_field_errors }}
+        {{ form.non_field_errors }}
         <form method="post" action="{% url 'website:cadastrar' %}">
             {% csrf_token %}
             <div class="textbox">
                 <i class="fas fa-user"></i>
                 <input type='text' placeholder="Username" name='username' value='' class='glyphicon glyphicon-user'>
-{#                {{ form.username }}#}
+                {#                {{ form.username }}#}
             </div>
             <div class="textbox">
                 <i class="fas fa-envelope"></i>
                 <input type='text' placeholder="Email" name='email' value='' class='glyphicon glyphicon-user'>
-{#                {{ form.email }}#}
+                {#                {{ form.email }}#}
             </div>
             <div class="textbox">
                 <i class="fas fa-phone"></i>
                 <input type='text' placeholder="Celular" name='celular' value='' class='glyphicon glyphicon-user'>
-{#                {{ form.email }}#}
+                {#                {{ form.email }}#}
             </div>
             <div class="textbox">
                 <i class="fas fa-lock"></i>
                 <input type='password' placeholder="Password" name='password' value=''>
-{#                {{ form.password1 }}#}
+                {#                {{ form.password1 }}#}
             </div>
             <div class="textbox">
                 <i class="fas fa-lock"></i>
                 <input type='password' placeholder="Confirm Password" name='password2' value=''>
-{#                {{ form.password2 }}#}
+                {#                {{ form.password2 }}#}
             </div>
             <input class='button btn' type='submit' name='' value='Enviar'>
 
