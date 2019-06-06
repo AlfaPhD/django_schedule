@@ -1,49 +1,97 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html>
-	<head>
-        <title>Barbearia Lucas</title>
-        <link rel='stylesheet' type='text/css' href='{% static 'website/home/css/style.css' %}'>
-        <link href="https://fonts.googleapis.com/css?family=Flamenco" rel="stylesheet">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="icon" id="favicon" href='{% static 'website/home/images/icon.png' %}' type='image/s-icon'>
-	</head>
-	<body>
-        <header>
-            <nav>
-                <div class='row clearfix'>
-                    <img src="{% static 'website/home/images/logo.png' %}" class='logo'>
+<head>
+    <title>Barbearia Lucas</title>
+    <link rel='stylesheet' type='text/css' href='{% static 'website/home/css/style.css' %}'>
+    <link href="https://fonts.googleapis.com/css?family=Flamenco" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" id="favicon" href='{% static 'website/home/images/icon.png' %}' type='image/s-icon'>
+</head>
+<body>
+<header>
+    <nav>
+        <div class='row clearfix'>
+            <img src="{% static 'website/home/images/logo.png' %}" class='logo'>
 
-                    <ul class='main-nav animated slideInDown' id='check'>
-                        <li><a href="{% url 'website:index' %}">Home</a></li>
-                        <li><a href="{% url 'website:login' %}">Login</a></li>
-                        <li><a href="{% url 'website:cadastrar' %}">Cadastrar</a></li>
-                    </ul>
-                    <a href='#' class='icon' onClick="slideshow()"> <i class='fa fa-bars'></i></a>
-                </div>
-            </nav>
-            {% block content %}
-            <div class="main-content-header">
-                <h1>Bem-Vindo à <span class='colorchange'>Barbearia Lucas</span>.<br>BARBA, CABELO & BEM-ESTAR.</h1>
-                <a href="#" class="btn btn-full">Cabeleireiros</a>
-                <a href="#" class="btn btn-full">Localização</a>                
-            </div>
-            {% endblock %}
-        </header>  
-        
-        <script type="text/javascript">
+            <ul class='main-nav animated slideInDown' id='check'>
+                <li><a href="{% url 'website:index' %}">Home</a></li>
+                <li><a href="{% url 'website:login' %}">Login</a></li>
+                <li><a href="{% url 'website:cadastrar' %}">Cadastrar</a></li>
+            </ul>
+            <a href='#' class='icon' onClick="slideshow()"> <i class='fa fa-bars'></i></a>
+        </div>
+    </nav>
+    {% block content %}
+        <div class="main-content-header">
+            <h1>Bem-Vindo à <span class='colorchange'>Barbearia Lucas</span>.<br>BARBA, CABELO & BEM-ESTAR.</h1>
+            <a href="#openModalCab" class="btn btn-full">Cabeleireiros</a>
+            <a href="#openModal" class="btn btn-full">Localização</a>
+        </div>
+    {% endblock %}
+</header>
 
-            function slideshow(){
-                var x = document.getElementById("check");
-                if(x.style.display === "none"){
-                    x.style.display="block";
-                }else {
-                    x.style.display="none";
-                }
-            }
-        </script>
+<div id="openModal" class="modalDialog">
+    <div>
+        <a href="#close" title="Close" class="close">X</a>
+        <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-49.2319867014885%2C-16.723023196944318%2C-49.229932129383094%2C-16.721476791009522&amp;layer=mapnik&amp;marker=-16.722249995544356%2C-49.23095941543579" style="border: 1px solid black"></iframe><br/><small><center>Av. Itajuba 750, Santa Tereza - Carapicuiba </center><a href="https://www.openstreetmap.org/?mlat=-16.72225&amp;mlon=-49.23096#map=19/-16.72225/-49.23096"></a></small>
 
-	</body>
+    </div>
+</div>
+
+<div id="openModalCab" class="modalDialog">
+    <div>
+        <a href="#close" title="Close" class="close">X</a>
+        <table>
+            <h1>Contato</h1>
+            <tr>
+                <td>
+                    <img src='{% static 'website/home/images/cabeleireiro1.jpg' %}' class='img'>
+                </td>
+                <td>
+                    <center><b>Lucas Pontes</b></center>
+                    </br>
+                    <center>
+                        <a href="https://www.facebook.com/lucas.d.santos.9655" class="fab fa-facebook fa-2x media"></a>
+                        <a href="https://www.instagram.com/barber_pontes/" class="fab fa-instagram fa-2x media"></a>
+                    </center>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <center><b>Mateus Pontes</b></center>
+                    </br>
+                    <center>
+                        <a href="https://www.facebook.com/mateus.pontes.14" class="fab fa-facebook fa-2x media"></a>
+                        <a href="https://www.instagram.com/barber_pontes/" class="fab fa-instagram fa-2x media"></a>
+                    </center>
+                </td>
+                <td>
+                    <img src='{% static 'website/home/images/cabeleireiro2.jpg' %}' class='img'>
+                </td>
+            </tr>
+        </table>
+
+
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    function slideshow(){
+        var x = document.getElementById("check");
+        if(x.style.display === "none"){
+            x.style.display="block";
+        }else {
+            x.style.display="none";
+        }
+    }
+</script>
+
+</body>
 </html>
