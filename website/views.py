@@ -260,7 +260,7 @@ def createAgendamento(request):
         agendamentos.hora_fim = "10:30"
         agendamentos.clientes =  clientes
         agendamentos.cabeleireiros = cabeleireiros
-        agendamentos.servicos = servicos
+        agendamentos.servicos = [servicos.id]
         agendamentos.save()
         return HttpResponseRedirect('/agenda')
     else:
