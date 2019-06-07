@@ -249,14 +249,17 @@ def indexAgendamento(request):
 
 @login_required
 def createAgendamento(request):
+
     agendamentos = agendamento()
     if request.method == 'POST':
         servicos = servico.objects.get(id=int(request.POST['servico']))
         clientes = cliente.objects.get(id=int(request.POST['cliente']))
+        produtos = produto.objects.get(id=int(request.POST['produto']))
         cabeleireiros = cabeleireiro.objects.get(id=int(request.POST['cabeleireiro']))
         agendamentos.data_inicio= request.POST['data_inicio']
         agendamentos.data_fim = request.POST['data_fim']
         agendamentos.clientes =  clientes
+        agendamentos.produtos =  produtos
         agendamentos.cabeleireiros = cabeleireiros
         agendamentos.servicos = servicos
         agendamentos.save()
@@ -265,8 +268,8 @@ def createAgendamento(request):
         clientes = cliente.objects.all()
         servicos = servico.objects.all()
         cabeleireiros = cabeleireiro.objects.all()
-
-        context = {'clientes' : clientes,'servicos' : servicos,'cabeleireiros' : cabeleireiros}
+        produtos = produto.objects.all()
+        context = {'clientes' : clientes,'servicos' : servicos,'cabeleireiros' : cabeleireiros,'produtos' : produtos}
         return render(request, 'website/agenda/create.html',context)
 
 
@@ -275,9 +278,10 @@ def editAgendamento(request, id):
     agendamentos = agendamento.objects.get(id=id)
     clientes = cliente.objects.all()
     servicos = servico.objects.all()
+    produtos = produto.objects.all()
     cabeleireiros = cabeleireiro.objects.all()
     agendamentos.data_inicio = agendamentos.data_inicio
-    context = {'agendamentos': agendamentos, 'clientes' : clientes,'servicos' : servicos,'cabeleireiros' : cabeleireiros}
+    context = {'agendamentos': agendamentos, 'clientes' : clientes,'servicos' : servicos,'cabeleireiros' : cabeleireiros, 'produtos' : produtos}
     return render(request, 'website/agenda/edit.html', context)
 
 

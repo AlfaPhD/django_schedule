@@ -47,6 +47,7 @@ class produto(models.Model):
     especificacao = models.CharField("especificacao", max_length=400)
 
 
+
 class estoque(models.Model):
     quantidade = models.IntegerField("quantidade")
     data_saida = models.DateField("data_saida")
@@ -62,6 +63,10 @@ class agendamento(models.Model):
         cliente,
 		 related_name='clientes',
         on_delete=models.CASCADE
+    )
+    produtos = models.ManyToManyField(
+        produto,
+        related_name='produtos'
     )
     cabeleireiros = models.ForeignKey(
         cabeleireiro,
