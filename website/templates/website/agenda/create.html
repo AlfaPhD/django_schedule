@@ -10,10 +10,10 @@
             <label>Data Fim </label>
             <input type="datetime-local" name="data_fim" placeholder="data" class="form-control" required/></br>
             </br>
-            <label>Produto </label>
-            <select name="produto" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Produto">
-                {% for produto in produtos %}
-                    <option value="{{ produto.id }}">{{ produto.nome }}</option>
+            <label>Cliente </label>
+            <select name="cliente" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Cliente">
+                {% for cliente in clientes %}
+                    <option value="{{ cliente.id }}">{{ cliente.nome }}</option>
                 {% endfor %}
             </select>
 

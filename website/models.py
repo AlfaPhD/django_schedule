@@ -64,10 +64,10 @@ class agendamento(models.Model):
 		 related_name='clientes',
         on_delete=models.CASCADE
     )
-    produtos = models.ManyToManyField(
-        produto,
-        related_name='produtos'
-    )
+    # produtos = models.ManyToManyField(
+    #     produto,
+    #     related_name='produtos'
+    # )
     cabeleireiros = models.ForeignKey(
         cabeleireiro,
 		related_name='cabeleireiros',
