@@ -258,9 +258,9 @@ def createAgendamento(request):
         agendamentos.data = request.POST['data']
         agendamentos.hora_inicio = request.POST['hora_inicio']
         agendamentos.hora_fim = "10:30"
-        agendamentos.clientes =  clientes
+        agendamentos.clientes = clientes
         agendamentos.cabeleireiros = cabeleireiros
-        agendamentos.servicos = [servicos.id]
+        agendamentos.servicos = servicos
         agendamentos.save()
         return HttpResponseRedirect('/agenda')
     else:
