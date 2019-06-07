@@ -254,12 +254,11 @@ def createAgendamento(request):
     if request.method == 'POST':
         servicos = servico.objects.get(id=int(request.POST['servico']))
         clientes = cliente.objects.get(id=int(request.POST['cliente']))
-        produtos = produto.objects.get(id=int(request.POST['produto']))
         cabeleireiros = cabeleireiro.objects.get(id=int(request.POST['cabeleireiro']))
-        agendamentos.data_inicio= request.POST['data_inicio']
-        agendamentos.data_fim = request.POST['data_fim']
+        agendamentos.data = request.POST['data']
+        agendamentos.hora_inicio = request.POST['hora_inicio']
+        agendamentos.hora_fim = "10:30"
         agendamentos.clientes =  clientes
-        agendamentos.produtos =  produtos
         agendamentos.cabeleireiros = cabeleireiros
         agendamentos.servicos = servicos
         agendamentos.save()
