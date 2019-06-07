@@ -1,0 +1,26 @@
+{% extends 'website/base.html' %}
+{% block container %}
+<form method="POST" action="update/{{ clientes.id }}">
+        {% csrf_token %}
+    <h3 align="center"> Alterar Perfil</h3>
+    <div class="form-group">
+    <label>Nome </label>
+    <input type="text" name="nome"  value="{{ clientes.nome }}" placeholder="Nome" class="form-control" required />
+    </br>
+    <label>Apelido </label>
+    <input type="text" name="apelido"  value="{{ clientes.apelido }}" placeholder="Apelido" class="form-control" required/>
+    </br>
+    <label>Senha </label>
+    <input type="password" name="senha"  value="{{ clientes.senha }}" placeholder="Senha" class="form-control"required />
+    </br>
+    <label>E-mail </label>
+    <input type="email" name="email"  value="{{ clientes.email }}" placeholder="E-mail" class="form-control"required />
+    </br>
+    <label>Celular </label>
+    <input type="text" name="celular"  value="{{ clientes.celular }}" placeholder="Celular" class="form-control"required />
+        </br>
+    <button class="btn btn-success" href="{%  url 'website:perfilCliente' user.cliente.id %}"> <span class="glyphicon glyphicon-add"></span>Alterar Perfil</button>
+        <button class="btn btn-default" href="../cliente">Voltar</button>
+</div>
+</form>
+{% endblock %}
