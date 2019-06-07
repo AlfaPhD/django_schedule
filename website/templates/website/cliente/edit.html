@@ -2,7 +2,7 @@
 {% block container %}
 <form method="POST" action="update/{{ clientes.id }}">
         {% csrf_token %}
-    <h3 align="center"> Alterar Cliente</h3>
+    <h3 align="center"> Perfil Cliente</h3>
     <div class="form-group">
     <label>Nome </label>
     <input type="text" name="nome"  value="{{ clientes.nome }}" placeholder="Nome" class="form-control" required />
@@ -19,8 +19,8 @@
     <label>Celular </label>
     <input type="text" name="celular"  value="{{ clientes.celular }}" placeholder="Celular" class="form-control"required />
         </br>
-    <button class="btn btn-success" href="cliente"> <span class="glyphicon glyphicon-add"></span>Alterar Cliente</button>
-        <button class="btn btn-default" href="../cliente">Voltar</button>
+    <button class="btn btn-success" href="cliente"> <span class="glyphicon glyphicon-add"></span>Alterar Perfil</button>
+
 </div>
 </form>
 {% endblock %}

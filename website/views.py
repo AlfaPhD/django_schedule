@@ -88,12 +88,6 @@ def editCliente(request, id):
     context = {'clientes': clientes}
     return render(request, 'website/cliente/edit.html', context)
 
-@login_required
-def editPerfil(request, id):
-    clientes = cliente.objects.get(id=id)
-    context = {'clientes': clientes}
-    return render(request, 'website/cliente/editPerfil.html', context)
-
 def updateCliente(request, id):
     clientes = cliente.objects.get(id=id)
 
