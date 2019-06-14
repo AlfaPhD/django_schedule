@@ -1,0 +1,28 @@
+{% extends 'website/base.html' %}
+{% block container %}
+    <form method="GET" action="{{ agendamentos.pk }}">
+    {% csrf_token %}
+    <h3 align="center"> Detalhes do Agendamento</h3>
+    <div class="form-group">
+        <label>Data </label>
+        <input type="text" name="data" value= "{{ agendamentos.data }}" placeholder="data" class="form-control" readonly />
+        </br>
+        <label>Hora </label>
+        <input type="time" name="hora" value="{{ agendamentos.hora_inicio }}" placeholder="hora" class="form-control" readonly/></br>
+        </br>
+        </br>
+        <label>Serviços </label>
+        <select name="servico" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Serviço" readonly>
+            <option value="{{ agendamentos.servicos.id }}" selected>{{ agendamentos.servicos.nome }}</option>
+        </select>
+        </br>
+        </br>
+        <label>cabeleireiro </label>
+        <select name="cabeleireiro" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um cabeleireiro" readonly>
+            <option value="{{ agendamentos.cabeleireiros.id }}" selected>{{ agendamentos.cabeleireiros.nome }}</option>
+        </select>
+        </br>
+        </br>
+    </div>
+    </form>
+{% endblock %}

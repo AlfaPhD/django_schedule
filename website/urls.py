@@ -45,6 +45,7 @@ urlpatterns = [
     path('agenda/', views.indexAgendamento, name='indexAgendamento'),
     path('agenda/create', views.createAgendamento, name='createAgendamento'),
     path('agenda/edit/<int:id>', views.editAgendamento, name='editAgendamento'),
+    path('agenda/detalhe/<int:id>', views.detalheAgendamento, name='detalheAgendamento'),
     path('agenda/edit/update/<int:id>', views.updateAgendamento, name='updateAgendamento'),
     path('agenda/deletar/<int:id>', views.deleteAgendamento, name='deleteAgendamento'),
 

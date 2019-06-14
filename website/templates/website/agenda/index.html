@@ -1,44 +1,163 @@
 {% extends 'website/base.html' %}
 {% block container %}
-<a class="btn btn-success" href="create"> <span class="glyphicon glyphicon-add"></span>Novo Agendamento</a>
-<br/>
-<br/>
-<div class="table-responsive">
-    <table class="table">
-        <thead>
+    <a class="btn btn-success" href="create"> <span class="glyphicon glyphicon-add"></span>Novo Agendamento</a>
+    <br/>
+    <br/>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
             <tr>
                 <th class="text-center">#</th>
                 <th>Data </th>
                 <th>Hora</th>
-                <th>cabeleireiro</th>
-                <th>Cliente</th>
-                <th>Serviço</th>
+                <th>Cabeleireiro</th>
+                <th>Serviços</th>
+                <th>Produtos</th>
+                {% if user.cabeleireiro and user.cabeleireiro.ativo %}
+                    <th>Cliente</th>
+                {% endif %}
                 <th>Opções</th>
             </tr>
-        </thead>
-        <tbody>
-              {% for agenda in agendamentos %}
-            <tr>
-                <td>{{ agenda.id }}</td>
-                <td>{{ agenda.data_inicio }}</td>
-                <td>{{ agenda.cabeleireiro.nome}}</td>
-                <td>{{ agenda.clientes.nome }}</td>
-                <td>{{ agenda.servicos.nome }}</td>
-                <td class="td-actions" >
-                    <a  type="button" rel="tooltip" title="Detalhes" class="btn btn-info btn-link btn-sm">
-                        <i class="fa fa-user"></i>
-                    </a>
-                    <a href="edit/{{ agenda.id }}" type="button" rel="tooltip" title="Editar" class="btn btn-success btn-link btn-sm">
-                        <i class="fa fa-edit"></i>
-                    </a>
-                    <a href="deletar/{{ agenda.id }}" type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-link btn-sm">
-                        <i class="fa fa-times"></i>
-                    </a>
-                </td>
-            </tr>
+            </thead>
+            <tbody>
+            {% for agenda in agendamentos %}
+                {% if agenda.clientes.id == user.cliente.id or agenda.cabeleireiros.id == user.cabeleireiro.id %}
+                    <tr>
+                        <td>{{ agenda.id }}</td>
+                        <td>{{ agenda.data }}</td>
+                        <td>{{ agenda.hora_inicio }}</td>
+                        <td>{{ agenda.cabeleireiros.nome}}</td>
+                        <td>{{ agenda.servicos.nome }}</td>
+                        <td>{{ agenda.produtos.nome }}</td>
+                        {% if agenda.cabeleireiros.id == user.cabeleireiro.id %}
+                            <td>{{ agenda.clientes.nome }}</td>
+                        {% endif %}
+                        <td class="td-actions" >
+                            <button type="button"
+                                    rel="tooltip"
+                                    class="btn btn-info btn-sm"
+                                    data-toggle="modal"
+                                    data-target="#detalheModal"
+                                    data-pk="{{ agenda.id }}"
+                                    data-name="{{ agenda.nome }}"
+                            >
+                                <i class="fa fa-user"></i>
+                            </button>
+                            {#                            <a  type="button" rel="tooltip" title="Detalhes" class="btn btn-info btn-link btn-sm">#}
+                            {#                                <i class="fa fa-user"></i>#}
+                            {#                            </a>#}
+                            <a href="edit/{{ agenda.id }}" type="button" rel="tooltip" title="Editar" class="btn btn-success btn-link btn-sm">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <button type="button"
+                                    rel="tooltip"
+                                    class="btn btn-danger btn-sm"
+                                    data-toggle="modal"
+                                    data-target="#deleteModal"
+                                    data-pk="{{ agenda.id }}"
+                                    data-name="{{ agenda.nome }}">
+                                <i class="fa fa-times"></i>
+                            </button>
+                            {#                            <a href="deletar/{{ agenda.id }}" type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-link btn-sm">#}
+                            {#                                <i class="fa fa-times"></i>#}
+                            {#                            </a>#}
+                        </td>
+                    </tr>
+                {% endif %}
             {% endfor %}
-        </tbody>
-    </table>
-</div>
+            </tbody>
+        </table>
+    </div>
+    {#    div para excluir#}
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" id="formDelete">{% csrf_token %}
+                        <p>Deseja excluir o agendamento do cliente?</p>
+                        {#                        <input type="submit" value="Confirm">#}
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button onclick="$('#formDelete').submit()" type="button" class="btn btn-danger">Excluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#    div detalhes#}
+    <div class="modal fade" id="detalheModal" tabindex="-1" role="dialog" aria-labelledby="detalheModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detalheModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="GET" id="formDetalhe">
+                        {% csrf_token %}
+                        <h3 align="center"> Detalhes do Agendamento </h3>
+                        <div class="form-group">
+                                <label>Data </label>
+                                <input type="date" name="data" value= "{{ agendamentos.data }}" placeholder="Data" class="form-control" readonly />
+                                </br>
+                                <label>Hora </label>
+                                <input type="time" name="hora_inicio" value="{{ agendamentos.hora_inicio }}" placeholder="Hora Inicio" class="form-control" readonly/></br>
+                                </br>
+                                <label>Serviços </label>
+                                <select name="servico" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Serviço" readonly>
+                                    <option value="{{ agendamentos.servicos.id }}" selected>{{ agendamentos.servicos.nome }}</option>
+                                </select>
+                                </br>
+                                <label>Cabeleireiro </label>
+                                <select name="cabeleireiro" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um cabeleireiro" readonly>
+                                    <option value="{{ agendamentos.cabeleireiros.id }}" selected>{{ agenda.cabeleireiros.nome }}</option>
+                                </select>
+                                </br>
+                        </div>
 
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button  type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ block.super }}
+    <script>
+        $('#deleteModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var pk = button.data('pk');
+            var name = button.data('name');
+
+            var modal = $(this);
+            $('#deleteModalLabel').html(name);
+            $('#formDelete').attr("action", "/agenda/deletar/" + pk);
+        })
+    </script>
+    <script>
+        $('#detalheModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var pk = button.data('pk');
+            var name = button.data('name');
+
+            var modal = $(this);
+            $('#detalheModalLabel').html(name);
+            $('#formDetalhe').attr("action", "/agenda/detalhe/" + pk);
+        })
+    </script>
 {% endblock %}

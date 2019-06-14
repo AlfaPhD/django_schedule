@@ -243,7 +243,11 @@ def deleteServico(request, id):
 @login_required
 def indexAgendamento(request):
     agendamentos = agendamento.objects.all()
-    context = {'agendamentos' : agendamentos}
+    clientes = cliente.objects.all()
+    servicos = servico.objects.all()
+    cabeleireiros = cabeleireiro.objects.all()
+    produtos = produto.objects.all()
+    context = {'agendamentos' : agendamentos, 'clientes' : clientes,'servicos' : servicos,'cabeleireiros' : cabeleireiros,'produtos' : produtos}
     return render(request, 'website/agenda/index.html',context)
 
 
@@ -252,6 +256,7 @@ def createAgendamento(request):
 
     agendamentos = agendamento()
     if request.method == 'POST':
+        produtos = produto.objects.get(id=int(request.POST['produto']))
         servicos = servico.objects.get(id=int(request.POST['servico']))
         clientes = cliente.objects.get(id=int(request.POST['cliente']))
         cabeleireiros = cabeleireiro.objects.get(id=int(request.POST['cabeleireiro']))
@@ -260,8 +265,9 @@ def createAgendamento(request):
         agendamentos.hora_fim = "10:30"
         agendamentos.clientes = clientes
         agendamentos.cabeleireiros = cabeleireiros
-        agendamentos.servicos = servicos
         agendamentos.save()
+        agendamentos.servicos.add(servicos)
+        agendamentos.produtos.add(produtos)
         return HttpResponseRedirect('/agenda')
     else:
         clientes = cliente.objects.all()
@@ -279,9 +285,21 @@ def editAgendamento(request, id):
     servicos = servico.objects.all()
     produtos = produto.objects.all()
     cabeleireiros = cabeleireiro.objects.all()
-    agendamentos.data_inicio = agendamentos.data_inicio
+    agendamentos.data = agendamentos.data
     context = {'agendamentos': agendamentos, 'clientes' : clientes,'servicos' : servicos,'cabeleireiros' : cabeleireiros, 'produtos' : produtos}
     return render(request, 'website/agenda/edit.html', context)
+
+@login_required
+def detalheAgendamento(request, id):
+    agendamentos = agendamento.objects.get(id=id)
+    clientes = cliente.objects.all()
+    servicos = servico.objects.all()
+    produtos = produto.objects.all()
+    cabeleireiros = cabeleireiro.objects.all()
+    agendamentos.data = agendamentos.data
+    agendamentos.hora_inicio = agendamentos.hora_inicio
+    context = {'agendamentos': agendamentos, 'clientes' : clientes,'servicos' : servicos,'cabeleireiros' : cabeleireiros, 'produtos' : produtos}
+    return render(request, 'website/agenda/detalhe.html', context)
 
 
 @login_required
@@ -363,11 +381,18 @@ class ProdutoListView(ListView):
 
 
 def get_data(request):
-    data = [
-        dict(title='Lunch', start='2018-10-22 10:00', end='2018-10-22 10:30', allDay=False, className='event-azure'),
-        dict(title='Lunch', start='2018-10-23 11:00', end='2018-10-22 11:30', allDay=False, className='event-orange'),
-        dict(title='Lunch', start='2018-10-24 12:00', end='2018-10-22 12:30', allDay=False, className='event-green'),
-        dict(title='Lunch', start='2018-10-25 13:00', end='2018-10-22 13:30', allDay=False, className='event-red'),
-        dict(title='Lunch', start='2018-10-26 14:00', end='2018-10-22 14:30', allDay=False, className='event-blue')
-    ]
+    data = []
+    for agend in agendamento.objects.all():
+        d = agend.data
+        hi = agend.hora_inicio
+        hf = agend.hora_fim
+        data.append(
+            dict(title='joao',
+                 start=f'{d:%Y-%m-%d} {hi:%H:%M}',
+                 end=f'{d:%Y-%m-%d} {hf:%H:%M}',
+                 allDay=False,
+                 className='event-azure'
+                 ),
+        )
+    print(data)
     return JsonResponse(data, safe=False)

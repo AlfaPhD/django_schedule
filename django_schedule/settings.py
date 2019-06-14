@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'django_schedule.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join( '_db_.sqlite3'),
+        'NAME': os.path.join( 'new_db.sqlite3'),
     }
 }
 

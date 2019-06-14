@@ -20,7 +20,16 @@
 
 {% block javascripts %}
     {{ block.super }}
+<link href='../static/website/assets/js/teste/fullcalendar.min.css' rel='stylesheet' />
+<link href='../static/website/assets/js/teste/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+<script src='../static/website/assets/js/teste/moment.min.js'></script>
+<script src='../static/website/assets/js/teste/jquery.min.js'></script>
+<script src='../static/website/assets/js/teste/fullcalendar.min.js'></script>
+<script src='../static/website/assets/js/teste/locale/pt-br.js'></script>
+
+    <script src='../static/website/assets/locale/pt-br.js'></script>
     <script>
+    $(document).ready(function() {
         function initFullCalendar() {
             $calendar = $('#fullCalendar');
 
@@ -57,7 +66,8 @@
                     }, // September 2015
                     day: {
                         titleFormat: 'D MMM, YYYY'
-                    } // Tuesday, Sep 8, 2015
+                    }, // Tuesday, Sep 8, 2015
+                locale: 'pt',
                 },
                 select: function (start, end) {
 
@@ -65,26 +75,33 @@
                     swal({
                         title: 'Agendamento',
                         html:
-                            '<form method="POST" action="http://localhost:8000/agenda/create">' +
-                            '<input type="datetime-local" name="data_inicio"  placeholder="data" class="form-control" required />' +
-                            '<br><select class="form-control" name="cabeleireiros" required>\n' +
+                            '<form method="POST" action="agenda/create">' +
+                            '{% csrf_token %}'+
+                            '<div>' +
+                            '<input type="date" name="data"  placeholder="data" class="form-control" required />' +
+                            '<br><input type="time" name="hora_inicio"  placeholder="Hora" class="form-control" required />' +
+                            '<br><select class="form-control" name="cabeleireiro" required>\n' +
                             '<option value="" selected disabled>Selecione um Cabeleireiro</option>' +
-                            {% for cabele in cabeleireiros %}
-                                '        <option value="{{cabele.pk}}">{{cabele.nome}}</option>\n' +
-                            {% endfor %}
+                            '{% for cabele in cabeleireiros %}'+
+                                '        <option value="{{cabele.id}}">{{cabele.nome}}</option>\n' +
+                            '{% endfor %}'+
                             '    </select>' +
-                            '<br><select class="form-control" name="produtos" required>\n' +
+                            '<br><select class="form-control" name="cliente" readonly>\n' +
+                            '<option selected="selected" value="{{user.cliente.id}}">{{user.cliente.nome}}</option>' +
+                            '</select>' +
+                            '<br><select class="form-control" name="produto">\n' +
                             '<option value="" selected disabled>Selecione um Produto</option>' +
-                            {% for prod in produtos %}
-                                '        <option value="{{prod.pk}}">{{prod.nome}}</option>\n' +
-                            {% endfor %}
+                            '{% for prod in produtos %}'+
+                                '        <option value="{{prod.id}}">{{prod.nome}}</option>\n' +
+                            '{% endfor %}'+
                             '    </select>' +
-                            '<br><select class="form-control" name="servicos" required>\n' +
+                            '<br><select multiple class="form-control" name="servico" required>\n' +
                             '<option value="" selected disabled>Selecione um Serviço</option>' +
-                            {% for serv in servicos %}
-                                '        <option value="{{serv.pk}}">{{serv.nome}}</option>\n' +
-                            {% endfor %}
+                            '{% for serv in servicos %}'+
+                                '        <option value="{{serv.id}}">{{serv.nome}}</option>\n' +
+                            '{% endfor %}'+
                             '    </select>' +
+                             '</div>' +
                             '<br><div>' +
                             ' <br><button class="btn btn-success" type="subimit">'+
                             '</span>Cadastrar Agendamento'+
@@ -97,7 +114,7 @@
                     }, function () {
 
                         var eventData;
-                        event_title = $('#swal').val();
+                        event_title = $('#start').val();
 
                         if (event_title) {
                             eventData = {
@@ -132,9 +149,9 @@
                 ]
             });
         };
-        $().ready(function() {
+        $(document).ready(function() {
             initFullCalendar();
         });
-
+  });
     </script>
 {% endblock %}
