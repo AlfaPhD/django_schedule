@@ -1,7 +1,7 @@
 {% extends 'website/base.html' %}
 {% block container %}
     {% if user.cabeleireiro and user.cabeleireiro.ativo %}
-    <a class="btn btn-success" href="create"> <span class="glyphicon glyphicon-add"></span>Novo Serviço</a>
+        <a class="btn btn-success" href="create"> <span class="glyphicon glyphicon-add"></span>Novo Serviço</a>
     {% endif %}
     <br/>
     <br/>
@@ -22,16 +22,29 @@
                     <td>{{ servico.nome }}</td>
                     <td>{{ servico.valor }}</td>
                     <td class="td-actions" >
-                        <a  type="button" rel="tooltip" title="Detalhes" class="btn btn-info btn-link btn-sm">
+                        <button type="button"
+                                rel="tooltip"
+                                class="btn btn-info btn-sm"
+                                data-toggle="modal"
+                                data-target="#detalheModal"
+                                data-pk="{{ servico.id }}"
+                                data-name="{{ servico.nome }}"
+                                data-vlr="{{ servico.valor }}">
                             <i class="fa fa-user"></i>
-                        </a>
+                        </button>
                         {% if user.cabeleireiro and user.cabeleireiro.ativo %}
-                        <a href="edit/{{ servico.id }}" type="button" rel="tooltip" title="Editar" class="btn btn-success btn-link btn-sm">
-                            <i class="fa fa-edit"></i>
-                        </a>
-                        <a href="deletar/{{ servico.id }}" type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-link btn-sm">
-                            <i class="fa fa-times"></i>
-                        </a>
+                            <a href="edit/{{ servico.id }}" type="button" rel="tooltip" title="Editar" class="btn btn-success btn-link btn-sm">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <button type="button"
+                                    rel="tooltip"
+                                    class="btn btn-danger btn-sm"
+                                    data-toggle="modal"
+                                    data-target="#deleteModal"
+                                    data-pk="{{ servico.pk }}"
+                                    data-name="{{ servico.nome }}">
+                                <i class="fa fa-times"></i>
+                            </button>
                         {% endif %}
                     </td>
                 </tr>
@@ -39,5 +52,86 @@
             </tbody>
         </table>
     </div>
+    {#    div para excluir#}
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" id="formDelete">{% csrf_token %}
+                        <p>Deseja excluir o serviço?</p>
+                        {#                        <input type="submit" value="Confirm">#}
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button onclick="$('#formDelete').submit()" type="button" class="btn btn-danger">Excluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#    div detalhes#}
+    <div class="modal fade" id="detalheModal" tabindex="-1" role="dialog" aria-labelledby="detalheModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"> Detalhes do Serviço </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {% csrf_token %}
+                    <h3 align="center" id="detalheModalLabel"></h3>
 
+                    <form method="GET" id="formDetalhe">
+
+                        <div class="form-group">
+                            <label>Valor: </label>
+                            <label id="detalheModalLabelVlr"></label>
+                            </br>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button  type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ block.super }}
+    <script>
+        $('#deleteModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var pk = button.data('pk');
+            var name = button.data('name');
+
+            var modal = $(this);
+            $('#deleteModalLabel').html(name);
+            $('#formDelete').attr("action", "/servico/deletar/" + pk);
+        })
+    </script>
+    <script>
+        $('#detalheModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var pk = button.data('pk');
+            var name = button.data('name');
+            var vlr = button.data('vlr');
+
+            var modal = $(this);
+            $('#detalheModalLabel').html(name);
+            $('#detalheModalLabelVlr').html(vlr);
+
+        })
+    </script>
 {% endblock %}

@@ -8,7 +8,7 @@
             <thead>
             <tr>
                 <th class="text-center">#</th>
-                <th>Data </th>
+                <th>Data</th>
                 <th>Hora</th>
                 <th>Cabeleireiro</th>
                 <th>Serviços</th>
@@ -39,7 +39,12 @@
                                     data-toggle="modal"
                                     data-target="#detalheModal"
                                     data-pk="{{ agenda.id }}"
-                                    data-name="{{ agenda.nome }}"
+                                    data-name="{{ agenda.clientes.nome }}"
+                                    data-date="{{ agenda.data }}"
+                                    data-hor="{{ agenda.hora_inicio }}"
+                                    data-cab="{{ agenda.cabeleireiros.nome }}"
+                                    data-prod="{{ agenda.produtos.nome }}"
+                                    data-serv="{{ agenda.servicos.nome }}"
                             >
                                 <i class="fa fa-user"></i>
                             </button>
@@ -104,26 +109,26 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    {% csrf_token %}
+                    <h3 align="center"> Detalhes do Agendamento </h3><br>
                     <form method="GET" id="formDetalhe">
-                        {% csrf_token %}
-                        <h3 align="center"> Detalhes do Agendamento </h3>
+
                         <div class="form-group">
-                                <label>Data </label>
-                                <input type="date" name="data" value= "{{ agendamentos.data }}" placeholder="Data" class="form-control" readonly />
-                                </br>
-                                <label>Hora </label>
-                                <input type="time" name="hora_inicio" value="{{ agendamentos.hora_inicio }}" placeholder="Hora Inicio" class="form-control" readonly/></br>
-                                </br>
-                                <label>Serviços </label>
-                                <select name="servico" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Serviço" readonly>
-                                    <option value="{{ agendamentos.servicos.id }}" selected>{{ agendamentos.servicos.nome }}</option>
-                                </select>
-                                </br>
-                                <label>Cabeleireiro </label>
-                                <select name="cabeleireiro" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um cabeleireiro" readonly>
-                                    <option value="{{ agendamentos.cabeleireiros.id }}" selected>{{ agenda.cabeleireiros.nome }}</option>
-                                </select>
-                                </br>
+                            <label>Data: </label>
+                            <label id="detalheModalLabelData"></label>
+                            </br>
+                            <label>Hora: </label>
+                            <label id="detalheModalLabelHor"></label>
+                            </br>
+                            <label>Serviços: </label>
+                            <label id="detalheModalLabelServ"></label>
+                            </br>
+                            <label>Produtos: </label>
+                            <label id="detalheModalLabelProd"></label>
+                            </br>
+                            <label>Cabeleireiro: </label>
+                            <label id="detalheModalLabelCab"></label>
+                            </br>
                         </div>
 
                     </form>
@@ -154,10 +159,20 @@
             var button = $(event.relatedTarget);
             var pk = button.data('pk');
             var name = button.data('name');
+            var date = button.data('date');
+            var cab = button.data('cab');
+            var prod = button.data('prod');
+            var hor = button.data('hor');
+            var serv = button.data('serv');
 
             var modal = $(this);
             $('#detalheModalLabel').html(name);
-            $('#formDetalhe').attr("action", "/agenda/detalhe/" + pk);
+            $('#detalheModalLabelData').html(date);
+            $('#detalheModalLabelCab').html(cab);
+            $('#detalheModalLabelServ').html(serv);
+            $('#detalheModalLabelHor').html(hor);
+            $('#detalheModalLabelProd').html(prod);
+
         })
     </script>
 {% endblock %}

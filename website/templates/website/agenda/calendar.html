@@ -1,60 +1,60 @@
 {% extends 'website/base.html' %}
 {% block container %}
 
-<div class="header text-center">
-    <h3 class="title">Barbearia Lucas Pontes</h3>
-    <small class="category">Siga nosso perfil no
-        <a target="new" href="https://www.instagram.com/barber_pontes/">instagram</a>.
-    </small>
-</div>
-<br />
-<div class="row">
-    <div class="col-md-10 ml-auto mr-auto">
-        <div class="card card-calendar">
-            <div class="card-body ">
-                <div id='calendar'></div>
+    <div class="header text-center">
+        <h3 class="title">Barbearia Lucas Pontes</h3>
+        <small class="category">Siga nosso perfil no
+            <a target="new" href="https://www.instagram.com/barber_pontes/">instagram</a>.
+        </small>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-10 ml-auto mr-auto">
+            <div class="card card-calendar">
+                <div class="card-body ">
+                    <div id='calendar'></div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}
 
 {% block javascripts %}
     {{ block.super }}
 
-<link href='../static/website/assets/js/teste/fullcalendar.min.css' rel='stylesheet' />
-<link href='../static/website/assets/js/teste/fullcalendar.print.min.css' rel='stylesheet' media='print' />
-<script src='../static/website/assets/js/teste/moment.min.js'></script>
-<script src='../static/website/assets/js/teste/jquery.min.js'></script>
-<script src='../static/website/assets/js/teste/fullcalendar.min.js'></script>
-<script src='../static/website/assets/js/teste/locale/pt-br.js'></script>
+    <link href='../static/website/assets/js/teste/fullcalendar.min.css' rel='stylesheet' />
+    <link href='../static/website/assets/js/teste/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+    <script src='../static/website/assets/js/teste/moment.min.js'></script>
+    <script src='../static/website/assets/js/teste/jquery.min.js'></script>
+    <script src='../static/website/assets/js/teste/fullcalendar.min.js'></script>
+    <script src='../static/website/assets/js/teste/locale/pt-br.js'></script>
     <script>
 
-         $(document).ready(function() {
+        $(document).ready(function() {
 
-        $('#calendar').fullCalendar({
-          header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'month,agendaWeek,agendaDay'
-          },
-          defaultDate: Date(),
-          navLinks: true, // can click day/week names to navigate views
-          editable: true,
-          eventLimit: true, // allow "more" link when too many events
-          events: [
-                {% for i in events %}
-                {
-                    title: "{{ i.CLIENTES.NOME }}" + " " + "{{ i.SERVICOS.NOME }} " ,
-                    start: '{{ i.DATA_INICIO|date:"Y-m-d"}}',
-                    end: '{{ i.DATA_FIM|date:"Y-m-d" }}',
-
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
                 },
-                {% endfor %}
-              ]
+                defaultDate: Date(),
+                navLinks: true, // can click day/week names to navigate views
+                editable: true,
+                eventLimit: true, // allow "more" link when too many events
+                events: [
+                    {% for i in events %}
+                        {
+                            title: "{{ i.CLIENTES.NOME }}" + " " + "{{ i.SERVICOS.NOME }} " ,
+                            start: '{{ i.DATA_INICIO|date:"Y-m-d"}}',
+                            end: '{{ i.DATA_FIM|date:"Y-m-d" }}',
 
-    });
+                        },
+                    {% endfor %}
+                ]
 
-  });
+            });
+
+        });
     </script>
 {% endblock %}

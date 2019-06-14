@@ -180,7 +180,7 @@ def updateProduto(request, id):
     produtos.valor_unitario= Decimal(valor.replace(',', '.'))
     produtos.quantidade = request.POST['quant']
     produtos.save()
-    messages.info(request, 'Alterações salvas com sucesso');
+    messages.success(request, 'Alterações salvas com sucesso');
     return redirect('/produto')
 
 

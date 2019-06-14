@@ -1,21 +1,20 @@
 {% extends 'website/base.html' %}
 {% block container %}
-<form method="POST" action="update/{{ produtos.id }}">
+    <form method="POST" action="update/{{ produtos.id }}">
         {% csrf_token %}
-    <h3 align="center"> Alterar Produto</h3>
-
-    <div class="form-group">
-    <label>Nome </label>
-    <input type="text" name="nome"  value="{{ produtos.nome }}" placeholder="Nome" class="form-control" required />
-    </br>
-    <label>Valor Unitário</label>
-    <input type="text" name="valor"  value="{{ produtos.valor_unitario}}" placeholder="Valor Unitário" class="form-control" required/>
-    </br>
-    <label>Quantidade</label>
-    <input type="text" name="quant"  value="{{ produtos.quantidade }}" placeholder="Quantidade" class="form-control" required/>
-    </br>
-    <button class="btn btn-success" href="produto"> <span class="glyphicon glyphicon-add"></span>Alterar Produto</button>
-        <button class="btn btn-default" href="../produto">Voltar</button>
-</div>
-</form>
+        <h3 align="center"> Alterar Produto</h3>
+        <div class="form-group">
+            <label>Nome </label>
+            <input type="text" name="nome"  value="{{ produtos.nome }}" placeholder="Nome" class="form-control" required />
+            </br>
+            <label>Valor Unitário</label>
+            <input type="text" name="valor"  value="{{ produtos.valor_unitario}}" placeholder="Valor Unitário" class="form-control" required/>
+            </br>
+            <label>Quantidade</label>
+            <input type="text" name="quant"  value="{{ produtos.quantidade }}" placeholder="Quantidade" class="form-control" required/>
+            </br>
+            <button class="btn btn-success" href="{% url 'website:indexProduto' %}"> <span class="glyphicon glyphicon-add"></span>Alterar Produto</button>
+            <button class="btn btn-default" href="{% url 'website:indexProduto' %}">Voltar</button>
+        </div>
+    </form>
 {% endblock %}

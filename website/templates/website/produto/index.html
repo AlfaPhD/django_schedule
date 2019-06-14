@@ -1,7 +1,7 @@
 {% extends 'website/base.html' %}
 {% block container %}
     {% if user.cabeleireiro and user.cabeleireiro.ativo %}
-    <a class="btn btn-success" href="create"> <span class="glyphicon glyphicon-add"></span>Novo Produto</a>
+        <a class="btn btn-success" href="create"> <span class="glyphicon glyphicon-add"></span>Novo Produto</a>
     {% endif %}
     <br/>
     <br/>
@@ -21,38 +21,47 @@
                 <tr>
                     <td>{{ produto.id }}</td>
                     <td>{{ produto.nome }}</td>
-                    <td>{{ produto.valor}}</td>
+                    <td>{{ produto.valor_unitario}}</td>
                     <td>{{ produto.quantidade }}</td>
                     <td>{{ produto.especificacao }}</td>
                     <td class="td-actions" >
-                        <a  type="button" rel="tooltip" title="Detalhes" class="btn btn-info btn-link btn-sm">
-                            <i class="fa fa-user"></i>
-                        </a>
-                        {% if user.cabeleireiro and user.cabeleireiro.ativo %}
-                        <a href="edit/{{ produto.id }}" type="submit" rel="tooltip" title="Editar" class="btn btn-success btn-link btn-sm">
-                            <i class="fa fa-edit"></i>
-                        </a>
                         <button type="button"
                                 rel="tooltip"
-                                class="btn btn-danger btn-sm"
+                                class="btn btn-info btn-sm"
                                 data-toggle="modal"
-                                data-target="#deleteModal"
-                                data-pk="{{ produto.pk }}"
-                                data-name="{{ produto.nome }}">
-                             <i class="fa fa-times"></i>
+                                data-target="#detalheModal"
+                                data-pk="{{ produto.id }}"
+                                data-name="{{ produto.nome }}"
+                                data-quant="{{ produto.quantidade }}"
+                                data-vlr="{{ produto.valor_unitario }}"
+                                data-esp="{{ produto.especificacao }}">
+                            <i class="fa fa-user"></i>
                         </button>
+                        {% if user.cabeleireiro and user.cabeleireiro.ativo %}
+                            <a href="edit/{{ produto.id }}" type="submit" rel="tooltip" title="Editar" class="btn btn-success btn-link btn-sm">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <button type="button"
+                                    rel="tooltip"
+                                    class="btn btn-danger btn-sm"
+                                    data-toggle="modal"
+                                    data-target="#deleteModal"
+                                    data-pk="{{ produto.pk }}"
+                                    data-name="{{ produto.nome }}">
+                                <i class="fa fa-times"></i>
+                            </button>
                         {% endif %}
 
-{#                        <a href="deletar/{{ produto.id }}" type="submit" rel="tooltip" title="Remover" class="btn btn-danger btn-link btn-sm">#}
-{#                            <i class="fa fa-times"></i>#}
-{#                        </a>#}
+                        {#                        <a href="deletar/{{ produto.id }}" type="submit" rel="tooltip" title="Remover" class="btn btn-danger btn-link btn-sm">#}
+                        {#                            <i class="fa fa-times"></i>#}
+                        {#                        </a>#}
                     </td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
     </div>
-{#    div para excluir#}
+    {#    div para excluir#}
     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -66,12 +75,49 @@
                 <div class="modal-body">
                     <form method="post" id="formDelete">{% csrf_token %}
                         <p>Deseja excluir o produto?</p>
-{#                        <input type="submit" value="Confirm">#}
+                        {#                        <input type="submit" value="Confirm">#}
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     <button onclick="$('#formDelete').submit()" type="button" class="btn btn-danger">Excluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#    div detalhes#}
+    <div class="modal fade" id="detalheModal" tabindex="-1" role="dialog" aria-labelledby="detalheModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"> Detalhes do Produto </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {% csrf_token %}
+                    <h3 align="center" id="detalheModalLabel"></h3>
+
+                    <form method="GET" id="formDetalhe">
+
+                        <div class="form-group">
+                            <label>Valor: </label>
+                            <label id="detalheModalLabelVlr"></label>
+                            </br>
+                            <label>Quantidade: </label>
+                            <label id="detalheModalLabelQuant"></label>
+                            </br>
+                            <label>Especificação: </label>
+                            <label id="detalheModalLabelEsp"></label>
+                            </br>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button  type="button" class="btn btn-success" data-dismiss="modal">OK</button>
                 </div>
             </div>
         </div>
@@ -88,6 +134,23 @@
             var modal = $(this);
             $('#deleteModalLabel').html(name);
             $('#formDelete').attr("action", "/produto/deletar/" + pk);
+        })
+    </script>
+    <script>
+        $('#detalheModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var pk = button.data('pk');
+            var name = button.data('name');
+            var vlr = button.data('vlr');
+            var quant = button.data('quant');
+            var esp = button.data('esp');
+
+            var modal = $(this);
+            $('#detalheModalLabel').html(name);
+            $('#detalheModalLabelVlr').html(vlr);
+            $('#detalheModalLabelQuant').html(quant);
+            $('#detalheModalLabelEsp').html(esp);
+
         })
     </script>
 {% endblock %}
