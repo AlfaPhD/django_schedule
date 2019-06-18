@@ -20,9 +20,6 @@
             <input type="text" name="celular"  value="{{ clientes.celular }}" placeholder="Celular" class="form-control"required />
             </br>
             <button class="btn btn-success" href="{% url 'website:perfilCliente' %}"> <span class="glyphicon glyphicon-add"></span>Alterar Perfil</button>
-            {% if user.cabeleireiro and user.cabeleireiro.ativo %}
-                <button class="btn btn-success" href="{% url 'website:indexCliente' %}"> <span class="glyphicon glyphicon-add"></span>Alterar Perfil</button>
-            {% endif %}
         </div>
     </form>
 {% endblock %}
