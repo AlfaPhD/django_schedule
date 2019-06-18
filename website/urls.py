@@ -12,6 +12,7 @@ urlpatterns = [
     path('logout', auth_views.LogoutView.as_view(), name='logout'),
     path('dashboard', views.DashboardView.as_view(), name='dashboard'),
     path('cadastrar', views.register_page, name='cadastrar'),
+
     #Cliente
     path('cliente/', views.indexCliente, name='indexCliente'),
     path('cliente/create', views.createCliente, name='createCliente'),
