@@ -44,10 +44,10 @@ class servico(models.Model):
 
 class produto(models.Model):
     nome = models.CharField("nome", max_length=100)
-    quantidade = models.IntegerField("Quantidade")
-    validade_produto = models.DateField("Validade produto")
-    valor_unitario = models.DecimalField("Valor unitario", max_digits=5, decimal_places=2)
-    especificacao = models.CharField("Especificacao", max_length=400)
+    quantidade = models.IntegerField("quantidade")
+    validade_produto = models.DateField("validade_produto")
+    valor_unitario = models.DecimalField("valor_unitario", max_digits=5, decimal_places=2)
+    especificacao = models.CharField("especificacao", max_length=400)
 
     def __str__(self):
         return self.nome
@@ -61,6 +61,7 @@ class estoque(models.Model):
 
 
 class agendamento(models.Model):
+
     status = models.CharField("status", max_length=30)
     data = models.DateField("data")
     hora_inicio = models.TimeField("hora_inicio")

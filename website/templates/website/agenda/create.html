@@ -4,20 +4,17 @@
         {% csrf_token %}
         <h3 align="center"> Cadastrar Agendamento</h3>
         <div class="form-group">
+            <label>Cliente </label>
+            <input type="text" name="cliente" value="{{ user.cliente.nome }}" placeholder="cliente" class="form-control" readonly />
+            {#            <select name="cliente" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Cliente">#}
+            {#                <option selected="selected" value="{{ user.cliente.id }}">{{ user.cliente.nome }}</option>#}
+            {#            </select>#}
+            </br>
             <label>Data Inicio </label>
             <input type="date" name="data" placeholder="data" class="form-control" required />
             </br>
             <label>Hora </label>
-            <input type="time" name="hora_inicio" placeholder="Hora" class="form-control timepicker-picker" required/></br>
-            </br>
-            <label>Cliente </label>
-{#            {% if user.cliente %}#}
-{#            <input type="text" name="cliente" placeholder="cliente" class="form-control" value="{{ user.cliente }}" required />#}
-{#            {% endif %}#}
-            <select name="cliente" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Cliente" readonly>
-                    <option selected="selected" value="{{ user.cliente.id }}">{{ user.cliente.nome }}</option>
-            </select>
-
+            <input type="time" name="hora_inicio" placeholder="Hora" class="form-control timepicker-picker" required/>
             </br>
             <label>Serviços </label>
             <select multiple name="servico" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Serviço" required>
@@ -26,14 +23,15 @@
                 {% endfor %}
             </select>
             </br>
-
+            </br>
             <label>Produto </label>
             <select name="produto" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Produto">
                 {% for produto in produtos %}
                     <option value="{{ produto.id }}">{{ produto.nome}}</option>
                 {% endfor %}
             </select>
-
+            </br>
+            </br>
             <label>Cabeleireiro </label>
             <select name="cabeleireiro" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Cabeleireiro" required>
                 {% for cabeleireiro in cabeleireiros %}
@@ -51,13 +49,13 @@
 {% block javascripts %}
     {{ block.super }}
     <!--  Plugin for Date Time Picker and Full Calendar Plugin-->
-<script src="../../assets/js/plugins/moment.min.js"></script>
-<!--  DatetimePicker   -->
-<script src="../../assets/js/plugins/bootstrap-datetimepicker.js"></script>
+    <script src="../../assets/js/plugins/moment.min.js"></script>
+    <!--  DatetimePicker   -->
+    <script src="../../assets/js/plugins/bootstrap-datetimepicker.js"></script>
     <!--  Bootstrap Select  -->
-<script src="../../assets/js/plugins/bootstrap-selectpicker.js" type="text/javascript"></script>
-<script>
+    <script src="../../assets/js/plugins/bootstrap-selectpicker.js" type="text/javascript"></script>
+    <script>
 
-         $(document).ready(function() {});
+        $(document).ready(function() {});
     </script>
 {% endblock %}
