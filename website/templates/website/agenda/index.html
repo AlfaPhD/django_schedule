@@ -27,8 +27,14 @@
                         <td>{{ agenda.data }}</td>
                         <td>{{ agenda.hora_inicio }}</td>
                         <td>{{ agenda.cabeleireiros.nome}}</td>
-                        <td>{{ agenda.servicos.nome }}</td>
-                        <td>{{ agenda.produtos.nome }}</td>
+                        <td>{% for servico in agenda.servicos.all %}
+                            {{ servico.nome }}
+                            {% endfor %}
+                        </td>
+                        <td>{% for produto in agenda.produtos.all %}
+                            {{ produto.nome }}
+                            {% endfor %}
+                        </td>
                         {% if agenda.cabeleireiros.id == user.cabeleireiro.id %}
                             <td>{{ agenda.clientes.nome }}</td>
                         {% endif %}
@@ -43,24 +49,37 @@
                                     data-date="{{ agenda.data }}"
                                     data-hor="{{ agenda.hora_inicio }}"
                                     data-cab="{{ agenda.cabeleireiros.nome }}"
-                                    data-prod="{{ agenda.produtos.nome }}"
-                                    data-serv="{{ agenda.servicos.nome }}"
+                                    {% for produto in agenda.produtos.all %}
+                                    data-prod="{{ produto.nome }}"
+                                    {% endfor %}
+                                    {% for servico in agenda.servicos.all %}
+                                    data-serv="{{ servico.nome }}"
+                                    {% endfor %}
                             >
                                 <i class="fa fa-user"></i>
                             </button>
                             {#                            <a  type="button" rel="tooltip" title="Detalhes" class="btn btn-info btn-link btn-sm">#}
                             {#                                <i class="fa fa-user"></i>#}
                             {#                            </a>#}
-                            <a href="edit/{{ agenda.id }}" type="button" rel="tooltip" title="Editar" class="btn btn-success btn-link btn-sm">
-                                <i class="fa fa-edit"></i>
-                            </a>
+                            <button type="button"
+                                    rel="tooltip"
+                                    class="btn btn-success btn-sm"
+                                    data-toggle="modal"
+                                    data-target="#editModal"
+                                    data-pk="{{ agenda.id }}"
+                                    data-name="{{ agenda.data }}">
+                            <i class="fa fa-edit"></i>
+                            </button>
+{#                            <a href="edit/{{ agenda.id }}" type="button" rel="tooltip" title="Editar" class="btn btn-success btn-link btn-sm">#}
+{#                                <i class="fa fa-edit"></i>#}
+{#                            </a>#}
                             <button type="button"
                                     rel="tooltip"
                                     class="btn btn-danger btn-sm"
                                     data-toggle="modal"
                                     data-target="#deleteModal"
                                     data-pk="{{ agenda.id }}"
-                                    data-name="{{ agenda.nome }}">
+                                    data-name="{{ agenda.data }}">
                                 <i class="fa fa-times"></i>
                             </button>
                             {#                            <a href="deletar/{{ agenda.id }}" type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-link btn-sm">#}
@@ -72,6 +91,29 @@
             {% endfor %}
             </tbody>
         </table>
+    </div>
+    {#    div para editar#}
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" id="formEdit">{% csrf_token %}
+                        <p>Deseja editar o agendamento?</p>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button onclick="$('#formEdit').submit()" type="button" class="btn btn-success">Editar</button>
+                </div>
+            </div>
+        </div>
     </div>
     {#    div para excluir#}
     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
@@ -143,6 +185,17 @@
 
 {% block javascripts %}
     {{ block.super }}
+    <script>
+        $('#editModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var pk = button.data('pk');
+            var name = button.data('name');
+            var modal = $(this);
+
+            $('#editModalLabel').html(name);
+            $('#formEdit').attr("action", "/agenda/edit/" + pk);
+        })
+    </script>
     <script>
         $('#deleteModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);

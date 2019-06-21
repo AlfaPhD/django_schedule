@@ -5,24 +5,43 @@
         <h3 align="center"> Cadastrar Agendamento</h3>
         <div class="form-group">
             <label>Cliente </label>
-            <input type="text" name="cliente" value="{{ user.cliente.nome }}" placeholder="cliente" class="form-control" readonly />
-            {#            <select name="cliente" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Cliente">#}
-            {#                <option selected="selected" value="{{ user.cliente.id }}">{{ user.cliente.nome }}</option>#}
-            {#            </select>#}
+            <select name="cliente" class="form-control" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Cliente">
+                <option selected="selected" value="{{ user.cliente.id }}">{{ user.cliente.nome }}</option>
+            </select>
+            </br>
             </br>
             <label>Data Inicio </label>
-            <input type="date" name="data" placeholder="data" class="form-control" required />
+            <input type="date" name="data" placeholder="data" class="form-control" required/>
             </br>
             <label>Hora </label>
-            <input type="time" name="hora_inicio" placeholder="Hora" class="form-control timepicker-picker" required/>
+            <select name="hora_inicio" class="form-control select" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Horario" required>
+                <option value="09:00">09:00</option>
+                <option value="09:30">09:30</option>
+                <option value="10:00">10:00</option>
+                <option value="10:30">10:30</option>
+                <option value="11:00">11:00</option>
+                <option value="11:30">11:30</option>
+                <option value="12:00">12:00</option>
+                <option value="12:30">12:30</option>
+                <option value="13:00">13:00</option>
+                <option value="13:30">13:30</option>
+                <option value="14:00">14:00</option>
+                <option value="14:30">14:30</option>
+                <option value="15:00">15:00</option>
+                <option value="15:30">15:30</option>
+                <option value="16:00">16:00</option>
+                <option value="16:30">16:30</option>
+                <option value="17:00">17:00</option>
+                <option value="17:30">17:30</option>
+                <option value="18:00">18:00</option>
+            </select>
             </br>
             <label>Serviços </label>
-            <select multiple name="servico" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Serviço" required>
+            <select multiple name="servico" class="form-control selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Serviço" required>
                 {% for servico in servicos %}
                     <option value="{{ servico.id }}">{{ servico.nome}}</option>
                 {% endfor %}
             </select>
-            </br>
             </br>
             <label>Produto </label>
             <select name="produto" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Produto">
@@ -30,7 +49,6 @@
                     <option value="{{ produto.id }}">{{ produto.nome}}</option>
                 {% endfor %}
             </select>
-            </br>
             </br>
             <label>Cabeleireiro </label>
             <select name="cabeleireiro" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Cabeleireiro" required>

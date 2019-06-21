@@ -8,7 +8,28 @@
             <input type="text" name="data" value= "{{ agendamentos.data }}" placeholder="data" class="form-control" required />
             </br>
             <label>Hora </label>
-            <input type="time" name="hora" value="{{ agendamentos.hora_inicio }}" placeholder="hora" class="form-control" required/></br>
+            <select name="hora_inicio" class="form-control" data-title="Selecione um Horario" required>
+                <option selected="selected" selected disabled value="{{ agendamentos.hora_inicio }}">{{ agendamentos.hora_inicio }}</option>
+                <option value="09:00">09:00</option>
+                <option value="09:30">09:30</option>
+                <option value="10:00">10:00</option>
+                <option value="10:30">10:30</option>
+                <option value="11:00">11:00</option>
+                <option value="11:30">11:30</option>
+                <option value="12:00">12:00</option>
+                <option value="12:30">12:30</option>
+                <option value="13:00">13:00</option>
+                <option value="13:30">13:30</option>
+                <option value="14:00">14:00</option>
+                <option value="14:30">14:30</option>
+                <option value="15:00">15:00</option>
+                <option value="15:30">15:30</option>
+                <option value="16:00">16:00</option>
+                <option value="16:30">16:30</option>
+                <option value="17:00">17:00</option>
+                <option value="17:30">17:30</option>
+                <option value="18:00">18:00</option>
+            </select>
             <label>Clientes </label>
             <select name="cliente" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Cliente">
                 {% for cliente in clientes %}
@@ -22,12 +43,32 @@
             </br>
             </br>
             <label>Serviços </label>
-            <select name="servico" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Serviço">
+            <select multiple name="servico" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Serviço">
                 {% for servico in servicos %}
-                    {% if servico.id == agendamentos.servicos.id %}
-                        <option value="{{ agendamentos.servicos.id }}" selected>{{ agendamentos.servicos.nome }}</option>
+                    {% for servicoAgenda in agendamentos.servicos.all %}
+                        {% if servico.id == servicoAgenda.id %}
+                            <option value="{{ servicoAgenda.id }}" selected>{{ servicoAgenda.nome }}</option>
+                        {% else %}
+                            <option value="{{ servico.id }}">{{ servico.nome }}</option>
+                        {% endif%}
+                    {% endfor %}
+                {% endfor %}
+            </select>
+            </br>
+            </br>
+            <label>Produtos </label>
+            <select multiple name="produto" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Produto">
+                {% for produto in produtos %}
+                    {% if agendamentos.produtos.all %}
+                        {% for produtoAgenda in agendamentos.produtos.all %}
+                            {% if produto.id == produtoAgenda.id %}
+                                <option value="{{ produtoAgenda.id }}" selected>{{ produtoAgenda.nome }}</option>
+                            {% else %}
+                                <option value="{{ produto.id }}">{{ produto.nome }}</option>
+                            {% endif%}
+                        {% endfor %}
                     {% else %}
-                        <option value="{{ servico.id }}">{{ servico.nome }}</option>
+                        <option value="{{ produto.id }}">{{ produto.nome }}</option>
                     {% endif%}
                 {% endfor %}
             </select>
@@ -49,4 +90,18 @@
             <a class="btn btn-default" href="{% url 'website:indexAgendamento' %}">Voltar</a>
         </div>
     </form>
+{% endblock %}
+
+{% block javascripts %}
+    {{ block.super }}
+    <!--  Plugin for Date Time Picker and Full Calendar Plugin-->
+    <script src="../../assets/js/plugins/moment.min.js"></script>
+    <!--  DatetimePicker   -->
+    <script src="../../assets/js/plugins/bootstrap-datetimepicker.js"></script>
+    <!--  Bootstrap Select  -->
+    <script src="../../assets/js/plugins/bootstrap-selectpicker.js" type="text/javascript"></script>
+    <script>
+
+        $(document).ready(function() {});
+    </script>
 {% endblock %}
