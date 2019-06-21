@@ -63,7 +63,7 @@ class estoque(models.Model):
 class agendamento(models.Model):
 
     status = models.CharField("status", max_length=30)
-    data = models.DateField("data")
+    data = models.DateField("data", help_text="Please use the following format: <em>YYYY-MM-DD</em>.")
     hora_inicio = models.TimeField("hora_inicio")
     hora_fim = models.TimeField("hora_fim")
     clientes = models.ForeignKey(
@@ -73,7 +73,9 @@ class agendamento(models.Model):
     )
     produtos = models.ManyToManyField(
         produto,
-        related_name='produtos'
+        related_name='produtos',
+        null=True,
+        blank=True
     )
     cabeleireiros = models.ForeignKey(
         cabeleireiro,

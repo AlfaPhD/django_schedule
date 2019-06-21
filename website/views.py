@@ -250,9 +250,8 @@ def indexAgendamento(request):
     context = {'agendamentos' : agendamentos, 'clientes' : clientes,'servicos' : servicos,'cabeleireiros' : cabeleireiros,'produtos' : produtos}
     return render(request, 'website/agenda/index.html',context)
 
-
 @login_required
-def createAgendamento(request):
+def createCalendar(request):
 
     agendamentos = agendamento()
     if request.method == 'POST':
@@ -268,6 +267,30 @@ def createAgendamento(request):
         agendamentos.save()
         agendamentos.servicos.add(servicos)
         agendamentos.produtos.add(produtos)
+        return HttpResponseRedirect('/dashboard')
+
+
+@login_required
+def createAgendamento(request):
+
+    agendamentos = agendamento()
+    if request.method == 'POST':
+
+        servicos = servico.objects.get(id=int(request.POST['servico']))
+        clientes = cliente.objects.get(id=int(request.POST['cliente']))
+        cabeleireiros = cabeleireiro.objects.get(id=int(request.POST['cabeleireiro']))
+        agendamentos.data = request.POST['data']
+        agendamentos.hora_inicio = request.POST['hora_inicio']
+        agendamentos.hora_fim = "10:30"
+        agendamentos.clientes = clientes
+        agendamentos.cabeleireiros = cabeleireiros
+        agendamentos.save()
+        agendamentos.servicos.add(servicos)
+        if agendamentos.produtos != None:
+            produtos = produto.objects.get(id=int(request.POST['produto']))
+            agendamentos.produtos.add(produtos)
+        else:
+            return HttpResponseRedirect('/agenda')
         return HttpResponseRedirect('/agenda')
     else:
         clientes = cliente.objects.all()
@@ -307,13 +330,16 @@ def updateAgendamento(request, id):
     agendamentos = agendamento.objects.get(id=id)
     servicos = servico.objects.get(id=int(request.POST['servico']))
     clientes = cliente.objects.get(id=int(request.POST['cliente']))
+    produtos = produto.objects.get(id=int(request.POST['produto']))
     cabeleireiros = cabeleireiro.objects.get(id=int(request.POST['cabeleireiro']))
     agendamentos.data_inicio= request.POST['data']
     agendamentos.clientes = clientes
     agendamentos.cabeleireiros = cabeleireiros
-    agendamentos.servicos = servicos
+    agendamentos.servicos.clear()
+    agendamentos.produtos.clear()
     agendamentos.save()
-
+    agendamentos.servicos.add(servicos)
+    agendamentos.produtos.add(produtos)
     return redirect('/agenda')
 
 
@@ -386,8 +412,9 @@ def get_data(request):
         d = agend.data
         hi = agend.hora_inicio
         hf = agend.hora_fim
+        nick = agend.clientes.nome
         data.append(
-            dict(title='joao',
+            dict(title=f'{hi:%H:%M} - {hf:%H:%M}' + '\n' + nick,
                  start=f'{d:%Y-%m-%d} {hi:%H:%M}',
                  end=f'{d:%Y-%m-%d} {hf:%H:%M}',
                  allDay=False,
