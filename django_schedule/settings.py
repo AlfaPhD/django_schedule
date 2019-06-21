@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'django_schedule.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join( 'db_for_heroku.sqlite3'),
+        'NAME': os.path.join( 'db-heroku.sqlite3'),
     }
 }
 
