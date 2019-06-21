@@ -1,11 +1,11 @@
 {% extends 'website/base.html' %}
 {% block container %}
-<a class="btn btn-success" href="create"> <span class="glyphicon glyphicon-add"></span>Novo cabeleireiro</a>
-<br/>
-<br/>
-<div class="table-responsive">
-    <table class="table">
-        <thead>
+    <a class="btn btn-success" href="create"> <span class="glyphicon glyphicon-add"></span>Novo cabeleireiro</a>
+    <br/>
+    <br/>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
             <tr>
                 <th class="text-center">#</th>
                 <th>Nome </th>
@@ -14,30 +14,173 @@
                 <th>Celular</th>
                 <th>Opções</th>
             </tr>
-        </thead>
-        <tbody>
-              {% for cabeleireiro in cabeleireiros %}
-            <tr>
-                <td>{{ cabeleireiro.id }}</td>
-                <td>{{ cabeleireiro.nome }}</td>
-                <td>{{ cabeleireiro.senha }}</td>
-                <td>{{ cabeleireiro.email }}</td>
-                <td>{{ cabeleireiro.celular }}</td>
-                <td class="td-actions" >
-                    <a  type="button" rel="tooltip" title="Detalhes" class="btn btn-info btn-link btn-sm">
-                        <i class="fa fa-user"></i>
-                    </a>
-                    <a href="edit/{{ cabeleireiro.id }}" type="button" rel="tooltip" title="Editar" class="btn btn-success btn-link btn-sm">
-                        <i class="fa fa-edit"></i>
-                    </a>
-                    <a href="deletar/{{ cabeleireiro.id }}" type="button" rel="tooltip" title="Remover" class="btn btn-danger btn-link btn-sm">
-                        <i class="fa fa-times"></i>
-                    </a>
-                </td>
-            </tr>
+            </thead>
+            <tbody>
+            {% for cabeleireiro in cabeleireiros %}
+                <tr>
+                    <td>{{ cabeleireiro.id }}</td>
+                    <td>{{ cabeleireiro.nome }}</td>
+                    <td>{{ cabeleireiro.senha }}</td>
+                    <td>{{ cabeleireiro.email }}</td>
+                    <td>{{ cabeleireiro.celular }}</td>
+                    <td class="td-actions" >
+                        <button type="button"
+                                rel="tooltip"
+                                class="btn btn-info btn-sm"
+                                data-toggle="modal"
+                                data-target="#detalheModal"
+                                data-pk="{{ cabeleireiro.id }}"
+                                data-name="{{ cabeleireiro.nome }}"
+                                data-nick="{{ cabeleireiro.apelido }}"
+                                data-email="{{ cabeleireiro.email }}"
+                                data-tel="{{ cabeleireiro.celular }}">
+                            <i class="fa fa-user"></i>
+                        </button>
+                        <button type="button"
+                                rel="tooltip"
+                                class="btn btn-success btn-sm"
+                                data-toggle="modal"
+                                data-target="#editModal"
+                                data-pk="{{ cabeleireiro.id }}"
+                                data-name="{{ cabeleireiro.nome }}">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button type="button"
+                                rel="tooltip"
+                                class="btn btn-danger btn-sm"
+                                data-toggle="modal"
+                                data-target="#deleteModal"
+                                data-pk="{{ cabeleireiro.pk }}"
+                                data-name="{{ cabeleireiro.nome }}">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </td>
+                </tr>
             {% endfor %}
-        </tbody>
-    </table>
-</div>
+            </tbody>
+        </table>
+    </div>
+    {#    div para editar#}
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" id="formEdit">{% csrf_token %}
+                        <p>Deseja editar o cabeleireiro?</p>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button onclick="$('#formEdit').submit()" type="button" class="btn btn-success">Editar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#    div para excluir#}
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" id="formDelete">{% csrf_token %}
+                        <p>Deseja excluir o cabeleireiro?</p>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button onclick="$('#formDelete').submit()" type="button" class="btn btn-danger">Excluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#    div detalhes#}
+    <div class="modal fade" id="detalheModal" tabindex="-1" role="dialog" aria-labelledby="detalheModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"> Detalhes do Cabeleireiro </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {% csrf_token %}
+                    <h3 align="center" id="detalheModalLabel"></h3>
 
+                    <form method="GET" id="formDetalhe">
+
+                        <div class="form-group">
+                            <label>Nick: </label>
+                            <label id="detalheModalLabelNick"></label>
+                            </br>
+                            <label>E-mail: </label>
+                            <label id="detalheModalLabelEmail"></label>
+                            </br>
+                            <label>Telefone: </label>
+                            <label id="detalheModalLabelTel"></label>
+                            </br>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button  type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ block.super }}
+    <script>
+        $('#editModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var pk = button.data('pk');
+            var name = button.data('name');
+            var modal = $(this);
+
+            $('#editModalLabel').html(name);
+            $('#formEdit').attr("action", "/cabeleireiro/edit/" + pk);
+        })
+    </script>
+    <script>
+        $('#deleteModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var pk = button.data('pk');
+            var name = button.data('name');
+            var modal = $(this);
+
+            $('#deleteModalLabel').html(name);
+            $('#formDelete').attr("action", "/cabeleireiro/deletar/" + pk);
+        })
+    </script>
+    <script>
+        $('#detalheModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var name = button.data('name');
+            var nick = button.data('nick');
+            var email = button.data('email');
+            var tel = button.data('tel');
+            var modal = $(this);
+
+            $('#detalheModalLabel').html(name);
+            $('#detalheModalLabelNick').html(nick);
+            $('#detalheModalLabelEmail').html(email);
+            $('#detalheModalLabelTel').html(tel);
+        })
+    </script>
 {% endblock %}

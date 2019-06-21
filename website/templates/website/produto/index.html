@@ -38,9 +38,15 @@
                             <i class="fa fa-user"></i>
                         </button>
                         {% if user.cabeleireiro and user.cabeleireiro.ativo %}
-                            <a href="edit/{{ produto.id }}" type="submit" rel="tooltip" title="Editar" class="btn btn-success btn-link btn-sm">
+                            <button type="button"
+                                    rel="tooltip"
+                                    class="btn btn-success btn-sm"
+                                    data-toggle="modal"
+                                    data-target="#editModal"
+                                    data-pk="{{ produto.id }}"
+                                    data-name="{{ produto.nome }}">
                                 <i class="fa fa-edit"></i>
-                            </a>
+                            </button>
                             <button type="button"
                                     rel="tooltip"
                                     class="btn btn-danger btn-sm"
@@ -60,6 +66,29 @@
             {% endfor %}
             </tbody>
         </table>
+    </div>
+    {#    div para editar#}
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" id="formEdit">{% csrf_token %}
+                        <p>Deseja editar o produto?</p>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button onclick="$('#formEdit').submit()" type="button" class="btn btn-success">Editar</button>
+                </div>
+            </div>
+        </div>
     </div>
     {#    div para excluir#}
     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
@@ -125,6 +154,17 @@
 {% endblock %}
 {% block javascripts %}
     {{ block.super }}
+    <script>
+        $('#editModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var pk = button.data('pk');
+            var name = button.data('name');
+            var modal = $(this);
+
+            $('#editModalLabel').html(name);
+            $('#formEdit').attr("action", "/produto/edit/" + pk);
+        })
+    </script>
     <script>
         $('#deleteModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
