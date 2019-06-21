@@ -20,138 +20,175 @@
 
 {% block javascripts %}
     {{ block.super }}
-<link href='../static/website/assets/js/teste/fullcalendar.min.css' rel='stylesheet' />
-<link href='../static/website/assets/js/teste/fullcalendar.print.min.css' rel='stylesheet' media='print' />
-<script src='../static/website/assets/js/teste/moment.min.js'></script>
-<script src='../static/website/assets/js/teste/jquery.min.js'></script>
-<script src='../static/website/assets/js/teste/fullcalendar.min.js'></script>
-<script src='../static/website/assets/js/teste/locale/pt-br.js'></script>
+    <!--  Plugin for Date Time Picker and Full Calendar Plugin-->
+    <script src="../static/website/assets/js/plugins/moment.min.js"></script>
+    <!--  DatetimePicker   -->
+    <script src="../static/website/assets/js/plugins/bootstrap-datetimepicker.js"></script>
+    <!--  Bootstrap Select  -->
+    <script src="../static/website/assets/js/plugins/bootstrap-selectpicker.js" type="text/javascript"></script>
+    <link href='../static/website/assets/js/teste/fullcalendar.min.css' rel='stylesheet' />
+    <link href='../static/website/assets/js/teste/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+    <script src='../static/website/assets/js/teste/moment.min.js'></script>
+    <script src='../static/website/assets/js/teste/jquery.min.js'></script>
+    <script src='../static/website/assets/js/teste/fullcalendar.min.js'></script>
+    <script src='../static/website/assets/js/teste/locale/pt-br.js'></script>
 
     <script src='../static/website/assets/locale/pt-br.js'></script>
     <script>
-    $(document).ready(function() {
-        function initFullCalendar() {
-            $calendar = $('#fullCalendar');
-
-            today = new Date();
-            y = today.getFullYear();
-            m = today.getMonth();
-            d = today.getDate();
-
-            $calendar.fullCalendar({
-                monthNames: [
-                    'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Março', 'Junho', 'Julho',
-                    'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
-                ],
-                header: {
-                    left: 'title',
-                    center: 'month,agendaWeek,agendaDay',
-                    right: 'prev,next,today'
-                },
-                defaultDate: today,
-                selectable: true,
-                selectHelper: true,
-                // titleFormat: {
-                //     month: 'MMMM YYYY', // September 2015
-                //     week: "MMMM D YYYY", // September 2015
-                //     day: 'D MMM, YYYY'  // Tuesday, Sep 8, 2015
-                // },
-                views: {
-                    // week:{ titleFormat: "DD MMMM YYYY" },
-                    monthmonth: {
-                        titleFormat: 'MMMM YYYY'
-                    }, // September 2015
-                    week: {
-                        titleFormat: "MMMM D YYYY"
-                    }, // September 2015
-                    day: {
-                        titleFormat: 'D MMM, YYYY'
-                    }, // Tuesday, Sep 8, 2015
-                locale: 'pt',
-                },
-                select: function (start, end) {
-
-                    // on select we show the Sweet Alert modal with an input
-                    swal({
-                        title: 'Agendamento',
-                        html:
-                            '<form method="POST" action="agenda/create">' +
-                            '{% csrf_token %}'+
-                            '<div>' +
-                            '<input type="date" name="data"  placeholder="data" class="form-control" required />' +
-                            '<br><input type="time" name="hora_inicio"  placeholder="Hora" class="form-control" required />' +
-                            '<br><select class="form-control" name="cabeleireiro" required>\n' +
-                            '<option value="" selected disabled>Selecione um Cabeleireiro</option>' +
-                            '{% for cabele in cabeleireiros %}'+
-                                '        <option value="{{cabele.id}}">{{cabele.nome}}</option>\n' +
-                            '{% endfor %}'+
-                            '    </select>' +
-                            '<br><select class="form-control" name="cliente" readonly>\n' +
-                            '<option selected="selected" value="{{user.cliente.id}}">{{user.cliente.nome}}</option>' +
-                            '</select>' +
-                            '<br><select class="form-control" name="produto">\n' +
-                            '<option value="" selected disabled>Selecione um Produto</option>' +
-                            '{% for prod in produtos %}'+
-                                '        <option value="{{prod.id}}">{{prod.nome}}</option>\n' +
-                            '{% endfor %}'+
-                            '    </select>' +
-                            '<br><select multiple class="form-control" name="servico" required>\n' +
-                            '<option value="" selected disabled>Selecione um Serviço</option>' +
-                            '{% for serv in servicos %}'+
-                                '        <option value="{{serv.id}}">{{serv.nome}}</option>\n' +
-                            '{% endfor %}'+
-                            '    </select>' +
-                             '</div>' +
-                            '<br><div>' +
-                            ' <br><button class="btn btn-success" type="subimit">'+
-                            '</span>Cadastrar Agendamento'+
-                            ' </button>'+
-                            '</div>' +
-                            '</form>',
-
-                        showCancelButton: true,
-                        closeOnConfirm: true
-                    }, function () {
-
-                        var eventData;
-                        event_title = $('#start').val();
-
-                        if (event_title) {
-                            eventData = {
-                                title: event_title,
-                                start: start,
-                                end: end
-                            };
-                            $calendar.fullCalendar('renderEvent', eventData, true); // stick? = true
-                        }
-
-                        $calendar.fullCalendar('unselect');
-
-                    });
-                },
-                editable: true,
-                eventLimit: true, // allow "more" link when too many events
-
-
-                // color classes: [ event-blue | event-azure | event-green | event-orange | event-red ]
-                eventSources: [
-                    {
-                        url: '{% url 'website:get-data' %}',
-                        type: 'GET',
-                        data: {
-                            custom_param1: 'something',
-                            custom_param2: 'somethingelse'
-                        },
-                        error: function () {
-                            alert('there was an error while fetching events!');
-                        }
-                    }
-                ]
-            });
-        };
         $(document).ready(function() {
-            initFullCalendar();
+            function initFullCalendar() {
+                $calendar = $('#fullCalendar');
+
+
+
+                today = new Date();
+                y = today.getFullYear();
+                m = today.getMonth();
+                d = today.getDate();
+
+                $calendar.fullCalendar({
+                    monthNames: [
+                        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Março', 'Junho', 'Julho',
+                        'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+                    ],
+                    header: {
+                        left: 'title',
+                        center: 'month,agendaWeek,agendaDay',
+                        right: 'prev,next,today'
+                    },
+                    defaultDate: today,
+                    selectable: true,
+                    selectHelper: true,
+                    // titleFormat: {
+                    //     month: 'MMMM YYYY', // September 2015
+                    //     week: "MMMM D YYYY", // September 2015
+                    //     day: 'D MMM, YYYY'  // Tuesday, Sep 8, 2015
+                    // },
+                    views: {
+                        // week:{ titleFormat: "DD MMMM YYYY" },
+                        monthmonth: {
+                            titleFormat: 'MMMM YYYY'
+                        }, // September 2015
+                        week: {
+                            titleFormat: "MMMM D YYYY"
+                        }, // September 2015
+                        day: {
+                            titleFormat: 'D MMM, YYYY'
+                        }, // Tuesday, Sep 8, 2015
+                        locale: 'pt-br',
+                    },
+                    select: function (start, end) {
+
+                        // on select we show the Sweet Alert modal with an input
+                        var data = start.format();
+
+                        swal({
+
+                            title: 'Agendamento',
+                            html:
+                                '<form method="POST" action="agenda/calendar">' +
+                                '{% csrf_token %}'+
+                                '<div class="form-group">' +
+                                '<input type="date" id="dtfield" name="data" value="'+data+'" placeholder="data" class="form-control" required />' +
+                                '<br><select name="hora_inicio" class="form-control select" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Horario" required>'+
+                                '<option value="09:00">09:00</option>\n'+
+                                '<option value="09:30">09:30</option>\n'+
+                                '<option value="10:00">10:00</option>\n'+
+                                '<option value="10:30">10:30</option>\n'+
+                                '<option value="11:00">11:00</option>\n'+
+                                '<option value="11:30">11:30</option>\n'+
+                                '<option value="12:00">12:00</option>\n'+
+                                '<option value="12:30">12:30</option>\n'+
+                                '<option value="13:00">13:00</option>\n'+
+                                '<option value="13:30">13:30</option>\n'+
+                                '<option value="14:00">14:00</option>\n'+
+                                '<option value="14:30">14:30</option>\n'+
+                                '<option value="15:00">15:00</option>\n'+
+                                '<option value="15:30">15:30</option>\n'+
+                                '<option value="16:00">16:00</option>\n'+
+                                '<option value="16:30">16:30</option>\n'+
+                                '<option value="17:00">17:00</option>\n'+
+                                '<option value="17:30">17:30</option>\n'+
+                                '<option value="18:00">18:00</option>\n '+
+                                '</select>'+
+                                '<br><select class="form-control" name="cabeleireiro" required>\n' +
+                                '<option value="" selected disabled>Selecione um Cabeleireiro</option>' +
+                                '{% for cabele in cabeleireiros %}'+
+                                    '<option value="{{cabele.id}}">{{cabele.nome}}</option>\n' +
+                                    '{% endfor %}'+
+                                '</select>' +
+                                '<input id="cliente" type="hidden" name="cliente"  value="{{user.cliente.nome}}" required />' +
+                                '<br><select class="form-control" name="cliente" readonly>\n' +
+                                '<option selected="selected" value="{{user.cliente.id}}">{{user.cliente.nome}}</option>' +
+                                '</select>' +
+                                '<br><select class="form-control" name="produto">\n' +
+                                '<option value="" selected disabled>Selecione um Produto</option>' +
+                                '{% for prod in produtos %}'+
+                                    '<option value="{{prod.id}}">{{prod.nome}}</option>\n' +
+                                    '{% endfor %}'+
+                                '</select>' +
+                                '<br><select class="form-control" name="servico" required>\n' +
+                                '<option value="" selected disabled>Selecione um Serviço</option>' +
+                                '{% for serv in servicos %}'+
+                                    '<option value="{{serv.id}}">{{serv.nome}}</option>\n' +
+                                    '{% endfor %}'+
+                                '</select>' +
+                                '</div>' +
+                                '<br>'+
+                                ' <br><button id="btconfirm" class="btn btn-success" type="submit">'+
+                                '</span>Cadastrar Agendamento'+
+                                ' </button>'+
+                                '<button class="btn btn-danger">'+
+                                '</span>Cancelar'+
+                                ' </button>'+
+                                '</form>',
+
+                            showCancelButton: false,
+                            showConfirmButton: false,
+                            closeOnConfirm: false
+                        }, function () {
+
+                            $('#dtfield').val(start.format());
+                            {#var eventData;#}
+                            {##}
+                            {#event_title = $('#cliente').val();#}
+                            {#if (event_title) {#}
+                            {#    eventData = {#}
+                            {#        title: event_title,#}
+                            {#        start: start,#}
+                            {#        end: end#}
+                            {#    };#}
+                            {#    alert(eventData)#}
+                            {#    $calendar.fullCalendar('renderEvent', eventData, true); // stick? = true#}
+
+                            $calendar.fullCalendar('unselect');
+
+                        });
+                    },
+                    editable: true,
+                    displayEventTime : false,
+                    eventLimit: true, // allow "more" link when too many events
+
+
+                    // color classes: [ event-blue | event-azure | event-green | event-orange | event-red ]
+                    eventSources: [
+                        {
+                            url: '{% url 'website:get-data' %}',
+                            type: 'GET',
+                            data: {
+                                custom_param1: 'something',
+                                custom_param2: 'somethingelse'
+                            },
+                            error: function () {
+                                alert('there was an error while fetching events!');
+                            }
+                        }
+                    ]
+                });
+            };
+            $(document).ready(function() {
+                initFullCalendar();
+            });
         });
-  });
     </script>
 {% endblock %}
