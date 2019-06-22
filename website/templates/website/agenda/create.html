@@ -4,16 +4,16 @@
         {% csrf_token %}
         <h3 align="center"> Cadastrar Agendamento</h3>
         <div class="form-group">
-            <label>Cliente </label>
-            <select name="cliente" name="cliente" class="form-control" readonly="readonly" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Cliente">
+            <label for="cliente" >Cliente </label>
+            <select id="cliente" name="cliente" name="cliente" class="form-control" readonly="readonly" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Cliente">
                 <option selected="selected"  value="{{ user.cliente.id }}">{{ user.cliente.nome }}</option>
             </select>
             </br>
-            <label>Data Inicio </label>
+            <label for="date" >Data Inicio </label>
             <input type="date" id="date" onload="getDate()" name="data" placeholder="data" class="form-control" required/>
             </br>
-            <label>Hora </label>
-            <select name="hora_inicio" class="form-control select" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Horario" required>
+            <label for="hora_inicio">Hora </label>
+            <select name="hora_inicio" id="hora_inicio" class="form-control select" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Horario" required>
                 <option value="09:00">09:00</option>
                 <option value="09:30">09:30</option>
                 <option value="10:00">10:00</option>
