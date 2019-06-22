@@ -36,13 +36,16 @@ def register_page(request):
             print(">>>>>>>>>>>>>", form.cleaned_data)
             username = form.cleaned_data.get("username")
             email = form.cleaned_data.get("email")
-            #celular = form.cleaned_data.get("celular")
             password = form.cleaned_data.get("password")
             new_user = User.objects.create_user(username, email, password)
+            nome = request.POST['nome']
+            celular = request.POST['celular']
             cli = cliente(
                 user=new_user,
                 apelido=username,
-                #celular=celular,
+                nome=nome,
+                celular=celular,
+                senha=password,
                 email=email
             )
             cli.save()
