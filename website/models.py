@@ -8,6 +8,7 @@ class cabeleireiro(models.Model):
         verbose_name="Usuário", related_name='cabeleireiro',
         to=User, on_delete=models.PROTECT
     )
+    apelido = models.CharField("apelido", max_length=100)
     email = models.EmailField("email", max_length=100)
     nome = models.CharField("nome", max_length=30)
     senha = models.CharField("senha", max_length=200)

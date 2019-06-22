@@ -70,11 +70,17 @@ def PerfilCliente(request, id):
 @login_required
 def createCliente(request):
     clientes = cliente()
+    User = get_user_model()
     if request.method == 'POST':
-        clientes.apelido= request.POST['apelido']
-        clientes.senha = request.POST['senha']
+        username = request.POST['username']
+        email = request.POST['email']
+        password = request.POST['password']
+        new_user = User.objects.create_user(username, email, password)
+        clientes.user = new_user
+        clientes.email = email
+        clientes.senha = password
+        clientes.apelido = username
         clientes.nome = request.POST['nome']
-        clientes.email = request.POST['email']
         clientes.celular =  request.POST['celular']
         clientes.save()
         return HttpResponseRedirect('/cliente')
@@ -89,6 +95,7 @@ def editCliente(request, id):
     return render(request, 'website/cliente/edit.html', context)
 
 def updateCliente(request, id):
+    user = request.user
     clientes = cliente.objects.get(id=id)
 
     clientes.nome = request.POST['nome']
@@ -97,7 +104,10 @@ def updateCliente(request, id):
     clientes.senha = request.POST['senha']
     clientes.apelido = request.POST['apelido']
     clientes.save()
-    return redirect('/cliente')
+    if clientes.id == user.cliente.id:
+        return redirect('/dashboard')
+    else:
+        return redirect('/cliente')
 
 
 @login_required
@@ -108,26 +118,33 @@ def deleteCliente(request, id):
 
 ## cabeleireiros
 
-
 @login_required
 def indexcabeleireiro(request):
-    user = request.user
-    try:
-        user.cabeleireiro
-    except cabeleireiro.DoesNotExist:
-        return HttpResponseForbidden()
-    cabeleleiros = cabeleireiro.objects.all()
-    context = {'cabeleleiros': cabeleleiros}
+    # user = request.user
+    # try:
+    #     user.cabeleireiro
+    # except cabeleireiro.DoesNotExist:
+    #     return HttpResponseForbidden()
+    cabeleireiros = cabeleireiro.objects.all()
+    context = {'cabeleireiros': cabeleireiros}
     return render(request, 'website/cabeleireiro/index.html', context)
 
 
 @login_required
 def createcabeleireiro(request):
     cabeleireiros = cabeleireiro()
+    User = get_user_model()
     if request.method == 'POST':
-        cabeleireiros.senha = request.POST['senha']
+        username = request.POST['username']
+        email = request.POST['email']
+        password = request.POST['password']
+        new_user = User.objects.create_user(username, email, password)
+        cabeleireiros.user = new_user
+        cabeleireiros.ativo = True
+        cabeleireiros.apelido = username
+        cabeleireiros.senha = password
         cabeleireiros.nome = request.POST['nome']
-        cabeleireiros.email = request.POST['email']
+        cabeleireiros.email = email
         cabeleireiros.celular =  request.POST['celular']
         cabeleireiros.save()
         return HttpResponseRedirect('/cabeleireiro')
@@ -207,7 +224,7 @@ def createServico(request):
     if request.method == 'POST':
         servicos.nome= request.POST['nome']
         valor = request.POST['valor']
-        servicos.valor = Decimal(valor.replace(',','.'))
+        servicos.valor = Decimal(valor.replace(',',''))
         servicos.save()
         return HttpResponseRedirect('/servico')
     else:
@@ -385,6 +402,7 @@ class CreateUserForm(FormView):
     template_name = "registration/register.html"
     success_url = reverse_lazy('website:login')
 
+
 class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'website/calendar.html'
     extra_context = {
@@ -397,17 +415,17 @@ class DashboardView(LoginRequiredMixin, TemplateView):
 class HomeView(TemplateView):
     template_name = 'website/home.html'
 
+
 class ProdutoCreateView(CreateView):
     model = produto
     template_name = 'website/produto/create.html'
     fields = ['nome', 'quantidade', 'validade_produto', 'valor_unitario', 'especificacao']
     success_url = reverse_lazy('website:indexProduto')
 
+
 class ProdutoListView(ListView):
     model = produto
     template_name = 'website/produto/index.html'
-
-
 
 
 def get_data(request):

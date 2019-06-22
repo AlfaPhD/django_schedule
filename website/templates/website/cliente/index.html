@@ -19,49 +19,47 @@
             </thead>
             <tbody>
             {% for cliente in clientes %}
-                {% if cliente.id == user.cliente.id %}
-                    <tr>
-                        <td>{{ cliente.id }}</td>
-                        <td>{{ cliente.nome }}</td>
-                        <td>{{ cliente.apelido }}</td>
-                        <td>{{ cliente.email }}</td>
-                        <td>{{ cliente.celular }}</td>
-                        <td class="td-actions" >
-                            <button type="button"
-                                    rel="tooltip"
-                                    class="btn btn-info btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#detalheModal"
-                                    data-pk="{{ cliente.id }}"
-                                    data-name="{{ cliente.nome }}"
-                                    data-nick="{{ cliente.apelido }}"
-                                    data-email="{{ cliente.email }}"
-                                    data-tel="{{ cliente.celular }}">
-                                <i class="fa fa-user"></i>
-                            </button>
-                            <button type="button"
-                                    rel="tooltip"
-                                    class="btn btn-success btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#editModal"
-                                    data-pk="{{ cliente.id }}"
-                                    data-name="{{ cliente.nome }}">
+                <tr>
+                    <td>{{ cliente.id }}</td>
+                    <td>{{ cliente.nome }}</td>
+                    <td>{{ cliente.apelido }}</td>
+                    <td>{{ cliente.email }}</td>
+                    <td>{{ cliente.celular }}</td>
+                    <td class="td-actions" >
+                        <button type="button"
+                                rel="tooltip"
+                                class="btn btn-info btn-sm"
+                                data-toggle="modal"
+                                data-target="#detalheModal"
+                                data-pk="{{ cliente.id }}"
+                                data-name="{{ cliente.nome }}"
+                                data-nick="{{ cliente.apelido }}"
+                                data-email="{{ cliente.email }}"
+                                data-tel="{{ cliente.celular }}">
+                            <i class="fa fa-user"></i>
+                        </button>
+                        <button type="button"
+                                rel="tooltip"
+                                class="btn btn-success btn-sm"
+                                data-toggle="modal"
+                                data-target="#editModal"
+                                data-pk="{{ cliente.id }}"
+                                data-name="{{ cliente.nome }}">
                             <i class="fa fa-edit"></i>
+                        </button>
+                        {% if user.cabeleireiro and user.cabeleireiro.ativo %}
+                            <button type="button"
+                                    rel="tooltip"
+                                    class="btn btn-danger btn-sm"
+                                    data-toggle="modal"
+                                    data-target="#deleteModal"
+                                    data-pk="{{ cliente.pk }}"
+                                    data-name="{{ cliente.nome }}">
+                                <i class="fa fa-times"></i>
                             </button>
-                            {% if user.cabeleireiro and user.cabeleireiro.ativo %}
-                                <button type="button"
-                                        rel="tooltip"
-                                        class="btn btn-danger btn-sm"
-                                        data-toggle="modal"
-                                        data-target="#deleteModal"
-                                        data-pk="{{ cliente.pk }}"
-                                        data-name="{{ cliente.nome }}">
-                                    <i class="fa fa-times"></i>
-                                </button>
-                            {% endif %}
-                        </td>
-                    </tr>
-                {% endif %}
+                        {% endif %}
+                    </td>
+                </tr>
             {% endfor %}
             </tbody>
         </table>
