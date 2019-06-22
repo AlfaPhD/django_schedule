@@ -6,7 +6,7 @@ from django.http import JsonResponse
 from django.views.generic import TemplateView, CreateView, UpdateView, ListView, DeleteView, FormView
 from .models import cliente, cabeleireiro, servico, agendamento, produto
 from decimal import Decimal
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
@@ -272,18 +272,21 @@ def createCalendar(request):
 
     agendamentos = agendamento()
     if request.method == 'POST':
-
         servicos = servico.objects.get(id=int(request.POST['servico']))
         clientes = cliente.objects.get(id=int(request.POST['cliente']))
         cabeleireiros = cabeleireiro.objects.get(id=int(request.POST['cabeleireiro']))
         agendamentos.data = request.POST['data']
         agendamentos.hora_inicio = request.POST['hora_inicio']
-        agendamentos.hora_fim = "10:30"
+        hora_inicio = request.POST['hora_inicio']
+        data_e_hora_em_texto = hora_inicio
+        data = datetime.strptime(data_e_hora_em_texto, "%H:%M") + timedelta(minutes=30)
+        hora = data.strftime("%H:%M")
+        agendamentos.hora_fim = hora
         agendamentos.clientes = clientes
         agendamentos.cabeleireiros = cabeleireiros
         agendamentos.save()
         agendamentos.servicos.add(servicos)
-        if agendamentos.produtos != None:
+        if request.POST['produto'] != '':
             produtos = produto.objects.get(id=int(request.POST['produto']))
             agendamentos.produtos.add(produtos)
         else:
@@ -302,12 +305,16 @@ def createAgendamento(request):
         cabeleireiros = cabeleireiro.objects.get(id=int(request.POST['cabeleireiro']))
         agendamentos.data = request.POST['data']
         agendamentos.hora_inicio = request.POST['hora_inicio']
-        agendamentos.hora_fim = "10:30"
+        hora_inicio = request.POST['hora_inicio']
+        data_e_hora_em_texto = hora_inicio
+        data = datetime.strptime(data_e_hora_em_texto, "%H:%M") + timedelta(minutes=30)
+        hora = data.strftime("%H:%M")
+        agendamentos.hora_fim = hora
         agendamentos.clientes = clientes
         agendamentos.cabeleireiros = cabeleireiros
         agendamentos.save()
         agendamentos.servicos.add(servicos)
-        if agendamentos.produtos != None:
+        if request.POST['produto'] != '':
             produtos = produto.objects.get(id=int(request.POST['produto']))
             agendamentos.produtos.add(produtos)
         else:

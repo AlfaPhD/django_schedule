@@ -44,6 +44,7 @@
             </br>
 {#            <label>Produto </label>#}
             <select multiple name="produto" class="selectpicker" data-menu-style="dropdown-blue" data-style="btn-default btn-block" data-title="Selecione um Produto">
+                <option selected="selected" value="">Selecione um Produto</option>
                 {% for produto in produtos %}
                     <option value="{{ produto.id }}">{{ produto.nome}}</option>
                 {% endfor %}

@@ -50,6 +50,7 @@ class produto(models.Model):
     validade_produto = models.DateField("validade produto")
     valor_unitario = models.DecimalField("valor unitario", max_digits=5, decimal_places=2)
     especificacao = models.CharField("especificacao", max_length=400)
+    url = models.URLField("url", null=True, blank=True, max_length=500)
 
     def __str__(self):
         return self.nome
