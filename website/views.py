@@ -207,7 +207,7 @@ def createServico(request):
     if request.method == 'POST':
         servicos.nome= request.POST['nome']
         valor = request.POST['valor']
-        servicos.valor = Decimal(valor.replace(',',''))
+        servicos.valor = Decimal(valor.replace(',','.'))
         servicos.save()
         return HttpResponseRedirect('/servico')
     else:
@@ -255,7 +255,7 @@ def createCalendar(request):
 
     agendamentos = agendamento()
     if request.method == 'POST':
-        produtos = produto.objects.get(id=int(request.POST['produto']))
+
         servicos = servico.objects.get(id=int(request.POST['servico']))
         clientes = cliente.objects.get(id=int(request.POST['cliente']))
         cabeleireiros = cabeleireiro.objects.get(id=int(request.POST['cabeleireiro']))
@@ -266,7 +266,11 @@ def createCalendar(request):
         agendamentos.cabeleireiros = cabeleireiros
         agendamentos.save()
         agendamentos.servicos.add(servicos)
-        agendamentos.produtos.add(produtos)
+        if agendamentos.produtos != None:
+            produtos = produto.objects.get(id=int(request.POST['produto']))
+            agendamentos.produtos.add(produtos)
+        else:
+            return HttpResponseRedirect('/dashboard')
         return HttpResponseRedirect('/dashboard')
 
 
