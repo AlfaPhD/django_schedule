@@ -15,6 +15,20 @@ class UserList(generics.ListCreateAPIView):
     filter_backends = (filters.DjangoFilterBackend,)
     filter_fields = '__all__'
 
+    def get_queryset(self):
+        user = User.objects.all()
+        username = self.request.query_params.get('username')
+        senha = self.request.query_params.get('senha')
+        if username is not None:
+            if senha is not None :
+                user = User.objects.filter(username=username)
+                user_objt = user.first()
+                if (user_objt.check_password(senha)):
+                    return user
+                else:
+                    return
+        return user
+
 class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
