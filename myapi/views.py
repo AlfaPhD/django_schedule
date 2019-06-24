@@ -99,6 +99,14 @@ class AgendamentoList(generics.ListCreateAPIView):
     #permission_classes = [IsAdminUser]
     filter_backends = (filters.DjangoFilterBackend,)
     filter_fields = '__all__'
+	
+class AgendamentoDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = agendamento.objects.all()
+    serializer_class = AgendamentoSerializerList
+    #authentication_classes = [OAuth2Authentication, SessionAuthentication]
+    #permission_classes = [IsAdminUser]
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = '__all__'
 
 class AgendamentoPost(generics.ListCreateAPIView):
     queryset = agendamento.objects.all()
@@ -107,15 +115,15 @@ class AgendamentoPost(generics.ListCreateAPIView):
     #permission_classes = [IsAdminUser]
     filter_backends = (filters.DjangoFilterBackend,)
     filter_fields = '__all__'
-
-class AgendamentoDetail(generics.RetrieveUpdateDestroyAPIView):
+	
+class AgendamentoPostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = agendamento.objects.all()
     serializer_class = AgendamentoSerializerPost
     #authentication_classes = [OAuth2Authentication, SessionAuthentication]
     #permission_classes = [IsAdminUser]
     filter_backends = (filters.DjangoFilterBackend,)
     filter_fields = '__all__'
-
+	
 
 
 class ProdutoList(generics.ListCreateAPIView):
