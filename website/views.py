@@ -287,27 +287,27 @@ def createCalendar(request):
                 if str(aged.hora_inicio) == hr_form:
                     messages.warning(request, 'Já tem agendamento nesse horario')
                     return HttpResponseRedirect('/dashboard')
-                else:
-                    servicos = servico.objects.get(id=int(request.POST['servico']))
-                    clientes = cliente.objects.get(id=int(request.POST['cliente']))
-                    cabeleireiros = cabeleireiro.objects.get(id=int(request.POST['cabeleireiro']))
-                    agendamentos.data = request.POST['data']
-                    agendamentos.hora_inicio = request.POST['hora_inicio']
-                    hora_inicio = request.POST['hora_inicio']
-                    data_e_hora_em_texto = hora_inicio
-                    data = datetime.strptime(data_e_hora_em_texto, "%H:%M") + timedelta(minutes=30)
-                    hora = data.strftime("%H:%M")
-                    agendamentos.hora_fim = hora
-                    agendamentos.clientes = clientes
-                    agendamentos.cabeleireiros = cabeleireiros
-                    agendamentos.save()
-                    agendamentos.servicos.add(servicos)
-                    if request.POST['produto'] != '':
-                        produtos = produto.objects.get(id=int(request.POST['produto']))
-                        agendamentos.produtos.add(produtos)
-                    else:
-                        return HttpResponseRedirect('/dashboard')
-                    return HttpResponseRedirect('/dashboard')
+           
+            servicos = servico.objects.get(id=int(request.POST['servico']))
+            clientes = cliente.objects.get(id=int(request.POST['cliente'])
+            cabeleireiros = cabeleireiro.objects.get(id=int(request.POST['cabeleireiro']))
+            agendamentos.data = request.POST['data']
+            agendamentos.hora_inicio = request.POST['hora_inicio']
+            hora_inicio = request.POST['hora_inicio']
+            data_e_hora_em_texto = hora_inicio
+            data = datetime.strptime(data_e_hora_em_texto, "%H:%M") + timedelta(minutes=30)
+            hora = data.strftime("%H:%M")
+            agendamentos.hora_fim = hora
+            agendamentos.clientes = clientes
+            agendamentos.cabeleireiros = cabeleireiros
+            agendamentos.save()
+            agendamentos.servicos.add(servicos)
+            if request.POST['produto'] != '':
+                 produtos = produto.objects.get(id=int(request.POST['produto']))
+                 agendamentos.produtos.add(produtos)
+            else:
+                 return HttpResponseRedirect('/dashboard')
+            return HttpResponseRedirect('/dashboard')
 
 
 @login_required
@@ -327,27 +327,27 @@ def createAgendamento(request):
                 if str(aged.hora_inicio) == hr_form:
                     messages.warning(request, 'Já tem agendamento nesse horario')
                     return HttpResponseRedirect('/agenda/create')
-                else:
-                    servicos = servico.objects.get(id=int(request.POST['servico']))
-                    clientes = cliente.objects.get(id=int(request.POST['cliente']))
-                    cabeleireiros = cabeleireiro.objects.get(id=int(request.POST['cabeleireiro']))
-                    agendamentos.data = request.POST['data']
-                    agendamentos.hora_inicio = request.POST['hora_inicio']
-                    hora_inicio = request.POST['hora_inicio']
-                    data_e_hora_em_texto = hora_inicio
-                    data = datetime.strptime(data_e_hora_em_texto, "%H:%M") + timedelta(minutes=30)
-                    hora = data.strftime("%H:%M")
-                    agendamentos.hora_fim = hora
-                    agendamentos.clientes = clientes
-                    agendamentos.cabeleireiros = cabeleireiros
-                    agendamentos.save()
-                    agendamentos.servicos.add(servicos)
-                    if request.POST['produto'] != '':
-                        produtos = produto.objects.get(id=int(request.POST['produto']))
-                        agendamentos.produtos.add(produtos)
-                    else:
-                        return HttpResponseRedirect('/agenda')
-                    return HttpResponseRedirect('/agenda')
+            
+            servicos = servico.objects.get(id=int(request.POST['servico']))
+            clientes = cliente.objects.get(id=int(request.POST['cliente']))
+            cabeleireiros = cabeleireiro.objects.get(id=int(request.POST['cabeleireiro']))
+            agendamentos.data = request.POST['data']
+            agendamentos.hora_inicio = request.POST['hora_inicio']
+            hora_inicio = request.POST['hora_inicio']
+            data_e_hora_em_texto = hora_inicio
+            data = datetime.strptime(data_e_hora_em_texto, "%H:%M") + timedelta(minutes=30)
+            hora = data.strftime("%H:%M")
+            agendamentos.hora_fim = hora
+            agendamentos.clientes = clientes
+            agendamentos.cabeleireiros = cabeleireiros
+            agendamentos.save()
+            agendamentos.servicos.add(servicos)
+            if request.POST['produto'] != '':
+                 produtos = produto.objects.get(id=int(request.POST['produto']))
+                 agendamentos.produtos.add(produtos)
+            else:
+                 return HttpResponseRedirect('/agenda')
+            return HttpResponseRedirect('/agenda')
     else:
         clientes = cliente.objects.all()
         servicos = servico.objects.all()
