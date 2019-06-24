@@ -63,12 +63,10 @@
                         {% for produtoAgenda in agendamentos.produtos.all %}
                             {% if produto.id == produtoAgenda.id %}
                                 <option value="{{ produtoAgenda.id }}" selected>{{ produtoAgenda.nome }}</option>
-                            {% else %}
-                                <option value="{{ produto.id }}">{{ produto.nome }}</option>
                             {% endif%}
                         {% endfor %}
                     {% else %}
-                        <option value="{{ produto.id }}">{{ produto.nome }}</option>
+                        <option value="{{ produto.id }}" selected>{{ produto.nome }}</option>
                     {% endif%}
                 {% endfor %}
             </select>
