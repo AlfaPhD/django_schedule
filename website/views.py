@@ -289,7 +289,7 @@ def createCalendar(request):
                     return HttpResponseRedirect('/dashboard')
            
             servicos = servico.objects.get(id=int(request.POST['servico']))
-            clientes = cliente.objects.get(id=int(request.POST['cliente'])
+            clientes = cliente.objects.get(id=int(request.POST['cliente']))
             cabeleireiros = cabeleireiro.objects.get(id=int(request.POST['cabeleireiro']))
             agendamentos.data = request.POST['data']
             agendamentos.hora_inicio = request.POST['hora_inicio']
