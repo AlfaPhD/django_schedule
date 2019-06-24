@@ -41,13 +41,7 @@ class AgendamentoSerializerPost(serializers.ModelSerializer):
         model = agendamento
         fields = ('__all__')
 
-class AgendamentoSerializerList(serializers.ModelSerializer):
-    servicos = ServicoSerializer(many=True)
-    cabeleireiros = cabeleireiroSerializer()
-    clientes = ClienteSerializer()
-    class Meta:
-        model = agendamento
-        fields = ('__all__')
+
 
 class ProdutoSerializer(serializers.ModelSerializer):
     class Meta:
@@ -59,3 +53,12 @@ class EstoqueSerializer(serializers.ModelSerializer):
     class Meta:
         model = estoque
         fields = '__all__'
+
+class AgendamentoSerializerList(serializers.ModelSerializer):
+    servicos = ServicoSerializer(many=True)
+    produtos = ProdutoSerializer(many=True)
+    cabeleireiros = cabeleireiroSerializer()
+    clientes = ClienteSerializer()
+    class Meta:
+        model = agendamento
+        fields = ('__all__')
