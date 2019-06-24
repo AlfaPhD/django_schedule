@@ -227,7 +227,7 @@ def createServico(request):
     if request.method == 'POST':
         servicos.nome= request.POST['nome']
         valor = request.POST['valor']
-        servicos.valor = Decimal(valor.replace(',',''))
+        servicos.valor = Decimal(valor.replace(',','.'))
         servicos.save()
         return HttpResponseRedirect('/servico')
     else:
