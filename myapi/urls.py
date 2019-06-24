@@ -16,9 +16,10 @@ urlpatterns = [
     url(r'^apiservico/(?P<pk>[0-9]+)/$', views.ServicoDetail.as_view()),
 
     url(r'^apiagendamento/$', views.AgendamentoList.as_view()),
-    url(r'^apiagendamentoPost/$', views.AgendamentoPost.as_view()),
     url(r'^apiagendamento/(?P<pk>[0-9]+)/$', views.AgendamentoDetail.as_view()),
-
+    url(r'^apiagendamentoPost/$', views.AgendamentoPost.as_view()),
+    url(r'^apiagendamentoPost/(?P<pk>[0-9]+)/$', views.AgendamentoPostDetail.as_view()),
+    
     url(r'^apiproduto/$', views.ProdutoList.as_view()),
     url(r'^apiproduto/(?P<pk>[0-9]+)/$', views.ProdutoDetail.as_view()),
 
