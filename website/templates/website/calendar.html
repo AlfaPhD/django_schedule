@@ -121,8 +121,8 @@
                                 '<br><select class="form-control" name="cliente" readonly>\n' +
                                 '<option selected="selected" value="{{user.cliente.id}}">{{user.cliente.nome}}</option>' +
                                 '</select>' +
-                                '<br><select class="form-control" name="produto">\n' +
-                                '<option value="" selected disabled>Selecione um Produto</option>' +
+                                '<br><select class="form-control" name="produto" id="produto">\n' +
+                                '<option value="" selected="selected">Selecione um Produto</option>' +
                                 '{% for prod in produtos %}'+
                                     '<option value="{{prod.id}}">{{prod.nome}}</option>\n' +
                                     '{% endfor %}'+
