@@ -386,7 +386,6 @@ def updateAgendamento(request, id):
     agendamentos = agendamento.objects.get(id=id)
     servicos = servico.objects.get(id=int(request.POST['servico']))
     clientes = cliente.objects.get(id=int(request.POST['cliente']))
-    produtos = produto.objects.get(id=int(request.POST['produto']))
     cabeleireiros = cabeleireiro.objects.get(id=int(request.POST['cabeleireiro']))
     agendamentos.data_inicio= request.POST['data']
     agendamentos.clientes = clientes
@@ -395,8 +394,14 @@ def updateAgendamento(request, id):
     agendamentos.produtos.clear()
     agendamentos.save()
     agendamentos.servicos.add(servicos)
-    agendamentos.produtos.add(produtos)
-    return redirect('/agenda')
+    if request.POST['produto'] != '':
+        produtos = produto.objects.get(id=int(request.POST['produto']))
+        agendamentos.produtos.add(produtos)
+    else:
+        return HttpResponseRedirect('/agenda')
+    return HttpResponseRedirect('/agenda')
+
+
 
 
 @login_required
